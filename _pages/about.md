@@ -2,16 +2,16 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: <a href='http://asleep.ai'>Asleep</a>. AI can replace human in many ways. Yet, nothing can replace you in being you.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: toon_link.png
   image_circular: false # crops the image to make it circular
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>19 Floor</p>
+    <p>420, Teheran-ro, Gangnam-gu</p>
+    <p>Seoul, South Korea</p>
 
 news: true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
