@@ -6,7 +6,7 @@ subtitle: <a href='http://asleep.ai'>Asleep</a>. AI can replace human in many wa
 
 profile:
   align: right
-  image: toon_link.png
+  image: profile_pic.jpeg
   image_circular: false # crops the image to make it circular
   address: >
     <p>19 Floor</p>
@@ -19,8 +19,35 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+# About Me
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+## Introduction
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+Hello, I'm Andrew Le, also known as Le Vu Linh. Welcome to my blog! I'm an AI researcher based in Seoul, South Korea, with a passion for technology, music, and gaming.
+
+## Background
+
+- **Vietnamese Name:** Le Vu Linh
+- **English Name:** Andrew Le
+- **Birthdate:** November 1996
+- **Residence:** Living in Korea for 4 years
+- **Education:** Master's degree from KAIST (Korea Advanced Institute of Science and Technology)
+
+## Professional Experience
+
+Currently, I am working as an AI researcher in Seoul, South Korea. I am dedicated to exploring the possibilities and applications of artificial intelligence in various domains. Through my work, I strive to contribute to the advancement of technology and its positive impact on society.
+
+## Interests
+
+In addition to my professional endeavors, I have a few hobbies and interests that keep me engaged and inspired:
+
+- **Rock Music:** I have a deep love for rock music. The raw energy and emotional depth of this genre resonate with me, and I often find solace and inspiration in its melodies and lyrics.
+
+- **Nintendo Games:** I'm a big fan of Nintendo games. The imaginative worlds, captivating storytelling, and innovative gameplay offered by Nintendo's titles have been a significant source of joy and entertainment in my life.
+
+## Blog
+
+On this blog, I will be sharing my thoughts, insights, and experiences related to AI, technology, music, and gaming. I hope to provide valuable content that sparks discussions, inspires creativity, and fosters a sense of community among like-minded individuals.
+
+Join me on this exciting journey as we explore the fascinating realms of AI, rock music, and Nintendo games!
+
