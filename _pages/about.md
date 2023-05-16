@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='http://asleep.ai'>Asleep</a>. AI can replace human in many ways. Yet, nothing can replace you in being you.
+subtitle: AI can replace human in many ways. Yet, nothing can replace you in being you.
 
 profile:
   align: right
@@ -18,8 +18,6 @@ latest_posts: true  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-
-# About Me
 
 ## Introduction
 
