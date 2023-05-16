@@ -1,0 +1,19 @@
+<div class="projects">
+  {% if site.latest_projects != blank -%}
+  {%- assign latest_projects_size = site.projects | size -%}
+  {%- assign latest_projects = site.projects -%}
+  {% if site.latest_projects.limit %}
+  {% assign latest_projects_limit = site.latest_projects.limit %}
+  {% else %}
+  {% assign latest_projects_limit = latest_projects_size %}
+  {% endif %}
+  <!-- Generate cards for each project -->
+  <div class="grid">
+    {%- for project in latest_projects limit: latest_projects_limit -%}
+    {% include projects.html %}
+    {%- endfor %}
+  </div>
+  {%- else -%}
+  <p>No projects so far...</p>
+  {%- endif %}
+</div>
