@@ -6,4 +6,4 @@ description: Business Card
 nav: false
 ---
 
-![Asleep Business card](assets/img/asleep_bc.png)
+![Asleep Business card](/assets/img/asleep_bc.png)
