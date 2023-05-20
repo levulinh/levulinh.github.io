@@ -5,8 +5,8 @@ permalink: /albums/
 description: Where I keep my passion of photography going.
 nav: true
 nav_order: 2
-display_categories: [work, fun]
-horizontal: true
+display_categories: [work, life]
+horizontal: false
 ---
 
 <!-- pages/projects.md -->
