@@ -808,11 +808,13 @@ progress::-moz-progress-bar {
 .btn-group.dropdown .dropdown-item:hover {
   color: var(--global-hover-color);
 }
-.btn-group.dropdown .dropdown-item.active, .btn-group.dropdown .dropdown-item:active {
+.btn-group.dropdown .dropdown-item.active,
+.btn-group.dropdown .dropdown-item:active {
   background-color: var(--global-hover-color);
   color: var(--global-hover-text-color) !important;
 }
-.btn-group.dropdown .dropdown-item.active:hover, .btn-group.dropdown .dropdown-item:active:hover {
+.btn-group.dropdown .dropdown-item.active:hover,
+.btn-group.dropdown .dropdown-item:active:hover {
   color: var(--global-hover-text-color);
 }
 
