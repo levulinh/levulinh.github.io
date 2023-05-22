@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-05-22T13:50:28+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2023-05-22T13:58:24+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
 </subtitle><entry><title type="html">우영의 일기 [2023년 5월 22일] - 놀라운 사건</title><link href="https://levulinh.github.io/blog/2023/wooyoungs-diary/" rel="alternate" type="text/html" title="우영의 일기 [2023년 5월 22일] - 놀라운 사건" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2023/wooyoungs-diary</id><content type="html" xml:base="https://levulinh.github.io/blog/2023/wooyoungs-diary/"><![CDATA[<p>Hello, this is me, Andrew. However, in this series, I am 우영. Here’s what we’ll do:</p>
 <ul>
   <li>I will first write the original version in Korean, with all I have.</li>
   <li>Then, I will ask ChatGPT to fix my script. You’ll see it in a moment 😁.</li>
   <li>You’re very welcome to give me feedback on my writing, even with the smallest things. I will be very grateful for that.</li>
 </ul>
+
+<p>The prompt that I will use with ChatGPT:</p>
+<blockquote>
+  <p>I am a Korean learner at low intermediate level. I have written a draft for my blog post. Please help me fix the unnatural sentences and wrong grammar for me. Besides, suggest me more advanced vocabularies and grammar points so it sounds better. write your suggestions below the fixed paragraph, just like in the language teaching websites.</p>
+</blockquote>
 
 <p>Here is our first Diary :)</p>
 
@@ -16,15 +21,34 @@
 웨냐하면 제 팀원들도 놀랐습니다. 마침내 우리 그룹이 다른 한 그룹이랑 같이 점심을 먹었습니다. 너무 웃긴 사건이였습니다.</p>
 
 <h2 id="chatgpt-fixing-effort---chatgpt-수정한-초안">ChatGPT fixing effort - ChatGPT 수정한 초안</h2>
-<p>The prompt that I used with ChatGPT:</p>
-<blockquote>
-  <p>I am a Korean learner at low intermediate level. I have written a draft for my blog post. Please help me fix the unnatural sentences and wrong grammar for me. Besides, suggest me more advanced vocabularies and grammar points so it sounds better. write your suggestions below the fixed paragraph, just like in the language teaching websites.</p>
-</blockquote>
-
 <h3 id="놀라운-사건-1">놀라운 사건</h3>
 
-<p>요즘 우리 회사에서는 ‘랜덤한 점심’이라는 이벤트를 시작했습니다. 이 행사는 지난 주 금요일부터 진행되며, 이메일을 통해 랜덤하게 선택된 동료들끼리 함께 점심을 먹을 수 있도록 만들었습니다.</p>
+<p>요즘 우리 회사에서는 ‘랜덤한 점심’이라는 이벤트를 개최하고 있습니다. 이 행사는 지난 주 금요일부터 진행되며, 이메일을 통해 무작위로 선정된 동료들끼리 함께 점심을 할 수 있도록 구성되었습니다.</p>
 
-<p>저는 이전 행사들에는 참여하지 않았지만, 오늘은 한 번 참여해보고 싶었습니다. 참여 방법은 간단합니다. 매일 정오에 참여하고 싶다면 슬랙 스레드에 있는 ‘참여’ 버튼을 누르면 됩니다. 그 후에는 랜덤하게 조합된 2~4명의 동료들과 함께 15분 후에 공유할 수 있도록 했습니다. 제가 매일 AI 팀의 팀원들과 함께 점심을 먹기 때문에 오늘은 다른 팀의 동료들과 함께 식사하고 싶었습니다. 그러나 오늘은 몇 분의 팀원들이 감기에 걸려 회사에 오지 않았습니다. 기대가 많았지만 결과를 보니 실망스러웠습니다. 저는 AI 팀원 두 분과 같은 그룹에 속해 있었습니다. 이런 상황을 볼 때 조금 웃음이 나왔습니다. 그 순간 어디서 웃음 소리가 들렸는지 모르겠습니다. 그 이유는 제 팀원들도 놀라워했기 때문입니다. 결국 우리 그룹은 다른 한 그룹과 함께 점심을 먹게 되었습니다. 정말 웃긴 사건이었습니다.</p>
+<p>저는 이전 행사에는 참여하지 않았지만, 오늘은 한 번 참여해보고 싶었습니다. 참여 방법은 매우 간단합니다. 매일 정오에 참여하고 싶다면 슬랙 스레드에서 ‘참여’ 버튼을 누르기만 하면 됩니다. 그 후에는 2~4명의 동료들과 무작위로 조합되어, 15분 후에 함께한 경험을 공유할 수 있도록 구성되었습니다. 제가 AI 팀의 팀원들과 매일 점심을 함께하는 관계로, 오늘은 다른 팀의 동료들과 함께 식사하고 싶었습니다. 그러나 오늘은 몇 명의 팀원들이 감기에 걸려 출근하지 못했습니다. 큰 기대를 했지만, 결과를 보니 실망스러웠습니다. 저는 AI 팀원 두 분과 동일한 그룹에 속하게 되었습니다. 이런 상황을 보며 조금 웃음이 나왔습니다. 그 순간, 어디서 웃음소리가 들렸는지 기억이 나지 않습니다. 그 이유는 제 팀원들도 놀라워했기 때문입니다. 결국 우리 그룹은 다른 한 그룹과 함께 점심을 함께하게 되었습니다. 정말로 재미있는 사건이었습니다.</p>
+
+<p><strong>Here are what ChatGPT suggested to change:</strong></p>
+
+<ul>
+  <li>Replaced “시작되었습나디” with “개최하였습니다” to express the event being started.</li>
+  <li>Replaced “지난주” with “지난 주” to add a space for consistency.</li>
+  <li>Changed “만들었습니다” to “구성되었습니다” to convey the idea of organizing the event.</li>
+  <li>Corrected “참여 안 했는데” to “참여하지 않았지만” for proper negation.</li>
+  <li>Replaced “참여 버튼을 누르면 됩니다” with “참여 버튼을 클릭하면 됩니다” to use a more appropriate verb.</li>
+  <li>Modified “같이 2-4명 각 팀으로 나누어서” to “무작위로 조합된 2~4명의 동료들과” for clarity and variety.</li>
+  <li>Changed “15분 후에 공유할 수 있도록 했습니다” to “15분 후에 함께한 경험을 공유할 수 있도록 구성되었습니다” to provide a clearer meaning.</li>
+  <li>Corrected “날마다” to “매일” for consistent usage.</li>
+  <li>Replaced “떼문에” with “때문에” for correct expression.</li>
+  <li>Modified “회사 안 갔습니다” to “출근하지 못했습니다” for better phrasing.</li>
+  <li>Replaced “결과 볼 때는 정말 롤랐습니다” with “결과를 보니 실망스러웠습니다” to convey the feeling of disappointment.</li>
+  <li>Changed “저는 볼 때” to “저는 이런 상황을 볼 때” to provide clearer context.</li>
+  <li>Replaced “웨냐하면” with “그 이유는” for better transition.</li>
+  <li>Corrected “웃음을 들었습니다” to “웃음소리가 들렸습니다” for proper expression.</li>
+  <li>Replaced “웨냐하면” with “그 이유는” for better transition.</li>
+  <li>Modified “웨냐하면” to “그 이유는” for better transition.</li>
+  <li>Replaced “너무 웃긴 사건이였습니다” with “정말 유쾌한 사건이었습니다” to provide a more appropriate description.</li>
+</ul>
+
+<p>These changes were made to improve the flow, clarity, and correctness of the paragraph.</p>
 
 <p>Feel free to give me your suggestions below 😁</p>]]></content><author><name></name></author><category term="korean" /><category term="diary" /><summary type="html"><![CDATA[A series of diary entries from me - 우영, where I will be writing about my daily life in Korean.]]></summary></entry><entry><title type="html">The AI models are only limited by our imaginaries (Interview in Korean)</title><link href="https://levulinh.github.io/blog/2022/andrew-blog-post/" rel="alternate" type="text/html" title="The AI models are only limited by our imaginaries (Interview in Korean)" /><published>2022-09-01T17:39:00+00:00</published><updated>2022-09-01T17:39:00+00:00</updated><id>https://levulinh.github.io/blog/2022/andrew-blog-post</id><content type="html" xml:base="https://levulinh.github.io/blog/2022/andrew-blog-post/"><![CDATA[<p>Redirecting to another page.</p>]]></content><author><name></name></author><category term="deep-learning" /><summary type="html"><![CDATA[Blog post from people in Asleep]]></summary></entry></feed>
