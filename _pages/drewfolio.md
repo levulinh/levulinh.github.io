@@ -38,10 +38,10 @@ Both datasets were downloaded from Kaggle. And the models were trained on Google
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/new_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     <div class="col-sm-6 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/new_clf_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.html path="assets/img/portfolio/news_clf_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 
