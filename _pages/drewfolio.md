@@ -5,6 +5,7 @@ title: Portfolio
 description: Look what I have done!
 nav: true
 nav_order: 3
+toc: true
 ---
 
 
@@ -27,6 +28,7 @@ Both datasets were downloaded from Kaggle. And the models were trained on Google
 
 ### Screenshots:
 
+Dog breed classification
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/dog_breed.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
@@ -36,6 +38,8 @@ Both datasets were downloaded from Kaggle. And the models were trained on Google
     </div>
 </div>
 
+
+News classification
 <div class="row justify-content-sm-center">
     <div class="col-sm-6 mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
