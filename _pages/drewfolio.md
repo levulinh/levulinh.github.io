@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /drew-folio/
-title: Portfolio
+title: portfolio
 description: Look what I have done!
 nav: true
 nav_order: 3
