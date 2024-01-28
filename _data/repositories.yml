@@ -1,7 +1,6 @@
 github_users:
   - levulinh
-  - asleep-andrew
 
 github_repos:
-  - levulinh/UltraBuddyMVVM
-  - levulinh/NCL-nexus
+  - levulinh/SOC-Term-project-server
+  - levulinh/SOC-Term-project-client
