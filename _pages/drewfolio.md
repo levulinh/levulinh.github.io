@@ -67,6 +67,15 @@ But the server is not deployed, due to the limit of free tier on Render. If you 
 
 Context: So, let's rewind a bit and talk about the sleep monitoring gig at Asleep. We decided to spice things up by throwing Vision Transformer (ViT) models into the mix. Forget the typical Recurrent Neural Network (RNN) routine – we took a different route, predicting sleep stages, catching apnea events, and eavesdropping on snores using ViT models. The twist? We didn't just toss raw data at our AI; we served it up with transformed Mel-spectrograms of breathing sounds. Why ViT? Picture a sleep detective that hones in on the nitty-gritty details in those spectrograms, making our predictions spot-on. No shade to the RNN crew, but ViT not only steals the spotlight but does it in real-time fashion. It's been a thrilling journey, and we're rewriting the playbook on sleep monitoring – one ViT model at a time!
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/multi_head_context.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    The overall architecture of our sound-based models, cut from the ICLR <a href="https://openreview.net/pdf?id=mIRztWMsVJ">Workshop paper</a>.
+</div>
+
 ### Then what's the problem?
 - **Task Segregation Woes:**
 Although our sleep monitoring tasks appeared closely related, they were operating in separate spheres, leading to a missed opportunity for potential performance and speed enhancement.
@@ -149,6 +158,21 @@ And more on the github repo.
 ### Link to Project:
 
 [Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
+
+
+## Project 4: The Flutter Vocab learning App (WIP)
+This is a WIP project that I have been working on for a while. It is a simple app that helps you learn new vocabularies in a foreign language in a fun way. I am building it with Flutter, and it so far has been an exciting journey. I am still working on it, and I hope to finish it soon.
+
+### Screenshots:
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/vocav0.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
+### Technologies Used:
+- Flutter
+- Dart
 
 
 ## Contact Me
