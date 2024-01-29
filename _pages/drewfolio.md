@@ -5,7 +5,6 @@ title: portfolio
 description: Look what I have done!
 nav: true
 nav_order: 3
-toc: true
 ---
 
 
@@ -128,9 +127,9 @@ Due to the limitation of what I can expose, the only thing that I can provide is
 
 ---
 
-## Project 3: King's beat - the game
+## Project 3: King's beat - the game 👾
 
-Did I say I am so so so into games? Playing them, making them. This is a project that I tried a few months ago, just to try out the Godot game engine. It was a fun experience, and I learned a lot about game development.
+Did I say I am so so so into games? 🎮 Playing them, making them, even this page's favicon is a game icon. This is a project that I tried a few months ago, just to try out the Godot game engine. It was a fun experience, and I learned a lot about game development.
 
 ### Free assets used
 - [Kings and pigs](https://pixelfrog-assets.itch.io/kings-and-pigs)
@@ -177,6 +176,6 @@ This is a WIP project that I have been working on for a while. It is a simple ap
 
 ## Contact Me
 
-- Email: your.email@example.com
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/in/andrew-le-d28m08y19/)
-- GitHub: [Your GitHub Profile](https://github.com/levulinh)
+- Email: levulinhkr@gmail.com
+- LinkedIn: [Andrew Le](https://www.linkedin.com/in/andrew-le-d28m08y19/)
+- GitHub: [Le Vu Linh](https://github.com/levulinh)
