@@ -167,9 +167,10 @@ This is a WIP project that I have been working on for a while. It is a simple ap
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/vocav0.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/openai_finetune.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
 </div>
-
-![OpenAPI finetune](/assets/img/portfolio/openai_finetune.png)
 
 ### Technologies Used:
 - Flutter
