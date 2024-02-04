@@ -169,7 +169,7 @@ This is a WIP project that I have been working on for a while. It is a simple ap
     </div>
 </div>
 
-![OpenAPI finetune](assets/img/portfolio/openai_finetune.png.png)
+![OpenAPI finetune](/assets/img/portfolio/openai_finetune.png.png)
 
 ### Technologies Used:
 - Flutter
