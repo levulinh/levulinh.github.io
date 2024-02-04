@@ -28,7 +28,7 @@ Both datasets were downloaded from Kaggle. And the models were trained on Google
 ### Screenshots:
 
 Dog breed classification
-<div class="row mt-3">
+<div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/dog_breed.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
@@ -39,7 +39,7 @@ Dog breed classification
 
 
 News classification
-<div class="row mt-3">
+<div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
@@ -169,7 +169,7 @@ This is a WIP project that I have been working on for a while. It is a simple ap
     </div>
 </div>
 
-![OpenAPI finetune](/assets/img/portfolio/openai_finetune.png.png)
+![OpenAPI finetune](/assets/img/portfolio/openai_finetune.png)
 
 ### Technologies Used:
 - Flutter
