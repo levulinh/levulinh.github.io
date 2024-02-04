@@ -9,7 +9,7 @@ nav_order: 3
 
 
 
-## Project 1: What the dog + What the news
+## Project 1: Dog Breed (image) and News (text) Classification
 
 This is the client for my two projects that I did in a course of my early year in master's degree. The project contains two small fun apps:
 - News classification: This app is used to classify news into 4 categories: business, entertainment, politics, sport and tech.
@@ -28,22 +28,22 @@ Both datasets were downloaded from Kaggle. And the models were trained on Google
 ### Screenshots:
 
 Dog breed classification
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/dog_breed.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/dog_breed_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 
 
 News classification
-<div class="row justify-content-sm-center">
-    <div class="col-sm-6 mt-3 mt-md-0">
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
-    <div class="col-sm-6 mt-3 mt-md-0">
+    <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/news_clf_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
@@ -169,9 +169,12 @@ This is a WIP project that I have been working on for a while. It is a simple ap
     </div>
 </div>
 
+![OpenAPI finetune](assets/img/portfolio/openai_finetune.png.png)
+
 ### Technologies Used:
 - Flutter
 - Dart
+- OpenAI API
 
 
 ## Contact Me
