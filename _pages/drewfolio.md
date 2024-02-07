@@ -8,61 +8,7 @@ nav_order: 3
 ---
 
 
-
-## Project 1: Dog Breed (image) and News (text) Classification
-
-This is the client for my two projects that I did in a course of my early year in master's degree. The project contains two small fun apps:
-- News classification: This app is used to classify news into 4 categories: business, entertainment, politics, sport and tech.
-- Dog breed classification: This app is used to classify dog breeds into 120 breeds.
-
-The models were rather simple, but for a first year master's student, it was a good start. The models were trained using PyTorch and deployed using Flask. The client was built using ReactJS.
-
-After years, I can definitely see a lot of things that I could have done better. But it was a good start, and I am proud of it.
-
-### Model Architecture:
-- News classification: An SetimentRNN model with 3 layers of LSTM. Using GloVe embedding, and `simple-english` tokenizer. Trained with BBC News dataset.
-- Dog breed classification: A simple CNN model with 4 convolutional layers and 2 fully connected layers. Trained on a dataset of 120 dog breeds.
-
-Both datasets were downloaded from Kaggle. And the models were trained on Google Colab (I know, I was a poor student back then 😁).
-
-### Screenshots:
-
-Dog breed classification
-<div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/dog_breed.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/dog_breed_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-
-
-News classification
-<div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/news_clf_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-
-### Tools Used:
-
-- PyTorch
-- Flask
-- ReactJS
-
-### Link to Project:
-The client is deployed on Render, and can be accessed here:
-- [Project Demo](https://what-the-dog.onrender.com)
-But the server is not deployed, due to the limit of free tier on Render. If you want to see the server, you can clone the repo and run it locally.
-- [Server Repo](https://github.com/levulinh/what-the-dog-flask)
-
----
-
-## Project 2: Multi-task Distillation learning for Image
+## Project 1: Multi-task Distillation learning for Image
 
 Context: So, let's rewind a bit and talk about the sleep monitoring gig at Asleep. We decided to spice things up by throwing Vision Transformer (ViT) models into the mix. Forget the typical Recurrent Neural Network (RNN) routine – we took a different route, predicting sleep stages, catching apnea events, and eavesdropping on snores using ViT models. The twist? We didn't just toss raw data at our AI; we served it up with transformed Mel-spectrograms of breathing sounds. Why ViT? Picture a sleep detective that hones in on the nitty-gritty details in those spectrograms, making our predictions spot-on. No shade to the RNN crew, but ViT not only steals the spotlight but does it in real-time fashion. It's been a thrilling journey, and we're rewriting the playbook on sleep monitoring – one ViT model at a time!
 
@@ -127,6 +73,59 @@ Due to the limitation of what I can expose, the only thing that I can provide is
 
 ---
 
+## Project 2: Dog Breed (image) and News (text) Classification
+
+This is the client for my two projects that I did in a course of my early year in master's degree. The project contains two small fun apps:
+- News classification: This app is used to classify news into 4 categories: business, entertainment, politics, sport and tech.
+- Dog breed classification: This app is used to classify dog breeds into 120 breeds.
+
+The models were rather simple, but for a first year master's student, it was a good start. The models were trained using PyTorch and deployed using Flask. The client was built using ReactJS.
+
+After years, I can definitely see a lot of things that I could have done better. But it was a good start, and I am proud of it.
+
+### Model Architecture:
+- News classification: An SetimentRNN model with 3 layers of LSTM. Using GloVe embedding, and `simple-english` tokenizer. Trained with BBC News dataset.
+- Dog breed classification: A simple CNN model with 4 convolutional layers and 2 fully connected layers. Trained on a dataset of 120 dog breeds.
+
+Both datasets were downloaded from Kaggle. And the models were trained on Google Colab (I know, I was a poor student back then 😁).
+
+### Screenshots:
+
+Dog breed classification
+<div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/dog_breed.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/dog_breed_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
+
+News classification
+<div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/news_clf.png" title="dog breed clf" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/news_clf_2.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
+### Tools Used:
+
+- PyTorch
+- Flask
+- ReactJS
+
+### Link to Project:
+The client is deployed on Render, and can be accessed here:
+- [Project Demo](https://what-the-dog.onrender.com)
+But the server is not deployed, due to the limit of free tier on Render. If you want to see the server, you can clone the repo and run it locally.
+- [Server Repo](https://github.com/levulinh/what-the-dog-flask)
+
+---
+
 ## Project 3: King's beat - the game 👾
 
 Did I say I am so so so into games? 🎮 Playing them, making them, even this page's favicon is a game icon. This is a project that I tried a few months ago, just to try out the Godot game engine. It was a fun experience, and I learned a lot about game development.
@@ -146,6 +145,8 @@ Did I say I am so so so into games? 🎮 Playing them, making them, even this pa
         {% include figure.html path="assets/img/portfolio/king_beat.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
+
+<iframe width="941" height="573" src="https://www.youtube.com/embed/DeB7pYBUbDo" title="King beat demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 And more on the github repo.
 
