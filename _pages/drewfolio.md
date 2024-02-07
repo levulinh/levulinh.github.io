@@ -203,6 +203,7 @@ And more on the github repo.
 
 [Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
 
+---
 
 ## Project 4: The Flutter Vocab learning App (WIP)
 This is a WIP project that I have been working on for a while. It is a simple app that helps you learn new vocabularies in a foreign language in a fun way. I am building it with Flutter, and it so far has been an exciting journey. I am still working on it, and I hope to finish it soon.
