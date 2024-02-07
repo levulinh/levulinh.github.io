@@ -34,6 +34,9 @@ the problem of graph saturation, and increasing the receptive field of the model
 | RAG-GAT | 83.07% |
 | **Ours** | **90.02%** |
 
+### Pulication:
+[Dynamic Graph Neural Network for Super-Pixel Image Classification](https://ieeexplore.ieee.org/abstract/document/9621101)
+
 ### Technologies Used:
 - PyTorch
 - PyTorch Geometric
@@ -97,6 +100,11 @@ I moved the distillation loss to the beginning of the split heads, so that the m
 </div>
 
 Due to the limitation of what I can expose, the only thing that I can provide is the performance of the model on the test set of all tasks surpasses the performance of the model trained with supervised learning only, and separately.
+
+### Publications:
+- [Real-Time Detection of Sleep Apnea Based on Breathing Sounds and Prediction Reinforcement Using Home Noises: Algorithm Development and Validation](https://www.jmir.org/2023/1/e44818/)
+- [In-Home Smartphone-Based Prediction of Obstructive Sleep Apnea in Conjunction With Level 2 Home Polysomnography](https://jamanetwork.com/journals/jamaotolaryngology/article-abstract/2812069)
+- [EVALUATION OF A SOUND-BASED DEEP LEARNING MODEL FOR HOME-BASED OBSTRUCTIVE SLEEP APNEA DETECTION USING LEVEL 2 HOME PSG DATA](https://journal.chestnet.org/article/S0012-3692(23)05087-0/fulltext)
 
 ### Technologies Used:
 
