@@ -177,42 +177,7 @@ But the server is not deployed, due to the limit of free tier on Render. If you 
 
 ---
 
-## Project 3: King's beat - the game 👾
-
-Did I say I am so so so into games? 🎮 Playing them, making them, even this page's favicon is a game icon. This is a project that I tried a few months ago, just to try out the Godot game engine. It was a fun experience, and I learned a lot about game development.
-
-### Free assets used
-- [Kings and pigs](https://pixelfrog-assets.itch.io/kings-and-pigs)
-
-### What did I build?
-- A simple map from tilesets
-- I drew the little score bar with Procreate
-- Game logic that resembles the original game `Audition` (the legendary game that I played a lot when I was a kid)
-- Scoring system
-
-### Screenshots:
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/king_beat.png" class="img-fluid rounded z-depth-1" zoomable=true %}
-    </div>
-</div>
-
-<iframe width="941" height="573" src="https://www.youtube.com/embed/DeB7pYBUbDo" title="King beat demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-And more on the github repo.
-
-### Technologies Used:
-
-- Godot 4.0
-- GDScript
-
-### Link to Project:
-
-[Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
-
----
-
-## Project 4: The Flutter Vocab learning App (WIP)
+## Project 3: The Flutter Vocab learning App (WIP)
 This is a WIP project that I have been working on for a while. It is a simple app that helps you learn new vocabularies in a foreign language in a fun way. I am building it with Flutter, and it so far has been an exciting journey. I am still working on it, and I hope to finish it soon.
 
 ### Screenshots:
@@ -232,6 +197,42 @@ This is a WIP project that I have been working on for a while. It is a simple ap
 - Dart
 - OpenAI API
 
+---
+
+## Project 4: King's beat - the game 👾
+
+Did I say I am so so so into games? 🎮 Playing them, making them, even this page's favicon is a game icon. This is a project that I tried a few months ago, just to try out the Godot game engine. It was a fun experience, and I learned a lot about game development.
+
+### Free assets used
+- [Kings and pigs](https://pixelfrog-assets.itch.io/kings-and-pigs)
+
+### What did I build?
+- A simple map from tilesets
+- I drew the little score bar with Procreate
+- Game logic that resembles the original game `Audition` (the legendary game that I played a lot when I was a kid)
+- Scoring system
+
+### Screenshots:
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/king_beat.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
+<iframe width="auto" height="auto" src="https://www.youtube.com/embed/DeB7pYBUbDo" title="King beat demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+And more on the github repo.
+
+### Technologies Used:
+
+- Godot 4.0
+- GDScript
+
+### Link to Project:
+
+[Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
+
+---
 
 ## Contact Me
 
