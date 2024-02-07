@@ -68,7 +68,7 @@ Context: So, let's rewind a bit and talk about the sleep monitoring gig at Aslee
     </div>
 </div>
 <div class="caption">
-    The overall architecture of our sound-based models, cut from the ICLR <a href="https://openreview.net/pdf?id=mIRztWMsVJ">Workshop paper</a>.
+    The overall architecture of our sound-based models. For more information, please refer to the ICLR <a href="https://openreview.net/pdf?id=mIRztWMsVJ">Workshop paper</a>.
 </div>
 
 ### Then what's the problem?
