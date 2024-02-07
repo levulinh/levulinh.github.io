@@ -8,6 +8,37 @@ nav_order: 3
 ---
 
 
+## Project 0: DiscoGNN - Dynamic Graph Convolutional Neural Network for Image Classification on superpixel images
+
+This is my first publication during my master's degree (Hence the number 0). Despite of a very rushing deadline, I managed to pull it off, and I am proud of it. The project was about using a dynamic graph convolutional neural network to classify superpixel images. The model was trained on multiple datasets, including CIFAR, Fashion-MNIST, superpixel-MNIST. And the superpixel images were generated using the [SLIC](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_segmentations.html) algorithm.
+
+In this project, I proposed a new method to generate graphs on superpixel images dynamically every iteration, mitigating
+the problem of graph saturation, and increasing the receptive field of the model. The method out-performed the SOTA methods on the same setting on multiple datasets.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/dynamic_gnn.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
+|  | MNIST-75 |
+|---------|-------------|
+| MoNET | 91.11% |
+| SplineCNN | 95.22% |
+| GeoGCN | 95.95% |
+| RAG-GAT | 96.19% |
+| **Ours** | **99.04%** |
+
+|  | Fashion-MNIST |
+|---------|-------------|
+| RAG-GAT | 83.07% |
+| **Ours** | **90.02%** |
+
+### Technologies Used:
+- PyTorch
+- PyTorch Geometric
+- SLIC
+
 ## Project 1: Multi-task Distillation learning for Image
 
 Context: So, let's rewind a bit and talk about the sleep monitoring gig at Asleep. We decided to spice things up by throwing Vision Transformer (ViT) models into the mix. Forget the typical Recurrent Neural Network (RNN) routine – we took a different route, predicting sleep stages, catching apnea events, and eavesdropping on snores using ViT models. The twist? We didn't just toss raw data at our AI; we served it up with transformed Mel-spectrograms of breathing sounds. Why ViT? Picture a sleep detective that hones in on the nitty-gritty details in those spectrograms, making our predictions spot-on. No shade to the RNN crew, but ViT not only steals the spotlight but does it in real-time fashion. It's been a thrilling journey, and we're rewriting the playbook on sleep monitoring – one ViT model at a time!
