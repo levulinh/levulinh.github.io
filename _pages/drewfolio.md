@@ -8,7 +8,7 @@ nav_order: 3
 ---
 
 
-## Project 0: DiscoGNN - Dynamic Graph Convolutional Neural Network for Image Classification on superpixel images
+## Project 0:nDynamic Graph Convolutional Neural Network for Image Classification on superpixel images
 
 This is my first publication during my master's degree (Hence the number 0). Despite of a very rushing deadline, I managed to pull it off, and I am proud of it. The project was about using a dynamic graph convolutional neural network to classify superpixel images. The model was trained on multiple datasets, including CIFAR, Fashion-MNIST, superpixel-MNIST. And the superpixel images were generated using the [SLIC](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_segmentations.html) algorithm.
 
@@ -31,7 +31,7 @@ Perfomance comparison:
 | GeoGCN | 95.95% |
 | RAG-GAT | 96.19% |
 | **Ours** | **99.04%** |
-
+<br/>
 - on Fashion-MNIST
 
 |  | Fashion-MNIST |
@@ -55,7 +55,12 @@ Context: So, let's rewind a bit and talk about the sleep monitoring gig at Aslee
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/multi_head_context.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.html path="assets/img/portfolio/sound_to_mel.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/two_stage.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 <div class="caption">
