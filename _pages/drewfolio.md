@@ -21,6 +21,9 @@ the problem of graph saturation, and increasing the receptive field of the model
     </div>
 </div>
 
+Perfomance comparison:
+- on MNIST-75
+
 |  | MNIST-75 |
 |---------|-------------|
 | MoNET | 91.11% |
@@ -28,6 +31,8 @@ the problem of graph saturation, and increasing the receptive field of the model
 | GeoGCN | 95.95% |
 | RAG-GAT | 96.19% |
 | **Ours** | **99.04%** |
+
+- on Fashion-MNIST
 
 |  | Fashion-MNIST |
 |---------|-------------|
