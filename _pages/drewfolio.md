@@ -8,7 +8,7 @@ nav_order: 3
 ---
 
 
-## Project 0:nDynamic Graph Convolutional Neural Network for Image Classification on superpixel images
+## Project 0: Dynamic Graph Convolutional Neural Network for Image Classification on superpixel images
 
 This is my first publication during my master's degree (Hence the number 0). Despite of a very rushing deadline, I managed to pull it off, and I am proud of it. The project was about using a dynamic graph convolutional neural network to classify superpixel images. The model was trained on multiple datasets, including CIFAR, Fashion-MNIST, superpixel-MNIST. And the superpixel images were generated using the [SLIC](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_segmentations.html) algorithm.
 
@@ -22,6 +22,7 @@ the problem of graph saturation, and increasing the receptive field of the model
 </div>
 
 Perfomance comparison:
+
 - on MNIST-75
 
 |  | MNIST-75 |
@@ -31,13 +32,16 @@ Perfomance comparison:
 | GeoGCN | 95.95% |
 | RAG-GAT | 96.19% |
 | **Ours** | **99.04%** |
-<br/>
+|---------|-------------|
+
+
 - on Fashion-MNIST
 
 |  | Fashion-MNIST |
 |---------|-------------|
 | RAG-GAT | 83.07% |
 | **Ours** | **90.02%** |
+|---------|-------------|
 
 ### Pulication:
 [Dynamic Graph Neural Network for Super-Pixel Image Classification](https://ieeexplore.ieee.org/abstract/document/9621101)
@@ -219,7 +223,7 @@ Did I say I am so so so into games? 🎮 Playing them, making them, even this pa
     </div>
 </div>
 
-<iframe width="auto" height="auto" src="https://www.youtube.com/embed/DeB7pYBUbDo" title="King beat demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" display="block" src="https://www.youtube.com/embed/DeB7pYBUbDo" title="King beat demo video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 And more on the github repo.
 
