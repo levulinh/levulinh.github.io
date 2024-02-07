@@ -115,7 +115,92 @@
           </header>
 
           <article>
-            <h2 id="project-1-multi-task-distillation-learning-for-image">Project 1: Multi-task Distillation learning for Image</h2>
+            <h2 id="project-0-discognn---dynamic-graph-convolutional-neural-network-for-image-classification-on-superpixel-images">Project 0: DiscoGNN - Dynamic Graph Convolutional Neural Network for Image Classification on superpixel images</h2>
+
+<p>This is my first publication during my master’s degree (Hence the number 0). Despite of a very rushing deadline, I managed to pull it off, and I am proud of it. The project was about using a dynamic graph convolutional neural network to classify superpixel images. The model was trained on multiple datasets, including CIFAR, Fashion-MNIST, superpixel-MNIST. And the superpixel images were generated using the <a href="https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_segmentations.html" rel="external nofollow noopener" target="_blank">SLIC</a> algorithm.</p>
+
+<p>In this project, I proposed a new method to generate graphs on superpixel images dynamically every iteration, mitigating
+the problem of graph saturation, and increasing the receptive field of the model. The method out-performed the SOTA methods on the same setting on multiple datasets.</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/portfolio/dynamic_gnn-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/portfolio/dynamic_gnn-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/portfolio/dynamic_gnn-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/portfolio/dynamic_gnn.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" data-zoomable="" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+    </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>MNIST-75</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MoNET</td>
+      <td>91.11%</td>
+    </tr>
+    <tr>
+      <td>SplineCNN</td>
+      <td>95.22%</td>
+    </tr>
+    <tr>
+      <td>GeoGCN</td>
+      <td>95.95%</td>
+    </tr>
+    <tr>
+      <td>RAG-GAT</td>
+      <td>96.19%</td>
+    </tr>
+    <tr>
+      <td><strong>Ours</strong></td>
+      <td><strong>99.04%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Fashion-MNIST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RAG-GAT</td>
+      <td>83.07%</td>
+    </tr>
+    <tr>
+      <td><strong>Ours</strong></td>
+      <td><strong>90.02%</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="technologies-used">Technologies Used:</h3>
+<ul>
+  <li>PyTorch</li>
+  <li>PyTorch Geometric</li>
+  <li>SLIC</li>
+</ul>
+
+<h2 id="project-1-multi-task-distillation-learning-for-image">Project 1: Multi-task Distillation learning for Image</h2>
 
 <p>Context: So, let’s rewind a bit and talk about the sleep monitoring gig at Asleep. We decided to spice things up by throwing Vision Transformer (ViT) models into the mix. Forget the typical Recurrent Neural Network (RNN) routine – we took a different route, predicting sleep stages, catching apnea events, and eavesdropping on snores using ViT models. The twist? We didn’t just toss raw data at our AI; we served it up with transformed Mel-spectrograms of breathing sounds. Why ViT? Picture a sleep detective that hones in on the nitty-gritty details in those spectrograms, making our predictions spot-on. No shade to the RNN crew, but ViT not only steals the spotlight but does it in real-time fashion. It’s been a thrilling journey, and we’re rewriting the playbook on sleep monitoring – one ViT model at a time!</p>
 
@@ -243,7 +328,7 @@ I moved the distillation loss to the beginning of the split heads, so that the m
 
 <p>Due to the limitation of what I can expose, the only thing that I can provide is the performance of the model on the test set of all tasks surpasses the performance of the model trained with supervised learning only, and separately.</p>
 
-<h3 id="technologies-used">Technologies Used:</h3>
+<h3 id="technologies-used-1">Technologies Used:</h3>
 
 <ul>
   <li>PyTorch</li>
@@ -415,7 +500,7 @@ But the server is not deployed, due to the limit of free tier on Render. If you 
 
 <p>And more on the github repo.</p>
 
-<h3 id="technologies-used-1">Technologies Used:</h3>
+<h3 id="technologies-used-2">Technologies Used:</h3>
 
 <ul>
   <li>Godot 4.0</li>
@@ -471,7 +556,7 @@ But the server is not deployed, due to the limit of free tier on Render. If you 
     </div>
 </div>
 
-<h3 id="technologies-used-2">Technologies Used:</h3>
+<h3 id="technologies-used-3">Technologies Used:</h3>
 <ul>
   <li>Flutter</li>
   <li>Dart</li>
