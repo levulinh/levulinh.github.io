@@ -202,7 +202,7 @@ This is a WIP project that I have been working on for a while. It is a simple ap
         {% include figure.html path="assets/img/portfolio/voca_forget.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/voca_detail.jpg" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+        {% include figure.html path="assets/img/portfolio/voca_detail.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
 
