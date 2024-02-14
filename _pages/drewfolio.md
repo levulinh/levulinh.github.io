@@ -176,8 +176,12 @@ News classification
 ### Link to Project:
 The client is deployed on Render, and can be accessed here:
 - [Project Demo](https://what-the-dog.onrender.com)
+{% include repository/repo.html repository="levulinh/SOC-Term-project-client" %}
 But the server is not deployed, due to the limit of free tier on Render. If you want to see the server, you can clone the repo and run it locally.
 - [Server Repo](https://github.com/levulinh/what-the-dog-flask)
+{% include repository/repo.html repository="levulinh/SOC-Term-project-server" %}
+
+
 
 ---
 
@@ -251,7 +255,7 @@ And more on the github repo.
 ### Link to Project:
 
 [Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
-
+{% include repository/repo.html repository="levulinh/king-beat-game" %}
 ---
 
 ## Contact Me
