@@ -55,7 +55,6 @@ Perfomance comparison:
 A repository of a similar project that I did for remote sensing data, the technique is the same, but the data are
 real-word data.
 {% include repository/repo.html repository="levulinh/remote-sensing-dynamic-spixel" %}
-(Excuse me for the lack of the preview, it's caused by the repo's privacy setting. The link still works though.)
 
 ---
 
