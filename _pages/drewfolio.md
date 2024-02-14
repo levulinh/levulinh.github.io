@@ -51,6 +51,11 @@ Perfomance comparison:
 - PyTorch Geometric
 - SLIC
 
+### Repository:
+A repository of a similar project that I did for remote sensing data, the technique is the same, but the data are
+real-word data.
+{% include repository/repo.html repository="levulinh/remote-sensing-dynamic-spixel" %}
+
 ---
 
 ## Project 1: Multi-task Distillation learning for Image
@@ -178,7 +183,6 @@ The client is deployed on Render, and can be accessed here:
 - [Project Demo](https://what-the-dog.onrender.com)
 {% include repository/repo.html repository="levulinh/SOC-Term-project-client" %}
 But the server is not deployed, due to the limit of free tier on Render. If you want to see the server, you can clone the repo and run it locally.
-- [Server Repo](https://github.com/levulinh/what-the-dog-flask)
 {% include repository/repo.html repository="levulinh/SOC-Term-project-server" %}
 
 
@@ -209,11 +213,17 @@ This is a WIP project that I have been working on for a while. It is a simple ap
         {% include figure.html path="assets/img/portfolio/voca_detail.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
+<div class="caption">
+    Screenshots of the application (WIP).
+</div>
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/openai_finetune.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
+</div>
+<div class="caption">
+    Model finetuning with OpenAI's GPT-3.5.
 </div>
 
 ### Technologies Used:
@@ -254,7 +264,6 @@ And more on the github repo.
 
 ### Link to Project:
 
-[Project Repository](https://github.com/levulinh/king-beat-game/tree/main)
 {% include repository/repo.html repository="levulinh/king-beat-game" %}
 ---
 
