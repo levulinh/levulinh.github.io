@@ -185,11 +185,27 @@ But the server is not deployed, due to the limit of free tier on Render. If you 
 This is a WIP project that I have been working on for a while. It is a simple app that helps you learn new vocabularies in a foreign language in a fun way. I am building it with Flutter, and it so far has been an exciting journey. I am still working on it, and I hope to finish it soon.
 
 ### Screenshots:
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/portfolio/vocav0.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+<div class="row justify-content-sm-center">
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/voca_start.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/voca_home.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 </div>
+
+<div class="row justify-content-sm-center">
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/voca_remember.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/voca_forget.png" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    <div class="col-sm-4 mt-3 mt-md-0">
+        {% include figure.html path="assets/img/portfolio/voca_detail.jpg" title="example image" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+</div>
+
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/portfolio/openai_finetune.png" class="img-fluid rounded z-depth-1" zoomable=true %}
