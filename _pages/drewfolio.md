@@ -140,6 +140,8 @@ This is a part of an assignment that I did recently. In this project, I have tri
 - Finetune T5 model to generate the question from an answer and the context paragraph. Train another T5 model to generate the distractors for the questions. The models were trained with SQuAD v2.0 dataset for question generation, and RACE/MCTest dataset for distractor generation.
 
 ### Screenshots:
+Sample paragraph:
+> Bun Bo Hue is a flavorful and aromatic Vietnamese noodle soup that originates from the city of Hue in central Vietnam. Renowned for its bold and spicy profile, this soup features a robust broth made with a combination of beef and pork bones, lemongrass, shrimp paste, and a medley of aromatic spices. The dish is typically served with round rice noodles, sliced beef, pork, and sometimes cubes of congealed pig's blood. What sets Bun Bo Hue apart is its complex and rich flavor profile, characterized by the harmonious blend of lemongrass, chili, and fermented shrimp paste. Topped with fresh herbs, lime wedges, and crunchy bean sprouts, this dish offers a delightful interplay of textures and tastes, making it a beloved and distinctive part of Vietnamese cuisine. Whether enjoyed in the bustling streets of Vietnam or in Vietnamese restaurants around the world, Bun Bo Hue remains a culinary delight for those seeking a hearty and spicy noodle soup experience.
 
 <div>
     <div class="col-sm mt-3 mt-md-0">
