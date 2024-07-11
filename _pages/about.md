@@ -30,5 +30,5 @@ On this blog, I will be sharing my thoughts, insights, and experiences related t
 
 Join me on this exciting journey as we explore the fascinating realms between the artifitial intelligence and reality!
 
-![Random cat image](https://cataas.com/cat)
+<img src="http://cataas.com/cat/funny,cute" alt="Random cat" width="50%"/>
 Here is a random cat image for your dopamin 🐱
