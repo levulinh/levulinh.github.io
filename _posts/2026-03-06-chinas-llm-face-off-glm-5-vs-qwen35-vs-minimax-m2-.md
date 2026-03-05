@@ -1,6 +1,6 @@
 ---
 layout: post
-title: China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?
+title: "China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?"
 date: 2026-03-06
 description: Conceptual diagram of a hybrid AI architecture using GLM-5 for reasoning and planning, Qwen 3.5 for multimodal UI and tools, and MiniMax M2.5 for high-speed code execution agents.
 tags: AI LLM GLM-5 Qwen3.5 MiniMax-M2 MiniMax-M2.5 open-source coding agents benchmarks
