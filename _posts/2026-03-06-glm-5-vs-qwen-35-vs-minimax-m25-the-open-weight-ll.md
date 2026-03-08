@@ -62,7 +62,7 @@ M2.5 is engineered from the ground up for coding agents and agentic workflows. R
 
 Let's start with the metric that actually gets funding approved: **does it fix real bugs?**
 
-{% include figure.html image="benchmark-comparison-chart.png" alt="Benchmark comparison chart of GLM-5, Qwen 3.5, and MiniMax M2.5" caption="Vibrant comparison chart visualization showing GLM-5, Qwen 3.5, and MiniMax M2.5 as distinct characters with their specialties." %}
+{% include figure.html path="assets/img/blog/glm-5-vs-qwen-35-vs-minimax-m25-the-open-weight-ll/03_illustration.png" alt="Benchmark comparison chart of GLM-5, Qwen 3.5, and MiniMax M2.5" caption="Vibrant comparison chart visualization showing GLM-5, Qwen 3.5, and MiniMax M2.5 as distinct characters with their specialties." class="img-fluid rounded z-depth-1" %}
 
 ### 2.1 SWE-Bench and Code-Related Metrics
 
@@ -178,7 +178,7 @@ For indie developers and small teams, the practical approach is:
 
 Serious teams don't pick *one* of these models. They pick *all three*, but for different jobs.
 
-{% include figure.html image="hybrid-architecture-diagram.png" alt="Hybrid architecture diagram showing Qwen 3.5, GLM-5, and MiniMax M2.5 working together" caption="Hybrid AI architecture diagram showing three models working together in a pipeline: Qwen for multimodal input, GLM-5 for planning, MiniMax M2.5 for execution." %}
+{% include figure.html path="assets/img/blog/glm-5-vs-qwen-35-vs-minimax-m25-the-open-weight-ll/04_illustration.png" alt="Hybrid architecture diagram showing Qwen 3.5, GLM-5, and MiniMax M2.5 working together" caption="Hybrid AI architecture diagram showing three models working together in a pipeline: Qwen for multimodal input, GLM-5 for planning, MiniMax M2.5 for execution." class="img-fluid rounded z-depth-1" %}
 
 ### 6.1 The Production Pattern: UI → Planning → Execution
 
