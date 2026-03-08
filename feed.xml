@@ -1,12 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-08T03:49:58+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
-</subtitle><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<h1 id="speculative-decoding-making-llms-23x-faster-without-breaking-anything">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</h1>
-
-<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-08T04:14:44+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+</subtitle><entry><title type="html"></title><link href="https://levulinh.github.io/blog/2026/2026-03-08-speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="" /><published>2026-03-08T04:14:44+00:00</published><updated>2026-03-08T04:14:44+00:00</updated><id>https://levulinh.github.io/blog/2026/2026-03-08-speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/2026-03-08-speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
 
 <p>But here’s the thing—your GPU is <em>bored</em> most of the time. It can predict hundreds of tokens in parallel, but the algorithm forces it to do them one at a time. Speculative decoding is basically a hack to keep your GPU busy by having a tiny model make guesses about future tokens, then checking them with the big model all at once.</p>
 
-<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.</p>
+<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.<figure></figure></p>
 
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Standard vs. Speculative Decoding" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
 <h2 id="the-core-idea-draft-now-verify-later">The Core Idea: Draft Now, Verify Later</h2>
 
 <p>Here’s how it works:</p>
@@ -75,6 +86,388 @@ Speculative decoding:
 
 <p>On a consumer GPU with limited VRAM? You might actually get <em>worse</em> performance because the memory swapping cost exceeds the decoding speedup.</p>
 
+<h2 id="model-pairing-strategies-beyond-just-use-a-small-model">Model Pairing Strategies: Beyond “Just Use a Small Model”</h2>
+
+<p>Not all draft models are created equal. Your acceleration gains hinge entirely on how well your draft and target models agree. Here are the common strategies teams are actually using in production:</p>
+
+<h3 id="same-family-matryoshka-pairing">Same-Family Matryoshka Pairing</h3>
+
+<p>This is the gold standard: take the <em>same</em> architecture, just smaller. Example: target model is <strong>Llama 3.1 70B</strong>, draft model is <strong>Llama 3.1 8B</strong>.</p>
+
+<p><strong>Why it works:</strong></p>
+<ul>
+  <li>Both models have the same tokenizer, embedding space, and architectural biases.</li>
+  <li>The draft model learned the same patterns at a smaller scale, so predictions align naturally.</li>
+  <li>Acceptance rates often hit 75–85%, which is where speculative decoding really sings.</li>
+</ul>
+
+<p><strong>Downside:</strong> You need to find or fine-tune a smaller sibling. Not every model family has open-weight smaller versions.</p>
+
+<h3 id="quantized-draft-models">Quantized Draft Models</h3>
+
+<p>Instead of a smaller model, use a <strong>quantized version of the target model itself</strong>. E.g., target is <strong>Llama 3.1 70B full precision</strong>, draft is <strong>Llama 3.1 70B INT8 or INT4</strong>.</p>
+
+<p><strong>Why it works:</strong></p>
+<ul>
+  <li>Identical architecture and token predictions (mostly).</li>
+  <li>Quantization is cheap—same model weights, just lower precision.</li>
+  <li>Fits on even a single smaller GPU.</li>
+</ul>
+
+<p><strong>Downside:</strong></p>
+<ul>
+  <li>Quantization introduces small divergences in predictions. Acceptance rates drop to ~60–70%.</li>
+  <li>Less speedup than same-family smaller models, but still 1.5–2x.</li>
+  <li>You’re essentially running the same model twice (once in low precision, once in high), which is weird but sometimes makes sense on a tight budget.</li>
+</ul>
+
+<h3 id="cross-family-draft-models">Cross-Family Draft Models</h3>
+
+<p>Pair your big model with a <em>different architecture</em> that’s just fast. Example: target is <strong>Llama 3.1 70B</strong>, draft is <strong>Qwen 2.5 7B</strong>.</p>
+
+<p><strong>Why you’d try it:</strong></p>
+<ul>
+  <li>Qwen is vectorized and optimized for speed; it might be faster per token than a Llama 8B.</li>
+  <li>If they’re close in capability level, prediction agreement can still hit 60–75%.</li>
+</ul>
+
+<p><strong>Why it often disappoints:</strong></p>
+<ul>
+  <li>Different tokenizers mean different token boundaries. Misalignment tanks acceptance rates.</li>
+  <li>Different training data means different “next token” intuitions. High disagreement = low speedup.</li>
+  <li>Real-world results: expect 40–60% acceptance rates and 1.2–1.8x speedup. Not terrible, but weaker than same-family.</li>
+</ul>
+
+<p><strong>When it works:</strong> Mostly when you have a very fast, very capable draft model available and no access to smaller siblings of your target.</p>
+
+<h3 id="speculative-models-trained-specifically-for-drafting">Speculative Models Trained Specifically for Drafting</h3>
+
+<p>Some teams go further and train a model <em>specifically to be a good draft partner</em>. This is rare in open-source but shows up in papers and closed APIs.</p>
+
+<p><strong>Strategy:</strong></p>
+<ul>
+  <li>Collect a dataset of (draft prediction, target model prediction) pairs.</li>
+  <li>Fine-tune or distill the draft model to maximize agreement on <em>that</em> specific pair.</li>
+  <li>Acceptance rates can hit 80–90%.</li>
+</ul>
+
+<p><strong>Cost:</strong> Requires training / fine-tuning. Only practical if you’re running speculative decoding at massive scale and the infrastructure investment pays off.</p>
+
+<h2 id="adaptive-acceptance-thresholds-and-tuning">Adaptive Acceptance Thresholds and Tuning</h2>
+
+<p>Once your models are paired, you need to decide: <strong>when does the draft model’s prediction count as “good enough” to accept?</strong></p>
+
+<p>The naive approach: just accept if the draft model’s token probability is above some threshold, say 0.8. The smarter approach: make that threshold <em>adaptive</em> based on context.</p>
+
+<h3 id="dynamic-temperature-scaling">Dynamic Temperature Scaling</h3>
+
+<p>If the draft model is very confident (high probability on its top token), accept it eagerly. If it’s uncertain (low-probability distribution), be strict.</p>
+
+<p>Example:</p>
+<ul>
+  <li>Draft model says “the” with p=0.92 → accept unconditionally.</li>
+  <li>Draft model says “the” with p=0.55 → check if target model also prefers “the”.</li>
+  <li>Draft model says “the” with p=0.15 → reject and resample.</li>
+</ul>
+
+<p><strong>Implementation:</strong> Multiply the draft logits by a dynamic temperature parameter that adjusts per token based on entropy or probability mass.</p>
+
+<h3 id="workload-specific-thresholds">Workload-Specific Thresholds</h3>
+
+<p>Different tasks accept different risks:</p>
+
+<ul>
+  <li><strong>Code generation:</strong> Be strict. A wrong token in a function call breaks the whole thing. Use threshold 0.75+.</li>
+  <li><strong>Narrative text:</strong> Be lenient. “The” vs. “A” doesn’t sink the ship. Use threshold 0.5+.</li>
+  <li><strong>JSON / structured output:</strong> Medium-strict (0.65+). One misplaced bracket ruins parsing.</li>
+</ul>
+
+<p><strong>Implementation:</strong> Let users specify per-request acceptance thresholds, or auto-detect by monitoring the request type.</p>
+
+<h3 id="measuring-and-tuning-in-production">Measuring and Tuning in Production</h3>
+
+<p>Trace the key metrics:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>acceptance_rate = (accepted_tokens / total_draft_tokens)
+speedup = (time_normal_generation / time_speculative_generation)
+effective_speedup_threshold = ~0.6 acceptance =&gt; ~1.5x speedup
+</code></pre></div></div>
+
+<p>If your acceptance rate drops below 50%, your draft model is too weak and you’re better off just running the target model. Bump it or find a better pair.</p>
+
+<h2 id="batch-level-vs-sequence-level-speculation">Batch-Level vs. Sequence-Level Speculation</h2>
+
+<p>Speculative decoding can be applied at different granularities:</p>
+
+<h3 id="sequence-level-one-batch-one-active-sequence">Sequence-Level: One Batch, One Active Sequence</h3>
+
+<p>This is the classic approach: the draft model generates tokens for <em>one</em> sequence while the target model verifies them all at once.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Batch size: 1 sequence, up to K draft tokens
+Draft: Seq1 → tokens 1–K
+Target: Verify Seq1 tokens 1–K in single forward pass
+</code></pre></div></div>
+
+<p><strong>Pros:</strong></p>
+<ul>
+  <li>Simple to implement.</li>
+  <li>Memory usage is predictable (target + draft both running on the same sequence).</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+<ul>
+  <li>Only one sequence can use speculative decoding at a time.</li>
+  <li>If you have a batch of 32 sequences, you’re running speculative decoding for seq 1, then normal generation for seqs 2–32.</li>
+  <li>Batch utilization is poor.</li>
+</ul>
+
+<h3 id="batch-level-multiple-sequences-speculative-decoding-in-parallel">Batch-Level: Multiple Sequences, Speculative Decoding in Parallel</h3>
+
+<p>More advanced schedulers (like those in SGLang) apply speculative decoding to <em>multiple sequences in the same batch</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Batch size: 32 sequences
+Draft phase: Draft model generates tokens for all 32 seqs in parallel
+Target phase: Target model verifies all 32 seqs' draft tokens in one huge batch
+</code></pre></div></div>
+
+<p><strong>Pros:</strong></p>
+<ul>
+  <li>Much better GPU utilization.</li>
+  <li>Amortizes the draft model’s overhead across many sequences.</li>
+  <li>Real-world speedup scales better.</li>
+</ul>
+
+<p><strong>Cons:</strong></p>
+<ul>
+  <li>Requires a scheduler that can track which tokens were accepted vs. rejected per sequence.</li>
+  <li>Memory usage is higher (one batch slot per sequence, even if they’re at different generation lengths).</li>
+  <li>Harder to implement correctly.</li>
+</ul>
+
+<p><strong>Realistic impact:</strong></p>
+<ul>
+  <li>Sequence-level: 1.5–2x speedup if your acceptance rate is 70%+.</li>
+  <li>Batch-level with good scheduling: 2–3x speedup on the same acceptance rate, because you’re not bottlenecked on draft model throughput.</li>
+</ul>
+
+<h2 id="practical-implementation-vllm-and-sglang">Practical Implementation: vLLM and SGLang</h2>
+
+<p>Enough theory. Here’s how to actually use speculative decoding in two major inference frameworks.</p>
+
+<h3 id="vllm-enable-speculative-decoding">vLLM: Enable Speculative Decoding</h3>
+
+<p>vLLM baked speculative decoding into its core serving logic. Enabling it is straightforward:</p>
+
+<p><strong>Step 1: Prepare Your Model Pair</strong></p>
+
+<p>You need two models:</p>
+<ul>
+  <li><strong>Target model:</strong> The big one you care about (e.g., Llama 3.1 70B).</li>
+  <li><strong>Draft model:</strong> A smaller version (e.g., Llama 3.1 8B).</li>
+</ul>
+
+<p>Both should be compatible architectures. Download them to local disk:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Download target</span>
+huggingface-cli download meta-llama/Meta-Llama-3.1-70B-Instruct <span class="se">\</span>
+  <span class="nt">--local-dir</span> ./models/llama-70b
+
+<span class="c"># Download draft</span>
+huggingface-cli download meta-llama/Meta-Llama-3.1-8B-Instruct <span class="se">\</span>
+  <span class="nt">--local-dir</span> ./models/llama-8b
+</code></pre></div></div>
+
+<p><strong>Step 2: Launch vLLM with Speculative Decoding</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> vllm.entrypoints.openai.api_server <span class="se">\</span>
+  <span class="nt">--model</span> meta-llama/Meta-Llama-3.1-70B-Instruct <span class="se">\</span>
+  <span class="nt">--tensor-parallel-size</span> 4 <span class="se">\</span>
+  <span class="nt">--speculative-model</span> meta-llama/Meta-Llama-3.1-8B-Instruct <span class="se">\</span>
+  <span class="nt">--num-speculative-tokens</span> 5 <span class="se">\</span>
+  <span class="nt">--speculative-draft-tensor-parallel-size</span> 1
+</code></pre></div></div>
+
+<p><strong>Breakdown:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--model</code>: Target model (70B).</li>
+  <li><code class="language-plaintext highlighter-rouge">--tensor-parallel-size 4</code>: Shard the target model across 4 GPUs.</li>
+  <li><code class="language-plaintext highlighter-rouge">--speculative-model</code>: Draft model (8B).</li>
+  <li><code class="language-plaintext highlighter-rouge">--num-speculative-tokens 5</code>: Draft model generates up to 5 tokens before verification.</li>
+  <li><code class="language-plaintext highlighter-rouge">--speculative-draft-tensor-parallel-size 1</code>: Draft model runs on 1 GPU (it’s small).</li>
+</ul>
+
+<p><strong>Step 3: Call It Like Normal</strong></p>
+
+<p>From the client side, nothing changes. The API is 100% compatible with OpenAI format. Using the modern OpenAI SDK:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">(</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="sh">"</span><span class="s">http://localhost:8000/v1</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="sh">"</span><span class="s">dummy</span><span class="sh">"</span>  <span class="c1"># vLLM requires a fallback key string
+</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">meta-llama/Meta-Llama-3.1-70B-Instruct</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Write a function to compute Fibonacci.</span><span class="sh">"</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">message</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Speculative decoding runs silently in the background.</p>
+
+<p><strong>Step 4: Monitor Performance</strong></p>
+
+<p>vLLM’s metrics endpoint logs speculative decoding stats:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl http://localhost:8000/metrics | <span class="nb">grep </span>speculative
+</code></pre></div></div>
+
+<p>Look for:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">speculative_decoding_accepted_tokens</code>: How many draft tokens the target model agreed with.</li>
+  <li><code class="language-plaintext highlighter-rouge">speculative_decoding_rejected_tokens</code>: How many it rejected.</li>
+  <li>Overall <code class="language-plaintext highlighter-rouge">speculative_decoding_acceptance_rate</code>: Should be &gt;50% to see real speedup.</li>
+</ul>
+
+<h3 id="sglang-batch-level-speculative-decoding">SGLang: Batch-Level Speculative Decoding</h3>
+
+<p>SGLang takes a different approach: it offers <strong>more fine-grained control</strong> over speculative decoding and makes batch-level usage the default.</p>
+
+<p><strong>Step 1: Install and Set Up</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>sglang[all]
+</code></pre></div></div>
+
+<p><strong>Step 2: Start SGLang Server with Speculation</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">-m</span> sglang.launch_server <span class="se">\</span>
+  <span class="nt">--model-path</span> meta-llama/Meta-Llama-3.1-70B-Instruct <span class="se">\</span>
+  <span class="nt">--speculative-draft-model-path</span> meta-llama/Meta-Llama-3.1-8B-Instruct <span class="se">\</span>
+  <span class="nt">--num-speculative-tokens</span> 8 <span class="se">\</span>
+  <span class="nt">--disable-flashinfer</span> 0
+</code></pre></div></div>
+
+<p><strong>Key flags:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--speculative-draft-model-path</code>: Path to your draft model.</li>
+  <li><code class="language-plaintext highlighter-rouge">--num-speculative-tokens 8</code>: Verify up to 8 draft tokens in one shot (higher than vLLM’s default).</li>
+  <li><code class="language-plaintext highlighter-rouge">--disable-flashinfer 0</code>: Use Flash Attention for both draft and target (faster).</li>
+</ul>
+
+<p><strong>Step 3: Use SGLang’s Python API</strong></p>
+
+<p>SGLang’s API is slightly more opinionated but gives you more control:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">sglang</span> <span class="k">as</span> <span class="n">sgl</span>
+
+<span class="nd">@sgl.function</span>
+<span class="k">def</span> <span class="nf">code_gen</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">prompt</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">prompt</span>
+    <span class="n">s</span> <span class="o">+=</span> <span class="n">sgl</span><span class="p">.</span><span class="nf">gen</span><span class="p">(</span>
+        <span class="sh">"</span><span class="s">response</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="c1"># Launch the SGLang engine
+</span><span class="n">sgl</span><span class="p">.</span><span class="nf">set_default_backend</span><span class="p">(</span><span class="n">sgl</span><span class="p">.</span><span class="nc">RuntimeEndpoint</span><span class="p">(</span><span class="sh">"</span><span class="s">http://localhost:30000</span><span class="sh">"</span><span class="p">))</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="nf">code_gen</span><span class="p">(</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="sh">"</span><span class="s">Write a Python function to check if a number is prime.</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="sh">"</span><span class="s">response</span><span class="sh">"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><strong>What’s Different:</strong></p>
+<ul>
+  <li>SGLang uses a <strong>functional DSL</strong> to define generation workflows.</li>
+  <li>You can interleave Python logic with LLM calls, and SGLang batches them efficiently.</li>
+  <li>Speculative decoding happens <em>across entire batches</em> of workflow executions, not just individual requests.</li>
+</ul>
+
+<p><strong>Example: Batch-Level Dispatch</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@sgl.function</span>
+<span class="k">def</span> <span class="nf">batch_code_gen</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">prompts</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">Generate code for multiple prompts in a single batch.</span><span class="sh">"""</span>
+    <span class="n">responses</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">prompts</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">Prompt: </span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="sh">"</span>
+        <span class="n">s</span> <span class="o">+=</span> <span class="n">sgl</span><span class="p">.</span><span class="nf">gen</span><span class="p">(</span>
+            <span class="sa">f</span><span class="sh">"</span><span class="s">response_</span><span class="si">{</span><span class="nf">len</span><span class="p">(</span><span class="n">responses</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+            <span class="n">max_new_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">responses</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="sa">f</span><span class="sh">"</span><span class="s">response_</span><span class="si">{</span><span class="nf">len</span><span class="p">(</span><span class="n">responses</span><span class="p">)</span><span class="si">}</span><span class="sh">"</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">responses</span>
+
+<span class="c1"># SGLang will schedule all generations in a single batch,
+# with speculative decoding applied across the entire batch.
+</span><span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sh">"</span><span class="s">Write a sort function.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Write a hash function.</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">Write a search function.</span><span class="sh">"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="nf">batch_code_gen</span><span class="p">(</span><span class="n">prompts</span><span class="o">=</span><span class="n">prompts</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">prompt</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nf">zip</span><span class="p">(</span><span class="n">prompts</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="se">\n</span><span class="s">---</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>SGLang’s scheduler automatically:</p>
+<ol>
+  <li>Batches all three code_gen calls together.</li>
+  <li>Runs the draft model on all three in parallel.</li>
+  <li>Verifies all three’s draft tokens in one target model forward pass.</li>
+  <li>Achieves near-3x speedup (if acceptance rate is &gt;70%).</li>
+</ol>
+
+<h3 id="tuning-for-your-hardware">Tuning for Your Hardware</h3>
+
+<p>Both frameworks expose tuning knobs. Here’s a practical tuning process:</p>
+
+<p><strong>For a single 80GB GPU (e.g., H100):</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># vLLM: Run 70B target on 1 GPU, 8B draft on same GPU</span>
+python <span class="nt">-m</span> vllm.entrypoints.openai.api_server <span class="se">\</span>
+  <span class="nt">--model</span> meta-llama/Meta-Llama-3.1-70B-Instruct <span class="se">\</span>
+  <span class="nt">--tensor-parallel-size</span> 1 <span class="se">\</span>
+  <span class="nt">--speculative-model</span> meta-llama/Meta-Llama-3.1-8B-Instruct <span class="se">\</span>
+  <span class="nt">--num-speculative-tokens</span> 5 <span class="se">\</span>
+  <span class="nt">--speculative-draft-tensor-parallel-size</span> 1
+</code></pre></div></div>
+
+<p>Run a quick throughput test:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span> <span class="n">openai</span> <span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="nc">OpenAI</span><span class="p">(</span>
+    <span class="n">base_url</span><span class="o">=</span><span class="sh">"</span><span class="s">http://localhost:8000/v1</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="sh">"</span><span class="s">dummy</span><span class="sh">"</span>
+<span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">meta-llama/Meta-Llama-3.1-70B-Instruct</span><span class="sh">"</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">Count to 100.</span><span class="sh">"</span><span class="p">}],</span>
+        <span class="n">max_tokens</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">10 requests in </span><span class="si">{</span><span class="n">elapsed</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">s = </span><span class="si">{</span><span class="mi">10</span> <span class="o">/</span> <span class="n">elapsed</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s"> req/s</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>If you see &gt;5 requests/sec, speculative decoding is working. If &lt;2, your acceptance rate is too low; try a better draft model or adjust the threshold.</p>
+
+<p><strong>For multi-GPU setups (4–8 GPUs):</strong></p>
+
+<p>Run the target model on 2–4 GPUs and the draft on 1 GPU. Adjust <code class="language-plaintext highlighter-rouge">--num-speculative-tokens</code> based on memory—higher is better (8–16) if you have room.</p>
+
 <h2 id="the-emerging-twist-eliminate-the-draft-model">The Emerging Twist: Eliminate the Draft Model</h2>
 
 <p>Some teams are pushing back on the “run two models” approach. A newer direction, sometimes called <strong>Speculative Streaming</strong> or <strong>Lookahead Decoding</strong>, trains the <em>main</em> model itself to predict n-grams—i.e., the next 4–8 tokens all at once, rather than delegating to a separate draft model.</p>
@@ -102,7 +495,7 @@ Speculative decoding:
 
 <p>The real value is for teams building inference engines—vLLM, SGLang, TensorRT-LLM, etc. They’re baking speculative decoding in as an <em>option</em>, not a requirement. If your use case suits it, you get the speedup for free. If not, you just run normal generation.</p>
 
-<p>That’s the right engineering move: make the optimization invisible and conditional.</p>]]></content><author><name></name></author><category term="LLM" /><category term="inference" /><category term="optimization" /><category term="speculative-decoding" /><category term="performance" /><summary type="html"><![CDATA[Comparison diagram showing serial autoregressive decoding vs. parallel speculative decoding.]]></summary></entry><entry><title type="html">China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?</title><link href="https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2/" rel="alternate" type="text/html" title="China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?" /><published>2026-03-06T00:00:00+00:00</published><updated>2026-03-06T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2/"><![CDATA[<h1 id="chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2--who-wins-in-code-reasoning-and-ai-agents">China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?</h1>
+<p>That’s the right engineering move: make the optimization invisible and conditional.</p>]]></content><author><name></name></author></entry><entry><title type="html">China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?</title><link href="https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2/" rel="alternate" type="text/html" title="China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?" /><published>2026-03-06T00:00:00+00:00</published><updated>2026-03-06T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2/"><![CDATA[<h1 id="chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2--who-wins-in-code-reasoning-and-ai-agents">China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?</h1>
 
 <p>If you’re doing serious work with open-weight models in 2026, your shortlist for “frontier-ish but still self-hostable” probably looks something like:</p>
 
