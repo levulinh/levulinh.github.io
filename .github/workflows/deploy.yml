@@ -25,10 +25,12 @@ jobs:
       with:
         ruby-version: '3.2.1'
         bundler-cache: true
-    - name: Install and Build 🔧
+    - name: Install dependencies 📦
       run: |
-        npm install -g mermaid.cli
-        bundle exec jekyll build
+        sudo apt-get update && sudo apt-get install -y imagemagick
+        npm install -g @mermaid-js/mermaid-cli
+    - name: Build 🔧
+      run: bundle exec jekyll build
     - name: Deploy 🚀
       if: github.event_name != 'pull_request'
       uses: JamesIves/github-pages-deploy-action@v4
