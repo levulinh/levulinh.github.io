@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything
+title: "Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything"
 date: 2026-03-08
 description: Technical diagram comparing standard autoregressive decoding (one token per forward pass) vs. speculative decoding (draft + parallel verify for 2-3x speedup)
 tags: LLM inference optimization speculative-decoding performance vLLM SGLang
