@@ -155,9 +155,11 @@
 
 <p>But here’s the thing—your GPU is <em>bored</em> most of the time. It can predict hundreds of tokens in parallel, but the algorithm forces it to do them one at a time. Speculative decoding is basically a hack to keep your GPU busy by having a tiny model make guesses about future tokens, then checking them with the big model all at once.</p>
 
-<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.<figure></figure></p>
+<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-800.webp"></source>
@@ -169,7 +171,8 @@
 
   </picture>
 
-<p>&lt;/figure&gt;</p>
+</figure>
+
 <h2 id="the-core-idea-draft-now-verify-later">The Core Idea: Draft Now, Verify Later</h2>
 
 <p>Here’s how it works:</p>
@@ -748,7 +751,7 @@ python <span class="nt">-m</span> vllm.entrypoints.openai.api_server <span class
     <!-- Footer -->    
     <footer class="fixed-bottom">
       <div class="container mt-0">
-        © Copyright 2026 Andrew V. Le. Last updated: March 09, 2026.
+        © Copyright 2026 Andrew V. Le. Last updated: March 12, 2026.
       </div>
     </footer>
 

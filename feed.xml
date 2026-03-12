@@ -1,11 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-09T05:28:21+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-12T03:21:20+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
 </subtitle><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
 
 <p>But here’s the thing—your GPU is <em>bored</em> most of the time. It can predict hundreds of tokens in parallel, but the algorithm forces it to do them one at a time. Speculative decoding is basically a hack to keep your GPU busy by having a tiny model make guesses about future tokens, then checking them with the big model all at once.</p>
 
-<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.<figure></figure></p>
+<p>No smoke, no mirrors, no hallucination tax. Just pure throughput gains.</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-480.webp" />
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration-800.webp" />
@@ -17,7 +19,8 @@
 
   </picture>
 
-<p>&lt;/figure&gt;</p>
+</figure>
+
 <h2 id="the-core-idea-draft-now-verify-later">The Core Idea: Draft Now, Verify Later</h2>
 
 <p>Here’s how it works:</p>
@@ -507,9 +510,11 @@ python <span class="nt">-m</span> vllm.entrypoints.openai.api_server <span class
 
 <p>All three are positioned as <em>agent-ready</em>, <em>coding-competent</em>, and at least <em>partially enterprise-friendly</em>. Also, all three are being benchmarked to death on SWE-bench, Terminal-Bench, BrowseComp, and whatever new leaderboard someone spun up last week.</p>
 
-<p>This post is a deeper, more numbers-heavy version of my earlier overview. Think of that one as the trailer; this is the director’s cut with the benchmark montages left in.<figure></figure></p>
+<p>This post is a deeper, more numbers-heavy version of my earlier overview. Think of that one as the trailer; this is the director’s cut with the benchmark montages left in.</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/04_illustration-480.webp" />
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/04_illustration-800.webp" />
@@ -521,8 +526,9 @@ python <span class="nt">-m</span> vllm.entrypoints.openai.api_server <span class
 
   </picture>
 
-<p>&lt;/figure&gt;
-You’re the target audience if you’re the sort of person who:</p>
+</figure>
+
+<p>You’re the target audience if you’re the sort of person who:</p>
 
 <ul>
   <li>Actually knows what <strong>SWE-bench Verified</strong>, <strong>BrowseComp</strong>, or <strong>BFCL-V4</strong> are,</li>
@@ -1066,9 +1072,11 @@ You’re the target audience if you’re the sort of person who:</p>
 
 <p>In practice, many serious teams end up with <strong>more than one</strong> of these models. The patterns that keep showing up in evaluations and practitioner write-ups are hybrid.</p>
 
-<p>Here’s the mental model I like:<figure></figure></p>
+<p>Here’s the mental model I like:</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/05_illustration-480.webp" />
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/05_illustration-800.webp" />
@@ -1080,7 +1088,8 @@ You’re the target audience if you’re the sort of person who:</p>
 
   </picture>
 
-<p>&lt;/figure&gt;</p>
+</figure>
+
 <h3 id="pattern-a-qwen-for-frontend-glm-5-for-planning-minimax-for-execution">Pattern A: Qwen for Frontend, GLM-5 for Planning, MiniMax for Execution</h3>
 
 <ol>
