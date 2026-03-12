@@ -19,7 +19,7 @@ All three are positioned as *agent-ready*, *coding-competent*, and at least *par
 
 This post is a deeper, more numbers-heavy version of my earlier overview. Think of that one as the trailer; this is the director’s cut with the benchmark montages left in.
 
-{%- include figure.html path="assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/04_illustration.png" alt="Three open-weight Chinese LLMs personified as robots in a coding arena" class="img-fluid rounded z-depth-1" -%}
+{% include figure.html path="assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/04_illustration.png" alt="Three open-weight Chinese LLMs personified as robots in a coding arena" class="img-fluid rounded z-depth-1" %}
 
 You’re the target audience if you’re the sort of person who:
 
@@ -343,7 +343,7 @@ In practice, many serious teams end up with **more than one** of these models. T
 
 Here’s the mental model I like:
 
-{%- include figure.html path="assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/05_illustration.png" alt="Diagram of a hybrid architecture stacking GLM-5, Qwen 3.5, and MiniMax M2.5" class="img-fluid rounded z-depth-1" -%}
+{% include figure.html path="assets/img/blog/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2-/05_illustration.png" alt="Diagram of a hybrid architecture stacking GLM-5, Qwen 3.5, and MiniMax M2.5" class="img-fluid rounded z-depth-1" %}
 
 ### Pattern A: Qwen for Frontend, GLM-5 for Planning, MiniMax for Execution
 

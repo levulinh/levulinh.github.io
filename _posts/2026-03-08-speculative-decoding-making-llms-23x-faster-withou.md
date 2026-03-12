@@ -13,7 +13,7 @@ But here's the thing—your GPU is *bored* most of the time. It can predict hund
 
 No smoke, no mirrors, no hallucination tax. Just pure throughput gains.
 
-{%- include figure.html path="assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration.png" alt="Standard vs. Speculative Decoding" class="img-fluid rounded z-depth-1" -%}
+{% include figure.html path="assets/img/blog/speculative-decoding-making-llms-23x-faster-withou/01_illustration.png" alt="Standard vs. Speculative Decoding" class="img-fluid rounded z-depth-1" %}
 
 ## The Core Idea: Draft Now, Verify Later
 
