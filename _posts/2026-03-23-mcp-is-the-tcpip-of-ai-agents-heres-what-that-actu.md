@@ -12,8 +12,6 @@ tags:
 giscus_comments: true
 ---
 
-# MCP Is the TCP/IP of AI Agents — Here's What That Actually Means
-
 If you've spent any time around AI tooling in the past six months, you've heard someone say "MCP is the TCP/IP of AI agents." It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it's actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.
 
 {%- include figure.html path="assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration.jpg" alt="NxM integration problem vs. MCP solution — before and after diagram" class="img-fluid rounded z-depth-1" -%}
