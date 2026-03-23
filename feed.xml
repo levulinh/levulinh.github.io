@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T08:15:52+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T08:26:35+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
 </subtitle><entry><title type="html">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</title><link href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/" rel="alternate" type="text/html" title="MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/"><![CDATA[<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
 
 <picture>
@@ -135,7 +135,328 @@ Think of it as:</p>
   <li><strong>Don’t build another custom integration</strong> for a new tool until you’ve checked whether an MCP server already exists for it. At 5,800+ servers and growing, the answer is often yes.</li>
 </ol>
 
-<p>The internet succeeded because TCP/IP gave every computer a common language. The agentic AI ecosystem will succeed for the same reason — and MCP is the closest thing we have to that foundation right now. Get your hands dirty with it before your company’s AI strategy requires it and you’re scrambling to catch up.</p>]]></content><author><name></name></author><category term="AI agents" /><category term="MCP" /><category term="protocols" /><category term="LLM" /><category term="engineering" /><summary type="html"><![CDATA[MCP (Model Context Protocol) is the open standard quietly becoming the universal connectivity layer for AI agents. Here's the engineering breakdown of why the TCP/IP analogy holds, what the architecture looks like, and why you should care right now.]]></summary></entry><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
+<p>The internet succeeded because TCP/IP gave every computer a common language. The agentic AI ecosystem will succeed for the same reason — and MCP is the closest thing we have to that foundation right now. Get your hands dirty with it before your company’s AI strategy requires it and you’re scrambling to catch up.</p>]]></content><author><name></name></author><category term="AI agents" /><category term="MCP" /><category term="protocols" /><category term="LLM" /><category term="engineering" /><summary type="html"><![CDATA[MCP (Model Context Protocol) is the open standard quietly becoming the universal connectivity layer for AI agents. Here's the engineering breakdown of why the TCP/IP analogy holds, what the architecture looks like, and why you should care right now.]]></summary></entry><entry><title type="html">Why Your Next AI Feature Should Run on the Edge (And How to Actually Do It)</title><link href="https://levulinh.github.io/blog/2026/why-your-next-ai-feature-should-run-on-the-edge-an/" rel="alternate" type="text/html" title="Why Your Next AI Feature Should Run on the Edge (And How to Actually Do It)" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/why-your-next-ai-feature-should-run-on-the-edge-an</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/why-your-next-ai-feature-should-run-on-the-edge-an/"><![CDATA[<p>Your cloud-based AI inference is doing something deeply inefficient: it’s making a round trip every single time. User uploads image → network hop to your server → GPU crunches it → response comes back → UI updates. That hop isn’t free. It adds latency, burns bandwidth, eats your cloud bill, and turns offline functionality into a pipe dream.</p>
+
+<p>Edge AI flips the script. You move the neural network <em>onto</em> the device—smartphone, IoT sensor, laptop, smartwatch, whatever. The user’s data stays on their hardware. No round trip. No privacy concerns. No dependence on a connection that might not exist in an elevator or a rural area.</p>
+
+<p>That’s not a nice-to-have anymore. It’s competitive advantage. Here’s why you should care and how to ship it.</p>
+
+<h2 id="1-the-three-reasons-youre-already-losing-to-edge-ai">1. The Three Reasons You’re Already Losing to Edge AI</h2>
+
+<h3 id="latency-kills-ux">Latency Kills UX</h3>
+
+<p>Cloud inference sounds fast in theory. In practice, a typical round trip on a good connection is 100–300ms <em>just for network overhead</em>. Add the GPU compute (50–200ms for a real model) and you’re looking at 200–500ms between user action and result.</p>
+
+<p>On device? Single-digit to 50ms. That’s the difference between “feels instant” and “feels laggy.” Users notice. They stop using your feature.</p>
+
+<p>Example: Real-time object detection in a camera app. Cloud = 500ms latency = 2 FPS update rate. On-device = 30ms latency = full 30 FPS. Which one doesn’t look like a toy?</p>
+
+<h3 id="data-privacy-isnt-optional-anymore">Data Privacy Isn’t Optional Anymore</h3>
+
+<p>Regulatory pressure and user expectations have shifted hard. You don’t want medical imaging, financial documents, or face recognition data touching your servers if you don’t have to.</p>
+
+<p>Edge AI means raw data never leaves the user’s device. You can offer genuine “processed on-device” guarantees to your customers and regulators. That’s worth something. Sometimes a lot.</p>
+
+<h3 id="cloud-costs-scale-linearly-edge-costs-dont">Cloud Costs Scale Linearly; Edge Costs Don’t</h3>
+
+<p>Every inference call to your cloud GPU costs you money. Multiply that by millions of users, thousands of daily inferences per user, and you’re looking at real infrastructure spend.</p>
+
+<p>On device, you pay <em>once</em> for the model, at download time. After that, inference is free. Your per-user cost drops to near-zero.</p>
+
+<p>A startup I know processed 500K images/day in the cloud at ~$0.50 per inference batch. Moved to on-device. Same users, same volume, zero cloud inference cost. You do the math.</p>
+
+<h2 id="2-the-model-optimization-gauntlet-get-your-network-fit">2. The Model Optimization Gauntlet: Get Your Network Fit</h2>
+
+<p>Your fancy 7B-parameter model won’t run on a phone. It’s 28GB of weights. Your user doesn’t have that.</p>
+
+<p>You need three optimization techniques, often chained together:</p>
+
+<h3 id="quantization-trade-precision-for-size">Quantization: Trade Precision for Size</h3>
+
+<p>Store your model weights in lower precision. Instead of 32-bit floats, use 8-bit integers or even 4-bit values.</p>
+
+<p>What you lose: A tiny bit of accuracy (usually 1–3%) because you’re rounding weights.</p>
+
+<p>What you gain: 4–8× size reduction. Your 7B model becomes 1–2GB. Actually fits on a phone.</p>
+
+<p><strong>Practical example:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="c1"># Convert to TensorFlow Lite with quantization
+</span><span class="n">converter</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">lite</span><span class="p">.</span><span class="n">TFLiteConverter</span><span class="p">.</span><span class="nf">from_saved_model</span><span class="p">(</span><span class="n">saved_model_path</span><span class="p">)</span>
+<span class="n">converter</span><span class="p">.</span><span class="n">optimizations</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="p">.</span><span class="n">lite</span><span class="p">.</span><span class="n">Optimize</span><span class="p">.</span><span class="n">DEFAULT</span><span class="p">]</span>  <span class="c1"># Dynamic range quantization
+</span><span class="n">converter</span><span class="p">.</span><span class="n">target_spec</span><span class="p">.</span><span class="n">supported_ops</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tf</span><span class="p">.</span><span class="n">lite</span><span class="p">.</span><span class="n">OpsSet</span><span class="p">.</span><span class="n">TFLITE_BUILTINS_INT8</span>
+<span class="p">]</span>
+<span class="n">tflite_quantized_model</span> <span class="o">=</span> <span class="n">converter</span><span class="p">.</span><span class="nf">convert</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">model.tflite</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">wb</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">tflite_quantized_model</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>That’s it. TensorFlow Lite handles the conversion. The resulting model is 75–80% smaller with nearly identical accuracy on most tasks.</p>
+
+<h3 id="pruning-remove-the-dead-weight">Pruning: Remove the Dead Weight</h3>
+
+<p>Neural networks are weird. They’re full of redundant connections. Some weights barely do anything. Pruning literally deletes them.</p>
+
+<p>Process:</p>
+
+<ol>
+  <li>Train your model normally.</li>
+  <li>Identify weights close to zero (they’re noise).</li>
+  <li>Remove them and retrain briefly.</li>
+  <li>Repeat.</li>
+</ol>
+
+<p>Result: 30–50% of the network stays, 70% gets pruned. Accuracy barely drops.</p>
+
+<p><strong>Using TensorFlow Model Optimization:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">tensorflow_model_optimization</span> <span class="k">as</span> <span class="n">tfmot</span>
+
+<span class="n">prune_low_magnitude</span> <span class="o">=</span> <span class="n">tfmot</span><span class="p">.</span><span class="n">sparsity</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">prune_low_magnitude</span>
+
+<span class="n">pruning_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="sh">'</span><span class="s">pruning_schedule</span><span class="sh">'</span><span class="p">:</span> <span class="n">tfmot</span><span class="p">.</span><span class="n">sparsity</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nc">PolynomialDecay</span><span class="p">(</span>
+        <span class="n">initial_sparsity</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">final_sparsity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Remove 50% of weights
+</span>        <span class="n">begin_step</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">end_step</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">train_images</span><span class="p">)</span> <span class="o">//</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">10</span>  <span class="c1"># Over 10 epochs
+</span>    <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">pruned_model</span> <span class="o">=</span> <span class="nf">prune_low_magnitude</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">pruning_params</span><span class="p">)</span>
+<span class="n">pruned_model</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="sh">'</span><span class="s">adam</span><span class="sh">'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="sh">'</span><span class="s">sparse_categorical_crossentropy</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">pruned_model</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Strip pruning metadata for deployment
+</span><span class="n">stripped_model</span> <span class="o">=</span> <span class="n">tfmot</span><span class="p">.</span><span class="n">sparsity</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">strip_pruning</span><span class="p">(</span><span class="n">pruned_model</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After pruning, your model is sparse (lots of zeros). On-device runtimes like TensorFlow Lite can skip zero operations entirely, speeding things up even more.</p>
+
+<h3 id="knowledge-distillation-teach-a-small-model-to-act-big">Knowledge Distillation: Teach a Small Model to Act Big</h3>
+
+<p>Train a tiny model to mimic a large one. The tiny model learns the <em>behavior</em> of the big model, not its architecture.</p>
+
+<p>You’re essentially saying: “Big model spent months learning on GPUs. Small model, learn what big model learned in a week.”</p>
+
+<p><strong>Rough sketch:</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="n">teacher_model</span> <span class="o">=</span> <span class="nf">load_pretrained_big_model</span><span class="p">()</span>  <span class="c1"># 1GB, accurate
+</span><span class="n">student_model</span> <span class="o">=</span> <span class="nf">build_small_model</span><span class="p">()</span>           <span class="c1"># 50MB, untrained
+</span>
+<span class="c1"># Distillation: student learns to mimic teacher
+</span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">4.0</span>  <span class="c1"># Controls softness of teacher output
+</span>
+<span class="k">def</span> <span class="nf">distillation_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred_student</span><span class="p">,</span> <span class="n">y_pred_teacher</span><span class="p">):</span>
+    <span class="c1"># KL divergence between student and teacher soft outputs
+</span>    <span class="k">return</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="nc">KLDivergence</span><span class="p">()(</span>
+        <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="nf">softmax</span><span class="p">(</span><span class="n">y_pred_teacher</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">),</span>
+        <span class="n">tf</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="nf">softmax</span><span class="p">(</span><span class="n">y_pred_student</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">)</span>
+    <span class="p">)</span>
+
+<span class="c1"># Train student to match teacher
+</span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="ow">in</span> <span class="n">train_dataset</span><span class="p">:</span>
+        <span class="n">teacher_output</span> <span class="o">=</span> <span class="nf">teacher_model</span><span class="p">(</span><span class="n">x_batch</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">tf</span><span class="p">.</span><span class="nc">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="n">student_output</span> <span class="o">=</span> <span class="nf">student_model</span><span class="p">(</span><span class="n">x_batch</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="nf">distillation_loss</span><span class="p">(</span><span class="n">y_batch</span><span class="p">,</span> <span class="n">student_output</span><span class="p">,</span> <span class="n">teacher_output</span><span class="p">)</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="p">.</span><span class="nf">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">student_model</span><span class="p">.</span><span class="n">trainable_variables</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="nf">apply_gradients</span><span class="p">(</span><span class="nf">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">student_model</span><span class="p">.</span><span class="n">trainable_variables</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Result: A 50MB student model that performs almost as well as the 1GB teacher. Ship the student.</p>
+
+<h2 id="3-the-frameworks-that-actually-work">3. The Frameworks That Actually Work</h2>
+
+<p>You don’t have to reinvent inference engines. Use these off-the-shelf frameworks. They’re battle-tested and free.</p>
+
+<h3 id="tensorflow-lite-mobile-iot">TensorFlow Lite (Mobile, IoT)</h3>
+
+<p><strong>Best for:</strong> Mobile (iOS/Android), embedded Linux, Raspberry Pi.</p>
+
+<p><strong>Why:</strong> Mature. Supports quantization, pruning, delegation to hardware accelerators (GPU, NPU, TPU).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Convert Keras model to TFLite</span>
+tflite_model <span class="o">=</span> converter.convert<span class="o">()</span>
+with open<span class="o">(</span><span class="s1">'model.tflite'</span>, <span class="s1">'wb'</span><span class="o">)</span> as f:
+    f.write<span class="o">(</span>tflite_model<span class="o">)</span>
+</code></pre></div></div>
+
+<p>Then on-device:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Python (edge device, Raspberry Pi, etc.)
+</span><span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+
+<span class="n">interpreter</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">lite</span><span class="p">.</span><span class="nc">Interpreter</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="sh">"</span><span class="s">model.tflite</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">interpreter</span><span class="p">.</span><span class="nf">allocate_tensors</span><span class="p">()</span>
+
+<span class="n">input_details</span> <span class="o">=</span> <span class="n">interpreter</span><span class="p">.</span><span class="nf">get_input_details</span><span class="p">()</span>
+<span class="n">output_details</span> <span class="o">=</span> <span class="n">interpreter</span><span class="p">.</span><span class="nf">get_output_details</span><span class="p">()</span>
+
+<span class="n">input_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">random_sample</span><span class="p">(</span><span class="n">input_shape</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">interpreter</span><span class="p">.</span><span class="nf">set_tensor</span><span class="p">(</span><span class="n">input_details</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">index</span><span class="sh">'</span><span class="p">],</span> <span class="n">input_data</span><span class="p">)</span>
+<span class="n">interpreter</span><span class="p">.</span><span class="nf">invoke</span><span class="p">()</span>
+<span class="n">output_data</span> <span class="o">=</span> <span class="n">interpreter</span><span class="p">.</span><span class="nf">get_tensor</span><span class="p">(</span><span class="n">output_details</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="sh">'</span><span class="s">index</span><span class="sh">'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="onnx-runtime-cross-platform">ONNX Runtime (Cross-Platform)</h3>
+
+<p><strong>Best for:</strong> If you want one model format to run everywhere—Windows, Linux, mobile, cloud.</p>
+
+<p><strong>Why:</strong> Vendor-neutral. Converts from PyTorch, TensorFlow, Scikit-learn, etc. Single model can run on CPU, GPU, or mobile accelerator.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Export PyTorch to ONNX
+</span><span class="kn">import</span> <span class="n">torch</span>
+<span class="kn">import</span> <span class="n">torch.onnx</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="nf">load_model</span><span class="p">()</span>
+<span class="n">dummy_input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
+
+<span class="n">torch</span><span class="p">.</span><span class="n">onnx</span><span class="p">.</span><span class="nf">export</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">dummy_input</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">model.onnx</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">export_params</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">opset_version</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+    <span class="n">do_constant_folding</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">input_names</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">input</span><span class="sh">'</span><span class="p">],</span>
+    <span class="n">output_names</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">output</span><span class="sh">'</span><span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>On device:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">onnxruntime</span> <span class="k">as</span> <span class="n">ort</span>
+
+<span class="n">sess</span> <span class="o">=</span> <span class="n">ort</span><span class="p">.</span><span class="nc">InferenceSession</span><span class="p">(</span><span class="sh">"</span><span class="s">model.onnx</span><span class="sh">"</span><span class="p">,</span> <span class="n">providers</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">CPUExecutionProvider</span><span class="sh">'</span><span class="p">])</span>
+<span class="n">input_name</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="nf">get_inputs</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">name</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">sess</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="p">{</span><span class="n">input_name</span><span class="p">:</span> <span class="n">input_data</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="core-ml-ios-exclusive">Core ML (iOS Exclusive)</h3>
+
+<p><strong>Best for:</strong> iOS apps where you want native integration.</p>
+
+<p><strong>Why:</strong> GPU and Neural Engine acceleration built-in. Zero friction on-device performance.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">coremltools</span> <span class="k">as</span> <span class="n">ct</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="nf">load_keras_model</span><span class="p">()</span>
+<span class="n">ml_model</span> <span class="o">=</span> <span class="n">ct</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="sh">'</span><span class="s">keras</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ml_model</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="sh">'</span><span class="s">MyModel.mlmodel</span><span class="sh">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In Swift:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">CoreML</span>
+
+<span class="k">guard</span> <span class="k">let</span> <span class="nv">model</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="kt">MyModel</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="kt">MLModelConfiguration</span><span class="p">())</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">input</span> <span class="o">=</span> <span class="kt">MyModelInput</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">cgImage</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">output</span> <span class="o">=</span> <span class="k">try</span><span class="p">?</span> <span class="n">model</span><span class="o">.</span><span class="nf">prediction</span><span class="p">(</span><span class="nv">input</span><span class="p">:</span> <span class="n">input</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="mediapipe-ready-to-go-solutions">MediaPipe (Ready-to-Go Solutions)</h3>
+
+<p><strong>Best for:</strong> If you don’t want to train your own model. MediaPipe has pre-optimized models for pose detection, hand tracking, object detection, face landmarks, etc.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">mediapipe</span> <span class="k">as</span> <span class="n">mp</span>
+
+<span class="n">mp_hands</span> <span class="o">=</span> <span class="n">mp</span><span class="p">.</span><span class="n">solutions</span><span class="p">.</span><span class="n">hands</span>
+<span class="n">hands</span> <span class="o">=</span> <span class="n">mp_hands</span><span class="p">.</span><span class="nc">Hands</span><span class="p">(</span><span class="n">model_complexity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_num_hands</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">hands</span><span class="p">.</span><span class="nf">process</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">results</span><span class="p">.</span><span class="n">multi_hand_landmarks</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">hand_landmarks</span> <span class="ow">in</span> <span class="n">results</span><span class="p">.</span><span class="n">multi_hand_landmarks</span><span class="p">:</span>
+        <span class="c1"># Draw landmarks or extract positions
+</span>        <span class="k">pass</span>
+</code></pre></div></div>
+
+<p>All of this runs on-device. No server calls.</p>
+
+<h2 id="4-real-numbers-what-youre-saving">4. Real Numbers: What You’re Saving</h2>
+
+<p>Let’s ground this in reality. Say you’re building a real-time image classification app for 100K active users.</p>
+
+<p><strong>Cloud-Based Approach:</strong></p>
+<ul>
+  <li>1 classification per user per 5 seconds = 12 inferences/user/minute</li>
+  <li>100K users × 12 inferences/minute × 60 minutes = 72M inferences/day</li>
+  <li>At ~$0.002 per inference (GPU time + bandwidth): <strong>$144K/month</strong></li>
+</ul>
+
+<p><strong>Edge-Based Approach:</strong></p>
+<ul>
+  <li>Model size: 15MB</li>
+  <li>Distribution cost: negligible (bundled in app download or lightweight update)</li>
+  <li>Monthly server cost: $0</li>
+  <li>Latency: 50ms instead of 500ms</li>
+</ul>
+
+<p>You’re looking at 6–12 month ROI on building the on-device version. After that, marginal cost is basically free until you need to serve 10M users.</p>
+
+<h2 id="5-the-gotchas-because-nothings-magic">5. The Gotchas (Because Nothing’s Magic)</h2>
+
+<h3 id="model-size-still-matters">Model Size Still Matters</h3>
+
+<p>Even quantized and pruned, models are big. A 15MB model is fine. A 300MB model makes your app bloated and users will skip the install.</p>
+
+<p>Solution: Lazy-load models or offer them as optional downloads (“Install advanced features”).</p>
+
+<h3 id="hardware-fragmentation">Hardware Fragmentation</h3>
+
+<p>Not all phones have fast NPUs. Older Android devices run on CPU only. Inference speed varies wildly.</p>
+
+<p>Solution: Test on actual hardware. Use multi-threading and inference batching to avoid UI freezes.</p>
+
+<h3 id="model-updates-are-harder">Model Updates Are Harder</h3>
+
+<p>Pushing a new model to millions of devices is less trivial than updating a cloud API.</p>
+
+<p>Solution: Plan your model versioning strategy upfront. Use feature flags to A/B test new models before rolling out.</p>
+
+<h2 id="6-the-playbook-ship-your-first-edge-ai-feature">6. The Playbook: Ship Your First Edge AI Feature</h2>
+
+<ol>
+  <li>
+    <p><strong>Pick a model.</strong> Start small. ResNet-50 for image classification, MobileNet for detection, or grab a pre-trained MediaPipe solution.</p>
+  </li>
+  <li>
+    <p><strong>Quantize + Prune.</strong> Run your model through TensorFlow Model Optimization. Aim for 50% size reduction with &lt;2% accuracy loss.</p>
+  </li>
+  <li>
+    <p><strong>Test on-device.</strong> Download the quantized model to a real phone. Measure latency and battery impact.</p>
+  </li>
+  <li>
+    <p><strong>Choose your framework.</strong> TFLite if you’re iOS/Android. ONNX if you want cross-platform. MediaPipe if it has what you need.</p>
+  </li>
+  <li>
+    <p><strong>Integrate into your app.</strong> Load the model on app startup (or lazy-load if it’s large). Run inference in a background thread. Cache results.</p>
+  </li>
+  <li>
+    <p><strong>Measure, iterate, fallback.</strong> Track inference latency, accuracy, and failure cases in production. If the on-device model fails, fall back to cloud gracefully.</p>
+  </li>
+  <li>
+    <p><strong>Update strategy.</strong> Plan how you’ll push new models. Most teams use a “model versioning” system where the app downloads updates over WiFi.</p>
+  </li>
+</ol>
+
+<h2 id="the-bottom-line">The Bottom Line</h2>
+
+<p>Edge AI isn’t futuristic. It’s how modern apps work. You’re not choosing between edge and cloud anymore—you’re choosing how much of your AI workload lives on-device versus in your data center.</p>
+
+<p>Start with the low-hanging fruit: anything real-time, anything privacy-sensitive, anything you run a thousand times a day. Quantize it. Optimize it. Ship it on device. Watch your latency drop and your cloud bill shrink.</p>
+
+<p>The models are ready. The frameworks are ready. Your users are already expecting this. The only thing left is to build it.</p>]]></content><author><name></name></author><category term="edge-ai" /><category term="machine-learning" /><category term="optimization" /><category term="mobile" /><category term="inference" /><summary type="html"><![CDATA[A practical guide to edge AI: why you should care about latency, privacy, and cost—plus concrete steps to ship AI features on device using quantization, pruning, and industry frameworks.]]></summary></entry><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
 
 <p>But here’s the thing—your GPU is <em>bored</em> most of the time. It can predict hundreds of tokens in parallel, but the algorithm forces it to do them one at a time. Speculative decoding is basically a hack to keep your GPU busy by having a tiny model make guesses about future tokens, then checking them with the big model all at once.</p>
 
