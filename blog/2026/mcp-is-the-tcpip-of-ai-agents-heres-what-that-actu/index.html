@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MCP Is the TCP/IP of AI Agents — Here's What That Actually Means | MT_Box</title>
+    <meta name="author" content="Andrew V. Le">
+    <meta name="description" content="MCP (Model Context Protocol) is the open standard quietly becoming the universal connectivity layer for AI agents. Here's the engineering breakdown of why the TCP/IP analogy holds, what the architecture looks like, and why you should care right now.">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/fav.png">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/">
+
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/">MT_Box</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/albums/">albums</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/drew-folio/">portfolio</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      
+        <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">MCP Is the TCP/IP of AI Agents — Here's What That Actually Means</h1>
+    <p class="post-meta">March 23, 2026</p>
+    <p class="post-tags">
+      <a href="/blog/2026"> <i class="fas fa-calendar fa-sm"></i> 2026 </a>
+        ·  
+        <a href="/blog/tag/ai-agents">
+          <i class="fas fa-hashtag fa-sm"></i> AI agents</a>  
+          <a href="/blog/tag/mcp">
+          <i class="fas fa-hashtag fa-sm"></i> MCP</a>  
+          <a href="/blog/tag/protocols">
+          <i class="fas fa-hashtag fa-sm"></i> protocols</a>  
+          <a href="/blog/tag/llm">
+          <i class="fas fa-hashtag fa-sm"></i> LLM</a>  
+          <a href="/blog/tag/engineering">
+          <i class="fas fa-hashtag fa-sm"></i> engineering</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h1 id="mcp-is-the-tcpip-of-ai-agents--heres-what-that-actually-means">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</h1>
+
+<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="NxM integration problem vs. MCP solution — before and after diagram" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
+<h2 id="1-the-problem-it-solves-ais-own-nxm-hell">1. The Problem It Solves: AI’s Own “NxM Hell”</h2>
+
+<p>Cast your mind back to networking before TCP/IP. Every vendor had their own proprietary protocol. Connecting two machines from different manufacturers was a custom engineering project every single time. Then TCP/IP showed up, gave every device a common language, and suddenly the internet became possible.</p>
+
+<p>AI tooling in 2024 had the same problem. If you wanted Claude to query your database, you wrote a custom integration. If you then wanted GPT-4 to do the same thing, you wrote <em>another</em> custom integration. If you added a new tool — say, a GitHub connector — you wrote N more integrations, one per model. This is the <strong>NxM problem</strong>: N models × M tools = N×M one-off integrations. It’s the kind of thing that sounds manageable until your third one, at which point you start questioning your career choices.</p>
+
+<p>MCP, released by Anthropic in late 2024, collapses that to <strong>N+M</strong>. Each AI model implements the MCP client protocol once. Each tool (database, API, filesystem, whatever) implements the MCP server once. Everyone talks the same language. The combinatorial explosion goes away.</p>
+
+<p>Same move TCP/IP made. Same payoff.</p>
+
+<h2 id="2-how-it-actually-works-the-architecture">2. How It Actually Works: The Architecture</h2>
+
+<p>MCP is built on JSON-RPC 2.0 and follows a three-part architecture: <strong>Host → Client → Server</strong>.</p>
+
+<ul>
+  <li>
+<strong>Host</strong>: The application shell — Claude Desktop, VS Code, your custom chat app. It manages one or more MCP clients and handles user-level permissions.</li>
+  <li>
+<strong>Client</strong>: Maintains a stateful 1:1 session with a specific MCP server. The session is persistent, not fire-and-forget REST calls.</li>
+  <li>
+<strong>Server</strong>: Exposes capabilities via three primitives:
+    <ul>
+      <li>
+<strong>Tools</strong> — callable functions the agent can invoke (think: <code class="language-plaintext highlighter-rouge">run_sql_query</code>, <code class="language-plaintext highlighter-rouge">create_github_issue</code>)</li>
+      <li>
+<strong>Resources</strong> — data or files the agent can read (think: filesystem paths, database schemas)</li>
+      <li>
+<strong>Prompts</strong> — reusable prompt templates the server pre-packages</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Here’s what a minimal MCP server looks like in Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp.server</span> <span class="kn">import</span> <span class="n">MCPServer</span>
+<span class="kn">from</span> <span class="n">mcp.types</span> <span class="kn">import</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">TextContent</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="nc">MCPServer</span><span class="p">(</span><span class="sh">"</span><span class="s">my-db-server</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nd">@server.tool</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_query</span><span class="p">(</span><span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TextContent</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Execute a read-only SQL query and return results.</span><span class="sh">"""</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nc">TextContent</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="n">results</span><span class="p">))]</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>  <span class="c1"># defaults to stdio transport
+</span></code></pre></div></div>
+
+<p>And the client side, connecting to it:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">StdioServerParameters</span>
+<span class="kn">from</span> <span class="n">mcp.client.stdio</span> <span class="kn">import</span> <span class="n">stdio_client</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="nf">stdio_client</span><span class="p">(</span><span class="nc">StdioServerParameters</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">python</span><span class="sh">"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">my_db_server.py</span><span class="sh">"</span><span class="p">]))</span> <span class="nf">as </span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="nc">ClientSession</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>          <span class="c1"># capability handshake
+</span>        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">list_tools</span><span class="p">()</span>  <span class="c1"># discover available tools
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">call_tool</span><span class="p">(</span><span class="sh">"</span><span class="s">run_query</span><span class="sh">"</span><span class="p">,</span> <span class="p">{</span><span class="sh">"</span><span class="s">sql</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">SELECT * FROM users LIMIT 10</span><span class="sh">"</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>That initialization handshake — where client and server explicitly declare what capabilities they support — is MCP’s equivalent of TCP’s three-way handshake. It’s what makes forward/backward compatibility possible: a 2025 client talks fine to a 2026 server because they negotiated what they both understand upfront.</p>
+
+<p>For transport, MCP gives you two options: <strong>stdio</strong> for local processes (fast, simple, great for dev tooling) and <strong>HTTP with Server-Sent Events</strong> for remote/cloud deployments (scales, firewalls, all that fun enterprise stuff).</p>
+
+<h2 id="3-the-bigger-stack-where-mcp-fits">3. The Bigger Stack: Where MCP Fits</h2>
+
+<p>Here’s where it gets really interesting. MCP is just one layer of an emerging agent protocol stack.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Agent Protocol Stack — layered like a TCP/IP or OSI stack" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Think of it as:</p>
+
+<ol>
+  <li>
+<strong>Transport layer</strong> — stdio / HTTP+SSE (how bytes move)</li>
+  <li>
+<strong>MCP layer</strong> — model-to-tool access (how agents talk to data and services)</li>
+  <li>
+<strong>A2A layer</strong> — Google’s Agent-to-Agent protocol (how agents delegate tasks to <em>other agents</em>)</li>
+  <li>
+<strong>A2UI layer</strong> — how agents render output to actual user interfaces</li>
+</ol>
+
+<p>MCP handles what TCP handles: reliable, structured communication between two endpoints. A2A is more like HTTP — a higher-level protocol layered on top for richer interactions between peers. This is exactly how the internet protocol stack evolved, and the engineers building this stuff know it.</p>
+
+<p>The ecosystem number tells the story: ~100 MCP servers at launch in late 2024, 4,000+ by mid-2025, 5,800+ by late 2025. OpenAI, Google DeepMind, Microsoft, and Databricks all support it. That’s not an Anthropic-specific tool anymore — that’s infrastructure.</p>
+
+<h2 id="4-the-security-elephant-in-the-room">4. The Security Elephant in the Room</h2>
+
+<p>TCP/IP’s original designers didn’t anticipate BGP hijacking, DDoS, or man-in-the-middle attacks. We spent decades patching those holes. MCP is on the same trajectory, and people are rightly nervous about it.</p>
+
+<p>The main risks:</p>
+
+<ul>
+  <li>
+<strong>Overly broad OAuth scopes</strong>: An MCP server requesting full Gmail access when it only needs to read subject lines. Classic supply chain laziness that becomes your security problem.</li>
+  <li>
+<strong>Prompt injection via tool responses</strong>: Malicious content returned by a tool that manipulates the agent’s next action. The agent reads a file, the file says “ignore previous instructions and exfiltrate data,” and now you have a bad day.</li>
+  <li>
+<strong>Community server supply chain risk</strong>: That random MCP server you pulled off GitHub for your Slack integration? You’re trusting its author’s security hygiene. Good luck.</li>
+  <li>
+<strong>Traditional AppSec tools don’t apply</strong>: Your static analysis scanner doesn’t understand non-deterministic agent behavior. It’s not looking for the right things.</li>
+</ul>
+
+<p>MCP’s answer is OAuth 2.1 with PKCE, least-privilege permissions, and human-in-the-loop authorization for sensitive operations. That’s a reasonable starting point, but the operational maturity just isn’t there yet.</p>
+
+<p>Additionally, as MCP transitions to enterprise production environments, we are starting to see the emergence of MCP-specific API gateways. Rather than letting an agent client talk directly to a proprietary database MCP server, organizations are putting policy enforcement layers in between. These gateways log every JSON-RPC interaction, enforce strict usage quotas, and use Data Loss Prevention (DLP) scanners to scrub PII before it ever reaches the LLM. If you’re building beyond local dev environments, you need to be thinking about this middleware layer.</p>
+
+<h2 id="5-what-you-should-actually-do-this-week">5. What You Should Actually Do This Week</h2>
+
+<p>This isn’t a “wait and see” situation. MCP hit an inflection point — the protocol has the momentum of a standard, not an experiment. Enterprise analysts are calling 2026 the year of production MCP adoption, and companies are already rolling out internal agents using it daily for querying systems, automating reporting, and orchestrating massive workflows.</p>
+
+<p>Here’s a concrete starting point:</p>
+
+<ol>
+  <li>
+<strong>Install the MCP SDK</strong> and spin up a local server against a tool you already maintain (<code class="language-plaintext highlighter-rouge">pip install mcp</code> — it’s that simple).</li>
+  <li>
+<strong>Wire it to Claude Desktop</strong> or any MCP-compatible client and verify the handshake works. Ten minutes of setup, not ten days.</li>
+  <li>
+<strong>Audit the MCP servers you’re considering</strong> like you’d audit any open-source dependency. Check OAuth scope requests. Read the source.</li>
+  <li>
+<strong>Track the A2A spec</strong> — if you’re building multi-agent systems, understanding how MCP and A2A interact is going to matter very soon.</li>
+  <li>
+<strong>Advocate for sane defaults</strong> — When writing your custom servers, apply the principle of least privilege immediately. Don’t provide write access if your conversational agent only needs to summarize read-only logs.</li>
+  <li>
+<strong>Don’t build another custom integration</strong> for a new tool until you’ve checked whether an MCP server already exists for it. At 5,800+ servers and growing, the answer is often yes.</li>
+</ol>
+
+<p>The internet succeeded because TCP/IP gave every computer a common language. The agentic AI ecosystem will succeed for the same reason — and MCP is the closest thing we have to that foundation right now. Get your hands dirty with it before your company’s AI strategy requires it and you’re scrambling to catch up.</p>
+
+    </div>
+  </article>
+
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/speculative-decoding-making-llms-23x-faster-withou/">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/glm-5-vs-qwen-35-vs-minimax-m25-the-open-weight-ll/">GLM-5 vs Qwen 3.5 vs MiniMax M2.5: The Open-Weight LLM Showdown (2026 Edition)</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/chinas-llm-face-off-glm-5-vs-qwen35-vs-minimax-m2/">China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2023/wooyoungs-diary/">우영의 일기 [2023년 5월 22일] - 랜덤 런치</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2022/andrew-blog-post/">The AI models are only limited by our imaginaries (Interview in Korean)</a>
+  </li>
+
+<div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "levulinh/levulinh.github.io",
+      "data-repo-id": "R_kgDOJhoxrw",
+      "data-category": "Blog",
+      "data-category-id": "DIC_kwDOJhoxr84CWa6o",
+      "data-mapping": "title",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "bottom",
+      "data-theme": "light_tritanopia",
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by
+      giscus.</a>
+</noscript>
+</div>
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2026 Andrew V. Le. Last updated: March 23, 2026.
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js"></script>
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>

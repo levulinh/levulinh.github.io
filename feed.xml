@@ -1,5 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T06:41:12+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
-</subtitle><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T08:04:38+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+</subtitle><entry><title type="html">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</title><link href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/" rel="alternate" type="text/html" title="MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/"><![CDATA[<h1 id="mcp-is-the-tcpip-of-ai-agents--heres-what-that-actually-means">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</h1>
+
+<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="NxM integration problem vs. MCP solution — before and after diagram" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
+<h2 id="1-the-problem-it-solves-ais-own-nxm-hell">1. The Problem It Solves: AI’s Own “NxM Hell”</h2>
+
+<p>Cast your mind back to networking before TCP/IP. Every vendor had their own proprietary protocol. Connecting two machines from different manufacturers was a custom engineering project every single time. Then TCP/IP showed up, gave every device a common language, and suddenly the internet became possible.</p>
+
+<p>AI tooling in 2024 had the same problem. If you wanted Claude to query your database, you wrote a custom integration. If you then wanted GPT-4 to do the same thing, you wrote <em>another</em> custom integration. If you added a new tool — say, a GitHub connector — you wrote N more integrations, one per model. This is the <strong>NxM problem</strong>: N models × M tools = N×M one-off integrations. It’s the kind of thing that sounds manageable until your third one, at which point you start questioning your career choices.</p>
+
+<p>MCP, released by Anthropic in late 2024, collapses that to <strong>N+M</strong>. Each AI model implements the MCP client protocol once. Each tool (database, API, filesystem, whatever) implements the MCP server once. Everyone talks the same language. The combinatorial explosion goes away.</p>
+
+<p>Same move TCP/IP made. Same payoff.</p>
+
+<h2 id="2-how-it-actually-works-the-architecture">2. How It Actually Works: The Architecture</h2>
+
+<p>MCP is built on JSON-RPC 2.0 and follows a three-part architecture: <strong>Host → Client → Server</strong>.</p>
+
+<ul>
+  <li><strong>Host</strong>: The application shell — Claude Desktop, VS Code, your custom chat app. It manages one or more MCP clients and handles user-level permissions.</li>
+  <li><strong>Client</strong>: Maintains a stateful 1:1 session with a specific MCP server. The session is persistent, not fire-and-forget REST calls.</li>
+  <li><strong>Server</strong>: Exposes capabilities via three primitives:
+    <ul>
+      <li><strong>Tools</strong> — callable functions the agent can invoke (think: <code class="language-plaintext highlighter-rouge">run_sql_query</code>, <code class="language-plaintext highlighter-rouge">create_github_issue</code>)</li>
+      <li><strong>Resources</strong> — data or files the agent can read (think: filesystem paths, database schemas)</li>
+      <li><strong>Prompts</strong> — reusable prompt templates the server pre-packages</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Here’s what a minimal MCP server looks like in Python:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp.server</span> <span class="kn">import</span> <span class="n">MCPServer</span>
+<span class="kn">from</span> <span class="n">mcp.types</span> <span class="kn">import</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">TextContent</span>
+
+<span class="n">server</span> <span class="o">=</span> <span class="nc">MCPServer</span><span class="p">(</span><span class="sh">"</span><span class="s">my-db-server</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nd">@server.tool</span><span class="p">()</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_query</span><span class="p">(</span><span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TextContent</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Execute a read-only SQL query and return results.</span><span class="sh">"""</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nc">TextContent</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="n">results</span><span class="p">))]</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>  <span class="c1"># defaults to stdio transport
+</span></code></pre></div></div>
+
+<p>And the client side, connecting to it:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">StdioServerParameters</span>
+<span class="kn">from</span> <span class="n">mcp.client.stdio</span> <span class="kn">import</span> <span class="n">stdio_client</span>
+
+<span class="k">async</span> <span class="k">with</span> <span class="nf">stdio_client</span><span class="p">(</span><span class="nc">StdioServerParameters</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">python</span><span class="sh">"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">my_db_server.py</span><span class="sh">"</span><span class="p">]))</span> <span class="nf">as </span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="nc">ClientSession</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>          <span class="c1"># capability handshake
+</span>        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">list_tools</span><span class="p">()</span>  <span class="c1"># discover available tools
+</span>        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">call_tool</span><span class="p">(</span><span class="sh">"</span><span class="s">run_query</span><span class="sh">"</span><span class="p">,</span> <span class="p">{</span><span class="sh">"</span><span class="s">sql</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">SELECT * FROM users LIMIT 10</span><span class="sh">"</span><span class="p">})</span>
+</code></pre></div></div>
+
+<p>That initialization handshake — where client and server explicitly declare what capabilities they support — is MCP’s equivalent of TCP’s three-way handshake. It’s what makes forward/backward compatibility possible: a 2025 client talks fine to a 2026 server because they negotiated what they both understand upfront.</p>
+
+<p>For transport, MCP gives you two options: <strong>stdio</strong> for local processes (fast, simple, great for dev tooling) and <strong>HTTP with Server-Sent Events</strong> for remote/cloud deployments (scales, firewalls, all that fun enterprise stuff).</p>
+
+<h2 id="3-the-bigger-stack-where-mcp-fits">3. The Bigger Stack: Where MCP Fits</h2>
+
+<p>Here’s where it gets really interesting. MCP is just one layer of an emerging agent protocol stack.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Agent Protocol Stack — layered like a TCP/IP or OSI stack" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Think of it as:</p>
+
+<ol>
+  <li><strong>Transport layer</strong> — stdio / HTTP+SSE (how bytes move)</li>
+  <li><strong>MCP layer</strong> — model-to-tool access (how agents talk to data and services)</li>
+  <li><strong>A2A layer</strong> — Google’s Agent-to-Agent protocol (how agents delegate tasks to <em>other agents</em>)</li>
+  <li><strong>A2UI layer</strong> — how agents render output to actual user interfaces</li>
+</ol>
+
+<p>MCP handles what TCP handles: reliable, structured communication between two endpoints. A2A is more like HTTP — a higher-level protocol layered on top for richer interactions between peers. This is exactly how the internet protocol stack evolved, and the engineers building this stuff know it.</p>
+
+<p>The ecosystem number tells the story: ~100 MCP servers at launch in late 2024, 4,000+ by mid-2025, 5,800+ by late 2025. OpenAI, Google DeepMind, Microsoft, and Databricks all support it. That’s not an Anthropic-specific tool anymore — that’s infrastructure.</p>
+
+<h2 id="4-the-security-elephant-in-the-room">4. The Security Elephant in the Room</h2>
+
+<p>TCP/IP’s original designers didn’t anticipate BGP hijacking, DDoS, or man-in-the-middle attacks. We spent decades patching those holes. MCP is on the same trajectory, and people are rightly nervous about it.</p>
+
+<p>The main risks:</p>
+
+<ul>
+  <li><strong>Overly broad OAuth scopes</strong>: An MCP server requesting full Gmail access when it only needs to read subject lines. Classic supply chain laziness that becomes your security problem.</li>
+  <li><strong>Prompt injection via tool responses</strong>: Malicious content returned by a tool that manipulates the agent’s next action. The agent reads a file, the file says “ignore previous instructions and exfiltrate data,” and now you have a bad day.</li>
+  <li><strong>Community server supply chain risk</strong>: That random MCP server you pulled off GitHub for your Slack integration? You’re trusting its author’s security hygiene. Good luck.</li>
+  <li><strong>Traditional AppSec tools don’t apply</strong>: Your static analysis scanner doesn’t understand non-deterministic agent behavior. It’s not looking for the right things.</li>
+</ul>
+
+<p>MCP’s answer is OAuth 2.1 with PKCE, least-privilege permissions, and human-in-the-loop authorization for sensitive operations. That’s a reasonable starting point, but the operational maturity just isn’t there yet.</p>
+
+<p>Additionally, as MCP transitions to enterprise production environments, we are starting to see the emergence of MCP-specific API gateways. Rather than letting an agent client talk directly to a proprietary database MCP server, organizations are putting policy enforcement layers in between. These gateways log every JSON-RPC interaction, enforce strict usage quotas, and use Data Loss Prevention (DLP) scanners to scrub PII before it ever reaches the LLM. If you’re building beyond local dev environments, you need to be thinking about this middleware layer.</p>
+
+<h2 id="5-what-you-should-actually-do-this-week">5. What You Should Actually Do This Week</h2>
+
+<p>This isn’t a “wait and see” situation. MCP hit an inflection point — the protocol has the momentum of a standard, not an experiment. Enterprise analysts are calling 2026 the year of production MCP adoption, and companies are already rolling out internal agents using it daily for querying systems, automating reporting, and orchestrating massive workflows.</p>
+
+<p>Here’s a concrete starting point:</p>
+
+<ol>
+  <li><strong>Install the MCP SDK</strong> and spin up a local server against a tool you already maintain (<code class="language-plaintext highlighter-rouge">pip install mcp</code> — it’s that simple).</li>
+  <li><strong>Wire it to Claude Desktop</strong> or any MCP-compatible client and verify the handshake works. Ten minutes of setup, not ten days.</li>
+  <li><strong>Audit the MCP servers you’re considering</strong> like you’d audit any open-source dependency. Check OAuth scope requests. Read the source.</li>
+  <li><strong>Track the A2A spec</strong> — if you’re building multi-agent systems, understanding how MCP and A2A interact is going to matter very soon.</li>
+  <li><strong>Advocate for sane defaults</strong> — When writing your custom servers, apply the principle of least privilege immediately. Don’t provide write access if your conversational agent only needs to summarize read-only logs.</li>
+  <li><strong>Don’t build another custom integration</strong> for a new tool until you’ve checked whether an MCP server already exists for it. At 5,800+ servers and growing, the answer is often yes.</li>
+</ol>
+
+<p>The internet succeeded because TCP/IP gave every computer a common language. The agentic AI ecosystem will succeed for the same reason — and MCP is the closest thing we have to that foundation right now. Get your hands dirty with it before your company’s AI strategy requires it and you’re scrambling to catch up.</p>]]></content><author><name></name></author><category term="AI agents" /><category term="MCP" /><category term="protocols" /><category term="LLM" /><category term="engineering" /><summary type="html"><![CDATA[MCP (Model Context Protocol) is the open standard quietly becoming the universal connectivity layer for AI agents. Here's the engineering breakdown of why the TCP/IP analogy holds, what the architecture looks like, and why you should care right now.]]></summary></entry><entry><title type="html">Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything</title><link href="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/" rel="alternate" type="text/html" title="Speculative Decoding: Making LLMs 2–3x Faster Without Breaking Anything" /><published>2026-03-08T00:00:00+00:00</published><updated>2026-03-08T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/speculative-decoding-making-llms-23x-faster-withou/"><![CDATA[<p>There’s a real problem with running large language models: token generation is <em>slow</em>. Like, genuinely slow. The bigger the model, the longer each token takes because each one requires a full forward pass through billions of parameters.</p>
 
 <p>But here’s the thing—your GPU is <em>bored</em> most of the time. It can predict hundreds of tokens in parallel, but the algorithm forces it to do them one at a time. Speculative decoding is basically a hack to keep your GPU busy by having a tiny model make guesses about future tokens, then checking them with the big model all at once.</p>
 
