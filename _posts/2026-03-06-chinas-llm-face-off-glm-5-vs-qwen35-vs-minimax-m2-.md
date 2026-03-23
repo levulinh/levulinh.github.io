@@ -7,8 +7,6 @@ tags: [AI, LLM, GLM-5, Qwen3.5, MiniMax-M2, open-source, coding, agents, benchma
 giscus_comments: true
 ---
 
-# China’s LLM Face-off: GLM-5 vs Qwen3.5 vs MiniMax-M2 — Who Wins in Code, Reasoning, and AI Agents?
-
 If you’re doing serious work with open-weight models in 2026, your shortlist for “frontier-ish but still self-hostable” probably looks something like:
 
 - **GLM-5** from Zhipu AI

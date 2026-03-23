@@ -12,8 +12,6 @@ tags:
 giscus_comments: true
 ---
 
-# GLM-5 vs Qwen 3.5 vs MiniMax M2.5: The Open-Weight LLM Showdown (2026 Edition)
-
 If you've been paying attention to the open-weight LLM space in early 2026, you've probably noticed that the benchmarks are getting *weird*. Not "weird" as in "obviously fake," but weird as in "there is no single winner anymore, just very different winners."
 
 Three models in particular keep showing up on every leaderboard with suspiciously strong numbers:
