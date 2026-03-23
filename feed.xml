@@ -1,5 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T08:36:15+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
-</subtitle><entry><title type="html">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</title><link href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/" rel="alternate" type="text/html" title="MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/"><![CDATA[<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-23T09:26:28+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+</subtitle><entry><title type="html">GTA 6 and the Death of the Release Date: Why AAA Games Can No Longer Ship on Time</title><link href="https://levulinh.github.io/blog/2026/gta-6-and-the-death-of-the-release-date-why-aaa-ga/" rel="alternate" type="text/html" title="GTA 6 and the Death of the Release Date: Why AAA Games Can No Longer Ship on Time" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/gta-6-and-the-death-of-the-release-date-why-aaa-ga</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/gta-6-and-the-death-of-the-release-date-why-aaa-ga/"><![CDATA[<p>Strauss Zelnick, CEO of Take-Two Interactive, has a gift for consistency. When GTA 6 was first dated for May 26, 2026, he told investors the team felt “really good” about it. Then, in 2025, when that date was scrapped and a new one — November 19, 2026 — was announced, he told investors the team felt “really good” about that one too. Same phrase. Different calendar. The joke writes itself, but it’s also a perfect encapsulation of where AAA game development is right now: expensive, overdue, and confidently, repeatedly wrong.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/03_illustration-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/03_illustration-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/03_illustration-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/03_illustration.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Melting clock against a Miami cityscape — a surrealist metaphor for AAA release date culture" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
+<h2 id="a-decade-in-the-making-twice-delayed-still-not-done">A Decade in the Making, Twice Delayed, Still Not Done</h2>
+
+<p>Rockstar started noodling on GTA 6 as early as 2014. Development began “in earnest” around 2020 — which still means five-plus years of production and counting. The game reportedly involves thousands of developers spread across Rockstar’s global studios. Estimated cost: somewhere between $1 billion and $2 billion. That’s not a budget; it’s a small country’s GDP.</p>
+
+<p>And yet here we are. Two announced release dates, both missed before they could be missed. The May 2026 window collapsed into a November 2026 target, and the only public reasoning amounted to needing more time to hit “the level of quality we want.” Which is fair enough, but it does beg the question: what were the first ten years for?</p>
+
+<p>For context, GTA 5 launched in 2013 after roughly five years of development. It went on to become the second best-selling game of all time and is still generating revenue in 2025. Rockstar is not chasing a sure thing here — they’re trying to top themselves on a property that essentially prints money. The pressure is real, but so is the dysfunction: around the time the May delay was announced, Rockstar reportedly let go of 30–40 staff at Rockstar UK. Not exactly the vibe of a studio firing on all cylinders.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/04_illustration-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/04_illustration-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/04_illustration-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/gta-6-and-the-death-of-the-release-date-why-aaa-ga/04_illustration.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Satirical AAA development timeline chart showing spiraling scope, budget, and delays" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;
+The broader shift is real and well-documented. AAA development cycles that ran 2–3 years in the PS2/Xbox era now routinely stretch to 5–8 years. The games are bigger. The worlds are more detailed. The marketing budgets are larger. The ambition has outpaced the machinery — and the machinery was already straining.</p>
+
+<h2 id="the-cyberpunk-lesson-nobody-wanted-to-learn">The Cyberpunk Lesson Nobody Wanted to Learn</h2>
+
+<p>If you want a case study in what happens when a studio ships before it’s ready, CD Projekt Red handed us one on a silver platter in December 2020.</p>
+
+<p>Cyberpunk 2077 was delayed a total of 238 days across multiple pushbacks. It still launched broken — particularly on last-generation consoles, where it was essentially unplayable. Sony pulled it from the PlayStation Store. Class-action lawsuits followed. The studio’s stock cratered. CD Projekt Red spent the next two years patching, rebuilding, and apologizing.</p>
+
+<p>The game recovered. Eventually. The Netflix adaptation helped. But the original launch was a genuine disaster, and the entire industry watched it happen in real time.</p>
+
+<p>Rockstar has clearly internalized the cautionary tale. The delays on GTA 6 are almost certainly an attempt to avoid becoming the next Cyberpunk launch meme. That’s the rational read. But there’s something uncomfortable about an industry where “we learned from Cyberpunk” means the release date gets pushed to November — as opposed to “we fundamentally changed how we scope and staff these projects.”</p>
+
+<p>The lesson the industry <em>wanted</em> to learn was “don’t rush.” The lesson it perhaps <em>needed</em> to learn was “don’t promise.” Those are different things, and only one of them requires restructuring your entire release calendar strategy.</p>
+
+<h2 id="the-economics-dont-add-up">The Economics Don’t Add Up</h2>
+
+<p>Spend $1–2 billion making a game. Sell it for $70–80. Do the math.</p>
+
+<p>Even adjusting for the fact that GTA 6 will sell tens of millions of copies, the margin math on a single premium title at this budget level is brutal. Yes, there’s GTA Online money — perpetual live service revenue that’s been subsidizing Rockstar’s ambitions for over a decade. Yes, there are microtransactions and Shark Cards and all the rest. But the core business model — make one enormous, expensive thing and sell it once — is increasingly strained.</p>
+
+<p>It’s not just Rockstar. The entire AAA sector is feeling the squeeze. 2023 and 2024 saw more than 15,000 layoffs across the industry. 2025 added another 9,000-plus. One in three U.S. game industry workers was affected by job cuts between 2023 and 2025. Studios are contracting even as budgets expand, which is a paradox that makes more sense when you realize the people writing the checks and the people doing the work are increasingly disconnected from each other’s realities.</p>
+
+<p>Meanwhile, in 2024, 75% of Metacritic’s top 20 highest-rated games were indie titles. Not because indie developers are suddenly better — it’s because the economics of smaller scope let them actually finish things, iterate on feedback, and ship products that work. The prestige is migrating. Players are voting with their attention, and some of them are voting for games that cost $20 and run at 60fps.</p>
+
+<h2 id="the-ripple-effect-what-delays-do-to-the-industry">The Ripple Effect: What Delays Do to the Industry</h2>
+
+<p>A GTA 6 delay isn’t just a Rockstar problem. It sends shockwaves.</p>
+
+<p>Console manufacturers plan hardware cycles around tentpole releases. Sony and Microsoft both need system-sellers to justify hardware adoption curves. A delayed GTA 6 disrupts those projections. Retailers plan inventory. Publishers schedule their own release windows around the gravitational pull of a title like this — nobody wants to launch opposite GTA 6, and nobody can plan properly when the date keeps moving.</p>
+
+<p>Developer morale is its own casualty. Rockstar’s crunch culture was already infamous: during Red Dead Redemption 2, employees reported 55–70+ hour work weeks and, in some accounts, an “abject culture of fear.” The industry has been slowly, unevenly trying to address this. Longer timelines don’t automatically mean less crunch — sometimes they just mean more sustained pressure spread across more years. The people who grind through these projects are increasingly burning out, leaving, or both. That’s partly why the layoff numbers are so high even at companies with billion-dollar franchises.</p>
+
+<p>Consumer trust erodes in ways that are hard to measure but easy to feel. When a CEO uses identical language to describe confidence in two different release dates — both of which feel like placeholders — players stop treating announcements as information. They treat them as vibes. The marketing apparatus has trained audiences to be skeptical, and that skepticism doesn’t go away when a game eventually ships. It colors reviews, discourse, and day-one sales in ways that are hard to walk back. The next Battlefield, reportedly mired in culture clashes and ballooning costs of its own in 2025, is already fighting an uphill battle for credibility before a single release date has been named.</p>
+
+<h2 id="is-the-release-date-already-a-relic">Is the Release Date Already a Relic?</h2>
+
+<p>At some point you have to ask whether the release date, as a concept, still means anything in AAA gaming.</p>
+
+<p>For smaller studios shipping leaner games, sure — a date is a commitment, and most of them honour it. For the Rockstars and the BioWares and the studios sitting on decade-long, billion-dollar development cycles, a release date announced two years out is a marketing artifact. It’s a number to put in a press release, a placeholder for investor calls, a reason to run a trailer. It is not a promise.</p>
+
+<p>Beyond Good &amp; Evil 2 has been in development for over 5,156 days as of this writing. No release date. Ubisoft has given up announcing one. That might actually be the more honest posture.</p>
+
+<p>The alternative — shipping when it’s done, no date until you’re confident — is commercially difficult. Wall Street doesn’t like uncertainty. Retailers need lead times. The marketing machine needs something to point at. But the current approach, where dates are announced, missed, re-announced with identical confidence, and occasionally missed again, isn’t working either. It’s just a slower way of eroding the same trust.</p>
+
+<p>Ask me again in six months.</p>]]></content><author><name></name></author><category term="gaming" /><category term="game industry" /><category term="GTA 6" /><category term="AAA games" /><category term="game development" /><summary type="html"><![CDATA[GTA 6 has been delayed twice, costs up to $2 billion, and its CEO's 'really good' confidence quotes have become a running joke. It's a symptom of something much bigger breaking in AAA game development.]]></summary></entry><entry><title type="html">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</title><link href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/" rel="alternate" type="text/html" title="MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/"><![CDATA[<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
 
 <picture>
     
