@@ -1,5 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-03-30T00:52:17+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
-</subtitle><entry><title type="html">March 2026 Gaming Roundup: Marathon Launches, Crimson Desert Divides, and GTA 6 Gets a Final Date</title><link href="https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6/" rel="alternate" type="text/html" title="March 2026 Gaming Roundup: Marathon Launches, Crimson Desert Divides, and GTA 6 Gets a Final Date" /><published>2026-03-30T00:00:00+00:00</published><updated>2026-03-30T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6/"><![CDATA[<p>March 2026 was a packed month for gaming. Two major titles shipped, another long-awaited game finally got a locked release date, and the industry’s largest developer gathering laid out some uncomfortable truths about where the business is heading. Whether you care about competitive extraction shooters, open-world RPGs, the future of game development, or just how much longer you have to wait for Grand Theft Auto VI — this month had something for everyone.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-04T13:27:22+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+</subtitle><entry><title type="html">I Built a Virtual Software Company for $100/Month</title><link href="https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars/" rel="alternate" type="text/html" title="I Built a Virtual Software Company for $100/Month" /><published>2026-04-04T00:00:00+00:00</published><updated>2026-04-04T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars/"><![CDATA[<p>I’ve always wanted to build a software product under the name MTBox — a name I really resonate with. But I kept dropping projects for the same reason every time: I’d still have to sit in front of a computer, wait for the agent to do its job, check, prompt again. Boring. And the results were always unsatisfying, because I was always too ambitious and asked too much from a single agent. You know — like your bosses do in real life.</p>
+
+<p>So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/dashboard.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="The MTBox agent dashboard — five agents running autonomously on a polling schedule" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
+<h2 id="the-setup-an-org-chart-made-of-shell-scripts">The Setup: An Org Chart Made of Shell Scripts</h2>
+
+<p>MTBox is not a product. It’s the orchestration infrastructure for an AI-powered software company. Five Claude Code agents — each with a defined role, a prompt file, and a run script — collaborate to build an actual Flutter app without me sitting in front of a terminal.</p>
+
+<p>The cast:</p>
+
+<ul>
+  <li><strong>PM</strong> — reads Linear, triages backlog, moves issues through workflow statuses, writes acceptance criteria</li>
+  <li><strong>Designer</strong> — picks up “In Design” issues, generates Flutter mockups, posts them to Linear for review</li>
+  <li><strong>Programmer</strong> — takes approved designs, writes the actual Dart/Flutter code, opens a PR</li>
+  <li><strong>QA</strong> — clones the PR branch, runs unit and widget tests, reports pass/fail back to Linear</li>
+  <li><strong>CTO</strong> — reads high-level directives from me (the “CEO”), creates roadmap phases, and seeds tasks for the PM to pick up</li>
+</ul>
+
+<p>Each agent runs on a two-hour polling interval via <code class="language-plaintext highlighter-rouge">launchd</code>. No manual prompting required. I fire up my Mac in the morning, and by evening the company has been running shifts.</p>
+
+<p>The real product — a Flutter app called <strong>Campaign Tracker</strong> — lives in a separate repo. MTBox is just the scaffolding.</p>
+
+<h2 id="coordination-without-a-chat-room">Coordination Without a Chat Room</h2>
+
+<p>The key insight was: agents don’t need to talk to each other directly. They need a shared source of truth.</p>
+
+<p>That source of truth is <strong>Linear</strong> — specifically, the issue status transitions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Backlog → In Design → Awaiting Design Approval
+→ In Progress → In Review → Awaiting Decision → Done
+</code></pre></div></div>
+
+<p>Only the PM moves issues between statuses. Everyone else reads the current state, does their job, posts a comment, and leaves the next move to PM. It’s like a relay race where the baton is an issue ticket.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-board.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Linear issue board showing Campaign Tracker tasks across all workflow stages" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Each agent identifies itself in comments with a prefix: <code class="language-plaintext highlighter-rouge">📋 [PM]</code>, <code class="language-plaintext highlighter-rouge">🎨 [Designer]</code>, <code class="language-plaintext highlighter-rouge">💻 [Programmer]</code>, <code class="language-plaintext highlighter-rouge">🔍 [QA]</code>, <code class="language-plaintext highlighter-rouge">🏢 [CTO]</code>. This makes the activity feed readable as a conversation — which it effectively is.</p>
+
+<h2 id="watching-a-feature-ship">Watching a Feature Ship</h2>
+
+<p>Here’s what it looks like in practice. I gave the CTO a directive: <em>“Add some touches so the app doesn’t feel too boring.”</em> The CTO translated that into a Phase 3 roadmap item — “Visual delight polish: micro-interactions, empty states, subtle transitions” — and dropped it in the backlog.</p>
+
+<p>PM picked it up, wrote acceptance criteria, and moved it to “In Design.”</p>
+
+<p>Designer opened the issue, built a mockup in Flutter, and posted it with detailed panel-by-panel specs:<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-issue-comments.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Designer Bot posting a Flutter mockup with design notes for the Visual Delight Polish issue" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Then CTO reviewed the design and either approved or pushed back. In this case: approved, with notes on which acceptance criteria were satisfied. Programmer picked it up, implemented it, and opened a PR. QA ran 20 unit and widget tests — all passed.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Programmer Bot reporting implementation complete, QA Bot reporting 20/20 tests passing" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+<p>&lt;/figure&gt;
+The whole thing — from directive to green tests — happened while I wasn’t watching. That’s the part that still surprises me every time I check in.</p>
+
+<h2 id="the-evolution-what-i-built-and-then-changed">The Evolution: What I Built and Then Changed</h2>
+
+<p>The first version was embarrassingly simple: five shell scripts, five prompt files, a <code class="language-plaintext highlighter-rouge">launchd</code> plist to run each every 15 minutes. That’s it. No dashboard, no status tracking, no coordination layer beyond Linear itself.</p>
+
+<p><strong>Round 1 — Basic agents + polling.</strong> PM, Designer, Programmer, QA. Each runs on a cron-like schedule, checks Linear for work in their lane, does the work, posts a comment. Lock files prevent two instances of the same agent running simultaneously.</p>
+
+<p><strong>Round 2 — The dashboard.</strong> Watching logs with <code class="language-plaintext highlighter-rouge">tail -f</code> is fine for 10 minutes. For hours of autonomous operation, I needed something better. I built a Node.js server with a brutalist-aesthetic HTML dashboard: five agent cards, IDLE/BUSY status, countdown timer to next run, a live log stream. The dashboard became how I “check in” without micromanaging.</p>
+
+<p><strong>Round 3 — The CTO agent.</strong> The original setup required me to manually seed tasks. The CTO abstraction gave me a layer between my high-level directions (“build a campaign tracker app”) and the PM’s day-to-day task management. I write directives; CTO translates them into phased roadmaps; PM executes. Now I genuinely only need to show up when something needs a decision.</p>
+
+<p><strong>Round 4 — Linear webhooks.</strong> Polling every two hours is fine for overnight runs, but during active development it creates 30-120 minute lags between one agent finishing and the next picking up. Adding a Cloudflare quick tunnel + Linear webhook integration meant that when an issue changes status, the right agent fires immediately. The polling schedule stays as a safety net; the webhooks handle real-time handoffs.</p>
+
+<p><strong>Round 5 — Cost optimization.</strong> Once this was actually running, I noticed that PM and QA don’t need Sonnet-level intelligence for their jobs — reading Linear, moving issues, running tests. Switching them to Haiku cut token usage significantly. Extending polling intervals from 15 minutes to 2 hours on all agents was the other big lever. The agents were mostly running idle checks anyway.</p>
+
+<p><strong>Round 6 — Pause/resume.</strong> Sometimes I want to push code changes or adjust prompts without the agents firing mid-edit. A PAUSE button in the dashboard with an auto-resume timer was the last quality-of-life feature. Small thing, but it made the system feel more like a tool I control rather than a process I’m watching nervously.</p>
+
+<h2 id="what-actually-got-built">What Actually Got Built</h2>
+
+<p>Campaign Tracker is a Flutter app for tracking personal goals with a streak mechanic. In one day of running, the company completed:</p>
+
+<p><strong>Phase 1</strong> — Core check-in loop: app shell, campaign list, campaign creation, data model, home screen with live data. Five issues, all shipped.</p>
+
+<p><strong>Phase 2</strong> — Engagement layer: streak indicators on campaign cards, activity history feed, stats dashboard, campaign archive. Four issues, all shipped.</p>
+
+<p><strong>Phase 3</strong> — Polish: onboarding flow, local push notifications, UI color palette refresh (softer brutalism, muted tones), shadow/border refinement, visual delight micro-interactions, progress sharing export. In flight.</p>
+
+<p>That’s somewhere between an MVP and a beta. Built autonomously. On a Saturday.</p>
+
+<h2 id="what-the-100-is-actually-buying">What the $100 Is Actually Buying</h2>
+
+<p>The Claude Max subscription ($100/month) covers all five agents running continuously. There’s no infrastructure cost — everything runs on my Mac via <code class="language-plaintext highlighter-rouge">launchd</code>. The only other costs are the GitHub repo and a Linear workspace (free tier works fine for this scale).</p>
+
+<p>The real cost isn’t money. It’s prompt engineering time. Getting each agent to stay in its lane, communicate clearly in Linear, not make up Linear IDs, not break the lock file protocol — that took iteration. The prompts are living documents. When QA started running E2E tests that required an Android emulator, I had to update the prompt to handle emulator startup/teardown. When Designer started posting mockups that were too implementation-specific (bleeding into Programmer’s territory), I had to add guardrails.</p>
+
+<p>The agents are capable. The challenge is defining the interfaces between them precisely enough that they can actually collaborate.</p>
+
+<h2 id="what-i-didnt-expect">What I Didn’t Expect</h2>
+
+<p><strong>The CTO memory file became the most useful artifact.</strong> Each CTO run appends a log entry summarizing what was reviewed, what was approved, what phase the product is in. Reading those logs is the fastest way to understand where the product stands without opening Linear at all.</p>
+
+<p><strong>Agents write better specs than I do.</strong> When I write acceptance criteria, I write the minimum. When PM writes them, they’re thorough — edge cases, error states, specific wording. When Designer writes design notes, they include animation timing values, scale transitions, color references back to the design system. It’s better documentation than I would have written manually.</p>
+
+<p><strong>The bottleneck isn’t the agents, it’s approval.</strong> The workflow has an “Awaiting Design Approval” and “Awaiting Decision” status specifically because the agents can’t make certain calls — judgment calls about product direction, design taste, scope. I still need to be in the loop for those. The company runs best when I batch my reviews: check in once, approve a cluster of things, let it run for hours.</p>
+
+<p><strong>Sometimes an agent goes rogue in a funny way.</strong> QA once tried to start an Android emulator, concluded it wasn’t available, decided to use a physical device instead, then reported the physical device wasn’t connected, then marked the tests as “inconclusive” and moved on. That was three iterations of prompt updates before it landed on “use <code class="language-plaintext highlighter-rouge">flutter test</code> for widget tests, don’t launch an emulator unless the issue explicitly requires device testing.”</p>
+
+<h2 id="would-i-do-it-again">Would I Do It Again?</h2>
+
+<p>Yes, with one change: start with a simpler product scope. I gave the company “Campaign Tracker” as a concept, but a Flutter app with streaks, animations, and notifications is actually a moderately complex project. The agents handled it, but a simpler first product would have let me debug the orchestration layer faster.</p>
+
+<p>The thing that makes this work isn’t Claude being magic. It’s the same thing that makes human teams work: clear roles, a shared task system, defined handoff points, and someone (me, apparently) who shows up periodically to make judgment calls and unblock things.</p>
+
+<p>A $100 subscription. Five prompt files. A few hundred lines of shell script and Node.js. And now I have a company.</p>
+
+<hr />
+
+<p><em>The orchestration repo is at <a href="https://github.com/levulinh/mtbox">levulinh/mtbox</a>. The product repo is at <a href="https://github.com/levulinh/mtbox-app">levulinh/mtbox-app</a>.</em></p>]]></content><author><name></name></author><category term="AI" /><category term="agentic AI" /><category term="Claude" /><category term="software engineering" /><category term="automation" /><category term="MTBox" /><summary type="html"><![CDATA[Five Claude agents acting as PM, Designer, Programmer, QA, and CTO — coordinating through Linear and GitHub to ship a real Flutter app. Here's how I built it, what broke, and what surprised me.]]></summary></entry><entry><title type="html">March 2026 Gaming Roundup: Marathon Launches, Crimson Desert Divides, and GTA 6 Gets a Final Date</title><link href="https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6/" rel="alternate" type="text/html" title="March 2026 Gaming Roundup: Marathon Launches, Crimson Desert Divides, and GTA 6 Gets a Final Date" /><published>2026-03-30T00:00:00+00:00</published><updated>2026-03-30T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6/"><![CDATA[<p>March 2026 was a packed month for gaming. Two major titles shipped, another long-awaited game finally got a locked release date, and the industry’s largest developer gathering laid out some uncomfortable truths about where the business is heading. Whether you care about competitive extraction shooters, open-world RPGs, the future of game development, or just how much longer you have to wait for Grand Theft Auto VI — this month had something for everyone.</p>
 
 <p>Here’s the breakdown.<figure></figure></p>
 
@@ -1417,140 +1573,4 @@ The broader shift is real and well-documented. AAA development cycles that ran 2
 
 <p>The alternative — shipping when it’s done, no date until you’re confident — is commercially difficult. Wall Street doesn’t like uncertainty. Retailers need lead times. The marketing machine needs something to point at. But the current approach, where dates are announced, missed, re-announced with identical confidence, and occasionally missed again, isn’t working either. It’s just a slower way of eroding the same trust.</p>
 
-<p>Ask me again in six months.</p>]]></content><author><name></name></author><category term="gaming" /><category term="game industry" /><category term="GTA 6" /><category term="AAA games" /><category term="game development" /><summary type="html"><![CDATA[GTA 6 has been delayed twice, costs up to $2 billion, and its CEO's 'really good' confidence quotes have become a running joke. It's a symptom of something much bigger breaking in AAA game development.]]></summary></entry><entry><title type="html">MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means</title><link href="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/" rel="alternate" type="text/html" title="MCP Is the TCP/IP of AI Agents — Here’s What That Actually Means" /><published>2026-03-23T00:00:00+00:00</published><updated>2026-03-23T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/"><![CDATA[<p>If you’ve spent any time around AI tooling in the past six months, you’ve heard someone say “MCP is the TCP/IP of AI agents.” It sounds like marketing fluff until you sit with it for five minutes — then it clicks, and you realize it’s actually a pretty sharp analogy. Let me break down what MCP is, why the comparison holds, and what you should do about it.<figure></figure></p>
-
-<picture>
-    
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration-1400.webp" />
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/01_illustration.jpg" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="NxM integration problem vs. MCP solution — before and after diagram" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
-  </picture>
-
-<p>&lt;/figure&gt;</p>
-<h2 id="1-the-problem-it-solves-ais-own-nxm-hell">1. The Problem It Solves: AI’s Own “NxM Hell”</h2>
-
-<p>Cast your mind back to networking before TCP/IP. Every vendor had their own proprietary protocol. Connecting two machines from different manufacturers was a custom engineering project every single time. Then TCP/IP showed up, gave every device a common language, and suddenly the internet became possible.</p>
-
-<p>AI tooling in 2024 had the same problem. If you wanted Claude to query your database, you wrote a custom integration. If you then wanted GPT-4 to do the same thing, you wrote <em>another</em> custom integration. If you added a new tool — say, a GitHub connector — you wrote N more integrations, one per model. This is the <strong>NxM problem</strong>: N models × M tools = N×M one-off integrations. It’s the kind of thing that sounds manageable until your third one, at which point you start questioning your career choices.</p>
-
-<p>MCP, released by Anthropic in late 2024, collapses that to <strong>N+M</strong>. Each AI model implements the MCP client protocol once. Each tool (database, API, filesystem, whatever) implements the MCP server once. Everyone talks the same language. The combinatorial explosion goes away.</p>
-
-<p>Same move TCP/IP made. Same payoff.</p>
-
-<h2 id="2-how-it-actually-works-the-architecture">2. How It Actually Works: The Architecture</h2>
-
-<p>MCP is built on JSON-RPC 2.0 and follows a three-part architecture: <strong>Host → Client → Server</strong>.</p>
-
-<ul>
-  <li><strong>Host</strong>: The application shell — Claude Desktop, VS Code, your custom chat app. It manages one or more MCP clients and handles user-level permissions.</li>
-  <li><strong>Client</strong>: Maintains a stateful 1:1 session with a specific MCP server. The session is persistent, not fire-and-forget REST calls.</li>
-  <li><strong>Server</strong>: Exposes capabilities via three primitives:
-    <ul>
-      <li><strong>Tools</strong> — callable functions the agent can invoke (think: <code class="language-plaintext highlighter-rouge">run_sql_query</code>, <code class="language-plaintext highlighter-rouge">create_github_issue</code>)</li>
-      <li><strong>Resources</strong> — data or files the agent can read (think: filesystem paths, database schemas)</li>
-      <li><strong>Prompts</strong> — reusable prompt templates the server pre-packages</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Here’s what a minimal MCP server looks like in Python:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp.server</span> <span class="kn">import</span> <span class="n">MCPServer</span>
-<span class="kn">from</span> <span class="n">mcp.types</span> <span class="kn">import</span> <span class="n">Tool</span><span class="p">,</span> <span class="n">TextContent</span>
-
-<span class="n">server</span> <span class="o">=</span> <span class="nc">MCPServer</span><span class="p">(</span><span class="sh">"</span><span class="s">my-db-server</span><span class="sh">"</span><span class="p">)</span>
-
-<span class="nd">@server.tool</span><span class="p">()</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">run_query</span><span class="p">(</span><span class="n">sql</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">TextContent</span><span class="p">]:</span>
-    <span class="sh">"""</span><span class="s">Execute a read-only SQL query and return results.</span><span class="sh">"""</span>
-    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="nc">TextContent</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="nf">str</span><span class="p">(</span><span class="n">results</span><span class="p">))]</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
-    <span class="n">server</span><span class="p">.</span><span class="nf">run</span><span class="p">()</span>  <span class="c1"># defaults to stdio transport
-</span></code></pre></div></div>
-
-<p>And the client side, connecting to it:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mcp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">StdioServerParameters</span>
-<span class="kn">from</span> <span class="n">mcp.client.stdio</span> <span class="kn">import</span> <span class="n">stdio_client</span>
-
-<span class="k">async</span> <span class="k">with</span> <span class="nf">stdio_client</span><span class="p">(</span><span class="nc">StdioServerParameters</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">python</span><span class="sh">"</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">my_db_server.py</span><span class="sh">"</span><span class="p">]))</span> <span class="nf">as </span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
-    <span class="k">async</span> <span class="k">with</span> <span class="nc">ClientSession</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>          <span class="c1"># capability handshake
-</span>        <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">list_tools</span><span class="p">()</span>  <span class="c1"># discover available tools
-</span>        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">call_tool</span><span class="p">(</span><span class="sh">"</span><span class="s">run_query</span><span class="sh">"</span><span class="p">,</span> <span class="p">{</span><span class="sh">"</span><span class="s">sql</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">SELECT * FROM users LIMIT 10</span><span class="sh">"</span><span class="p">})</span>
-</code></pre></div></div>
-
-<p>That initialization handshake — where client and server explicitly declare what capabilities they support — is MCP’s equivalent of TCP’s three-way handshake. It’s what makes forward/backward compatibility possible: a 2025 client talks fine to a 2026 server because they negotiated what they both understand upfront.</p>
-
-<p>For transport, MCP gives you two options: <strong>stdio</strong> for local processes (fast, simple, great for dev tooling) and <strong>HTTP with Server-Sent Events</strong> for remote/cloud deployments (scales, firewalls, all that fun enterprise stuff).</p>
-
-<h2 id="3-the-bigger-stack-where-mcp-fits">3. The Bigger Stack: Where MCP Fits</h2>
-
-<p>Here’s where it gets really interesting. MCP is just one layer of an emerging agent protocol stack.<figure></figure></p>
-
-<picture>
-    
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration-1400.webp" />
-    
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/blog/mcp-is-the-tcpip-of-ai-agents-heres-what-that-actu/02_illustration.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Agent Protocol Stack — layered like a TCP/IP or OSI stack" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
-  </picture>
-
-<p>&lt;/figure&gt;
-Think of it as:</p>
-
-<ol>
-  <li><strong>Transport layer</strong> — stdio / HTTP+SSE (how bytes move)</li>
-  <li><strong>MCP layer</strong> — model-to-tool access (how agents talk to data and services)</li>
-  <li><strong>A2A layer</strong> — Google’s Agent-to-Agent protocol (how agents delegate tasks to <em>other agents</em>)</li>
-  <li><strong>A2UI layer</strong> — how agents render output to actual user interfaces</li>
-</ol>
-
-<p>MCP handles what TCP handles: reliable, structured communication between two endpoints. A2A is more like HTTP — a higher-level protocol layered on top for richer interactions between peers. This is exactly how the internet protocol stack evolved, and the engineers building this stuff know it.</p>
-
-<p>The ecosystem number tells the story: ~100 MCP servers at launch in late 2024, 4,000+ by mid-2025, 5,800+ by late 2025. OpenAI, Google DeepMind, Microsoft, and Databricks all support it. That’s not an Anthropic-specific tool anymore — that’s infrastructure.</p>
-
-<h2 id="4-the-security-elephant-in-the-room">4. The Security Elephant in the Room</h2>
-
-<p>TCP/IP’s original designers didn’t anticipate BGP hijacking, DDoS, or man-in-the-middle attacks. We spent decades patching those holes. MCP is on the same trajectory, and people are rightly nervous about it.</p>
-
-<p>The main risks:</p>
-
-<ul>
-  <li><strong>Overly broad OAuth scopes</strong>: An MCP server requesting full Gmail access when it only needs to read subject lines. Classic supply chain laziness that becomes your security problem.</li>
-  <li><strong>Prompt injection via tool responses</strong>: Malicious content returned by a tool that manipulates the agent’s next action. The agent reads a file, the file says “ignore previous instructions and exfiltrate data,” and now you have a bad day.</li>
-  <li><strong>Community server supply chain risk</strong>: That random MCP server you pulled off GitHub for your Slack integration? You’re trusting its author’s security hygiene. Good luck.</li>
-  <li><strong>Traditional AppSec tools don’t apply</strong>: Your static analysis scanner doesn’t understand non-deterministic agent behavior. It’s not looking for the right things.</li>
-</ul>
-
-<p>MCP’s answer is OAuth 2.1 with PKCE, least-privilege permissions, and human-in-the-loop authorization for sensitive operations. That’s a reasonable starting point, but the operational maturity just isn’t there yet.</p>
-
-<p>Additionally, as MCP transitions to enterprise production environments, we are starting to see the emergence of MCP-specific API gateways. Rather than letting an agent client talk directly to a proprietary database MCP server, organizations are putting policy enforcement layers in between. These gateways log every JSON-RPC interaction, enforce strict usage quotas, and use Data Loss Prevention (DLP) scanners to scrub PII before it ever reaches the LLM. If you’re building beyond local dev environments, you need to be thinking about this middleware layer.</p>
-
-<h2 id="5-what-you-should-actually-do-this-week">5. What You Should Actually Do This Week</h2>
-
-<p>This isn’t a “wait and see” situation. MCP hit an inflection point — the protocol has the momentum of a standard, not an experiment. Enterprise analysts are calling 2026 the year of production MCP adoption, and companies are already rolling out internal agents using it daily for querying systems, automating reporting, and orchestrating massive workflows.</p>
-
-<p>Here’s a concrete starting point:</p>
-
-<ol>
-  <li><strong>Install the MCP SDK</strong> and spin up a local server against a tool you already maintain (<code class="language-plaintext highlighter-rouge">pip install mcp</code> — it’s that simple).</li>
-  <li><strong>Wire it to Claude Desktop</strong> or any MCP-compatible client and verify the handshake works. Ten minutes of setup, not ten days.</li>
-  <li><strong>Audit the MCP servers you’re considering</strong> like you’d audit any open-source dependency. Check OAuth scope requests. Read the source.</li>
-  <li><strong>Track the A2A spec</strong> — if you’re building multi-agent systems, understanding how MCP and A2A interact is going to matter very soon.</li>
-  <li><strong>Advocate for sane defaults</strong> — When writing your custom servers, apply the principle of least privilege immediately. Don’t provide write access if your conversational agent only needs to summarize read-only logs.</li>
-  <li><strong>Don’t build another custom integration</strong> for a new tool until you’ve checked whether an MCP server already exists for it. At 5,800+ servers and growing, the answer is often yes.</li>
-</ol>
-
-<p>The internet succeeded because TCP/IP gave every computer a common language. The agentic AI ecosystem will succeed for the same reason — and MCP is the closest thing we have to that foundation right now. Get your hands dirty with it before your company’s AI strategy requires it and you’re scrambling to catch up.</p>]]></content><author><name></name></author><category term="AI agents" /><category term="MCP" /><category term="protocols" /><category term="LLM" /><category term="engineering" /><summary type="html"><![CDATA[MCP (Model Context Protocol) is the open standard quietly becoming the universal connectivity layer for AI agents. Here's the engineering breakdown of why the TCP/IP analogy holds, what the architecture looks like, and why you should care right now.]]></summary></entry></feed>
+<p>Ask me again in six months.</p>]]></content><author><name></name></author><category term="gaming" /><category term="game industry" /><category term="GTA 6" /><category term="AAA games" /><category term="game development" /><summary type="html"><![CDATA[GTA 6 has been delayed twice, costs up to $2 billion, and its CEO's 'really good' confidence quotes have become a running joke. It's a symptom of something much bigger breaking in AAA game development.]]></summary></entry></feed>

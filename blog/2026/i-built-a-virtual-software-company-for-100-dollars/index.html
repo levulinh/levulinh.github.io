@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>I Built a Virtual Software Company for $100/Month | MT_Box</title>
+    <meta name="author" content="Andrew V. Le">
+    <meta name="description" content="Five Claude agents acting as PM, Designer, Programmer, QA, and CTO — coordinating through Linear and GitHub to ship a real Flutter app. Here's how I built it, what broke, and what surprised me.">
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+    <!-- Bootstrap Table -->
+    <link defer rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="" id="highlight_theme_light">
+
+    
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/fav.png">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars/">
+
+    <!-- Dark Mode -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/monokai.css" media="none" id="highlight_theme_dark">
+
+    <script src="/assets/js/theme.js"></script>
+    <script src="/assets/js/dark_mode.js"></script>
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="/">MT_Box</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/albums/">albums</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/drew-folio/">portfolio</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+
+              <!-- Toogle theme mode -->
+              <li class="toggle-container">
+                <button id="light-toggle" title="Change theme">
+                  <i class="fas fa-moon"></i>
+                  <i class="fas fa-sun"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Scrolling Progress Bar -->
+      <progress id="progress" value="0">
+        <div class="progress-container">
+          <span class="progress-bar"></span>
+        </div>
+      </progress>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      
+        <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">I Built a Virtual Software Company for $100/Month</h1>
+    <p class="post-meta">April 4, 2026</p>
+    <p class="post-tags">
+      <a href="/blog/2026"> <i class="fas fa-calendar fa-sm"></i> 2026 </a>
+        ·  
+        <a href="/blog/tag/ai">
+          <i class="fas fa-hashtag fa-sm"></i> AI</a>  
+          <a href="/blog/tag/agentic-ai">
+          <i class="fas fa-hashtag fa-sm"></i> agentic AI</a>  
+          <a href="/blog/tag/claude">
+          <i class="fas fa-hashtag fa-sm"></i> Claude</a>  
+          <a href="/blog/tag/software-engineering">
+          <i class="fas fa-hashtag fa-sm"></i> software engineering</a>  
+          <a href="/blog/tag/automation">
+          <i class="fas fa-hashtag fa-sm"></i> automation</a>  
+          <a href="/blog/tag/mtbox">
+          <i class="fas fa-hashtag fa-sm"></i> MTBox</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>I’ve always wanted to build a software product under the name MTBox — a name I really resonate with. But I kept dropping projects for the same reason every time: I’d still have to sit in front of a computer, wait for the agent to do its job, check, prompt again. Boring. And the results were always unsatisfying, because I was always too ambitious and asked too much from a single agent. You know — like your bosses do in real life.</p>
+
+<p>So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/dashboard.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="The MTBox agent dashboard — five agents running autonomously on a polling schedule" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;</p>
+<h2 id="the-setup-an-org-chart-made-of-shell-scripts">The Setup: An Org Chart Made of Shell Scripts</h2>
+
+<p>MTBox is not a product. It’s the orchestration infrastructure for an AI-powered software company. Five Claude Code agents — each with a defined role, a prompt file, and a run script — collaborate to build an actual Flutter app without me sitting in front of a terminal.</p>
+
+<p>The cast:</p>
+
+<ul>
+  <li>
+<strong>PM</strong> — reads Linear, triages backlog, moves issues through workflow statuses, writes acceptance criteria</li>
+  <li>
+<strong>Designer</strong> — picks up “In Design” issues, generates Flutter mockups, posts them to Linear for review</li>
+  <li>
+<strong>Programmer</strong> — takes approved designs, writes the actual Dart/Flutter code, opens a PR</li>
+  <li>
+<strong>QA</strong> — clones the PR branch, runs unit and widget tests, reports pass/fail back to Linear</li>
+  <li>
+<strong>CTO</strong> — reads high-level directives from me (the “CEO”), creates roadmap phases, and seeds tasks for the PM to pick up</li>
+</ul>
+
+<p>Each agent runs on a two-hour polling interval via <code class="language-plaintext highlighter-rouge">launchd</code>. No manual prompting required. I fire up my Mac in the morning, and by evening the company has been running shifts.</p>
+
+<p>The real product — a Flutter app called <strong>Campaign Tracker</strong> — lives in a separate repo. MTBox is just the scaffolding.</p>
+
+<h2 id="coordination-without-a-chat-room">Coordination Without a Chat Room</h2>
+
+<p>The key insight was: agents don’t need to talk to each other directly. They need a shared source of truth.</p>
+
+<p>That source of truth is <strong>Linear</strong> — specifically, the issue status transitions.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Backlog → In Design → Awaiting Design Approval
+→ In Progress → In Review → Awaiting Decision → Done
+</code></pre></div></div>
+
+<p>Only the PM moves issues between statuses. Everyone else reads the current state, does their job, posts a comment, and leaves the next move to PM. It’s like a relay race where the baton is an issue ticket.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-board.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Linear issue board showing Campaign Tracker tasks across all workflow stages" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Each agent identifies itself in comments with a prefix: <code class="language-plaintext highlighter-rouge">📋 [PM]</code>, <code class="language-plaintext highlighter-rouge">🎨 [Designer]</code>, <code class="language-plaintext highlighter-rouge">💻 [Programmer]</code>, <code class="language-plaintext highlighter-rouge">🔍 [QA]</code>, <code class="language-plaintext highlighter-rouge">🏢 [CTO]</code>. This makes the activity feed readable as a conversation — which it effectively is.</p>
+
+<h2 id="watching-a-feature-ship">Watching a Feature Ship</h2>
+
+<p>Here’s what it looks like in practice. I gave the CTO a directive: <em>“Add some touches so the app doesn’t feel too boring.”</em> The CTO translated that into a Phase 3 roadmap item — “Visual delight polish: micro-interactions, empty states, subtle transitions” — and dropped it in the backlog.</p>
+
+<p>PM picked it up, wrote acceptance criteria, and moved it to “In Design.”</p>
+
+<p>Designer opened the issue, built a mockup in Flutter, and posted it with detailed panel-by-panel specs:<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-issue-comments.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Designer Bot posting a Flutter mockup with design notes for the Visual Delight Polish issue" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;
+Then CTO reviewed the design and either approved or pushed back. In this case: approved, with notes on which acceptance criteria were satisfied. Programmer picked it up, implemented it, and opened a PR. QA ran 20 unit and widget tests — all passed.<figure></figure></p>
+
+<picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2.png" class="img-fluid rounded z-depth-1" width="auto" height="auto" alt="Programmer Bot reporting implementation complete, QA Bot reporting 20/20 tests passing" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+<p>&lt;/figure&gt;
+The whole thing — from directive to green tests — happened while I wasn’t watching. That’s the part that still surprises me every time I check in.</p>
+
+<h2 id="the-evolution-what-i-built-and-then-changed">The Evolution: What I Built and Then Changed</h2>
+
+<p>The first version was embarrassingly simple: five shell scripts, five prompt files, a <code class="language-plaintext highlighter-rouge">launchd</code> plist to run each every 15 minutes. That’s it. No dashboard, no status tracking, no coordination layer beyond Linear itself.</p>
+
+<p><strong>Round 1 — Basic agents + polling.</strong> PM, Designer, Programmer, QA. Each runs on a cron-like schedule, checks Linear for work in their lane, does the work, posts a comment. Lock files prevent two instances of the same agent running simultaneously.</p>
+
+<p><strong>Round 2 — The dashboard.</strong> Watching logs with <code class="language-plaintext highlighter-rouge">tail -f</code> is fine for 10 minutes. For hours of autonomous operation, I needed something better. I built a Node.js server with a brutalist-aesthetic HTML dashboard: five agent cards, IDLE/BUSY status, countdown timer to next run, a live log stream. The dashboard became how I “check in” without micromanaging.</p>
+
+<p><strong>Round 3 — The CTO agent.</strong> The original setup required me to manually seed tasks. The CTO abstraction gave me a layer between my high-level directions (“build a campaign tracker app”) and the PM’s day-to-day task management. I write directives; CTO translates them into phased roadmaps; PM executes. Now I genuinely only need to show up when something needs a decision.</p>
+
+<p><strong>Round 4 — Linear webhooks.</strong> Polling every two hours is fine for overnight runs, but during active development it creates 30-120 minute lags between one agent finishing and the next picking up. Adding a Cloudflare quick tunnel + Linear webhook integration meant that when an issue changes status, the right agent fires immediately. The polling schedule stays as a safety net; the webhooks handle real-time handoffs.</p>
+
+<p><strong>Round 5 — Cost optimization.</strong> Once this was actually running, I noticed that PM and QA don’t need Sonnet-level intelligence for their jobs — reading Linear, moving issues, running tests. Switching them to Haiku cut token usage significantly. Extending polling intervals from 15 minutes to 2 hours on all agents was the other big lever. The agents were mostly running idle checks anyway.</p>
+
+<p><strong>Round 6 — Pause/resume.</strong> Sometimes I want to push code changes or adjust prompts without the agents firing mid-edit. A PAUSE button in the dashboard with an auto-resume timer was the last quality-of-life feature. Small thing, but it made the system feel more like a tool I control rather than a process I’m watching nervously.</p>
+
+<h2 id="what-actually-got-built">What Actually Got Built</h2>
+
+<p>Campaign Tracker is a Flutter app for tracking personal goals with a streak mechanic. In one day of running, the company completed:</p>
+
+<p><strong>Phase 1</strong> — Core check-in loop: app shell, campaign list, campaign creation, data model, home screen with live data. Five issues, all shipped.</p>
+
+<p><strong>Phase 2</strong> — Engagement layer: streak indicators on campaign cards, activity history feed, stats dashboard, campaign archive. Four issues, all shipped.</p>
+
+<p><strong>Phase 3</strong> — Polish: onboarding flow, local push notifications, UI color palette refresh (softer brutalism, muted tones), shadow/border refinement, visual delight micro-interactions, progress sharing export. In flight.</p>
+
+<p>That’s somewhere between an MVP and a beta. Built autonomously. On a Saturday.</p>
+
+<h2 id="what-the-100-is-actually-buying">What the $100 Is Actually Buying</h2>
+
+<p>The Claude Max subscription ($100/month) covers all five agents running continuously. There’s no infrastructure cost — everything runs on my Mac via <code class="language-plaintext highlighter-rouge">launchd</code>. The only other costs are the GitHub repo and a Linear workspace (free tier works fine for this scale).</p>
+
+<p>The real cost isn’t money. It’s prompt engineering time. Getting each agent to stay in its lane, communicate clearly in Linear, not make up Linear IDs, not break the lock file protocol — that took iteration. The prompts are living documents. When QA started running E2E tests that required an Android emulator, I had to update the prompt to handle emulator startup/teardown. When Designer started posting mockups that were too implementation-specific (bleeding into Programmer’s territory), I had to add guardrails.</p>
+
+<p>The agents are capable. The challenge is defining the interfaces between them precisely enough that they can actually collaborate.</p>
+
+<h2 id="what-i-didnt-expect">What I Didn’t Expect</h2>
+
+<p><strong>The CTO memory file became the most useful artifact.</strong> Each CTO run appends a log entry summarizing what was reviewed, what was approved, what phase the product is in. Reading those logs is the fastest way to understand where the product stands without opening Linear at all.</p>
+
+<p><strong>Agents write better specs than I do.</strong> When I write acceptance criteria, I write the minimum. When PM writes them, they’re thorough — edge cases, error states, specific wording. When Designer writes design notes, they include animation timing values, scale transitions, color references back to the design system. It’s better documentation than I would have written manually.</p>
+
+<p><strong>The bottleneck isn’t the agents, it’s approval.</strong> The workflow has an “Awaiting Design Approval” and “Awaiting Decision” status specifically because the agents can’t make certain calls — judgment calls about product direction, design taste, scope. I still need to be in the loop for those. The company runs best when I batch my reviews: check in once, approve a cluster of things, let it run for hours.</p>
+
+<p><strong>Sometimes an agent goes rogue in a funny way.</strong> QA once tried to start an Android emulator, concluded it wasn’t available, decided to use a physical device instead, then reported the physical device wasn’t connected, then marked the tests as “inconclusive” and moved on. That was three iterations of prompt updates before it landed on “use <code class="language-plaintext highlighter-rouge">flutter test</code> for widget tests, don’t launch an emulator unless the issue explicitly requires device testing.”</p>
+
+<h2 id="would-i-do-it-again">Would I Do It Again?</h2>
+
+<p>Yes, with one change: start with a simpler product scope. I gave the company “Campaign Tracker” as a concept, but a Flutter app with streaks, animations, and notifications is actually a moderately complex project. The agents handled it, but a simpler first product would have let me debug the orchestration layer faster.</p>
+
+<p>The thing that makes this work isn’t Claude being magic. It’s the same thing that makes human teams work: clear roles, a shared task system, defined handoff points, and someone (me, apparently) who shows up periodically to make judgment calls and unblock things.</p>
+
+<p>A $100 subscription. Five prompt files. A few hundred lines of shell script and Node.js. And now I have a company.</p>
+
+<hr>
+
+<p><em>The orchestration repo is at <a href="https://github.com/levulinh/mtbox" rel="external nofollow noopener" target="_blank">levulinh/mtbox</a>. The product repo is at <a href="https://github.com/levulinh/mtbox-app" rel="external nofollow noopener" target="_blank">levulinh/mtbox-app</a>.</em></p>
+
+    </div>
+  </article>
+
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/march-2026-gaming-roundup-marathon-crimson-desert-gta6/">March 2026 Gaming Roundup: Marathon Launches, Crimson Desert Divides, and GTA 6 Gets a Final Date</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/ai-model-explosion-march-2026-agentic-era/">The AI Model Explosion: How March 2026 Kicked Off the Agentic Era</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/esports-2026-first-stand-lol-bilibili-gaming-nations-cup/">BLG Conquers First Stand &amp; The Esports Nations Cup Is About to Change Everything</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/openclaw-agentic-ai-chatgpt-moment-model-wars-march-2026/">OpenClaw's 'ChatGPT Moment' and the AI Model War Nobody Saw Coming</a>
+  </li>
+
+  
+
+  <li class="my-2">
+    <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/valorant-masters-santiago-ns-redforce-esports-world-cup-2026/">NS RedForce Just Changed Esports History — And the $75M EWC Is Next</a>
+  </li>
+
+<div id="giscus_thread" style="max-width: 800px; margin: 0 auto;">
+  <script>
+    let giscusTheme = localStorage.getItem("theme");
+    let giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "levulinh/levulinh.github.io",
+      "data-repo-id": "R_kgDOJhoxrw",
+      "data-category": "Blog",
+      "data-category-id": "DIC_kwDOJhoxr84CWa6o",
+      "data-mapping": "title",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "bottom",
+      "data-theme": "light_tritanopia",
+      "data-lang": "en",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+
+    let giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById("giscus_thread").appendChild(giscusScript);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by
+      giscus.</a>
+</noscript>
+</div>
+</div>
+
+      
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2026 Andrew V. Le. Last updated: April 04, 2026.
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.8/dist/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script>
+
+  <!-- Bootstrap Table -->
+  <script defer src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script>
+
+  <!-- Load Common JS -->
+  <script src="/assets/js/no_defer.js"></script>
+  <script defer src="/assets/js/common.js"></script>
+  <script defer src="/assets/js/copy_code.js" type="text/javascript"></script>
+
+    
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+    
+
+<!-- Scrolling Progress Bar -->
+<script type="text/javascript">
+  /*
+   * This JavaScript code has been adapted from the article 
+   * https://css-tricks.com/reading-position-indicator/ authored by Pankaj Parashar, 
+   * published on the website https://css-tricks.com on the 7th of May, 2014.
+   * Couple of changes were made to the original code to make it compatible 
+   * with the `al-foio` theme.
+   */
+  const progressBar = $("#progress");
+  /*
+   * We set up the bar after all elements are done loading.
+   * In some cases, if the images in the page are larger than the intended
+   * size they'll have on the page, they'll be resized via CSS to accomodate
+   * the desired size. This mistake, however, breaks the computations as the
+   * scroll size is computed as soon as the elements finish loading.
+   * To account for this, a minimal delay was introduced before computing the
+   * values.
+   */
+  window.onload = function () {
+    setTimeout(progressBarSetup, 50);
+  };
+  /*
+   * We set up the bar according to the browser.
+   * If the browser supports the progress element we use that.
+   * Otherwise, we resize the bar thru CSS styling
+   */
+  function progressBarSetup() {
+    if ("max" in document.createElement("progress")) {
+      initializeProgressElement();
+      $(document).on("scroll", function() {
+        progressBar.attr({ value: getCurrentScrollPosition() });
+      });
+      $(window).on("resize", initializeProgressElement);
+    } else {
+      resizeProgressBar();
+      $(document).on("scroll", resizeProgressBar);
+      $(window).on("resize", resizeProgressBar);
+    }
+  }
+  /*
+   * The vertical scroll position is the same as the number of pixels that
+   * are hidden from view above the scrollable area. Thus, a value > 0 is
+   * how much the user has scrolled from the top
+   */
+  function getCurrentScrollPosition() {
+    return $(window).scrollTop();
+  }
+
+  function initializeProgressElement() {
+    let navbarHeight = $("#navbar").outerHeight(true);
+    $("body").css({ "padding-top": navbarHeight });
+    $("progress-container").css({ "padding-top": navbarHeight });
+    progressBar.css({ top: navbarHeight });
+    progressBar.attr({
+      max: getDistanceToScroll(),
+      value: getCurrentScrollPosition(),
+    });
+  }
+  /*
+   * The offset between the html document height and the browser viewport
+   * height will be greater than zero if vertical scroll is possible.
+   * This is the distance the user can scroll
+   */
+  function getDistanceToScroll() {
+    return $(document).height() - $(window).height();
+  }
+
+  function resizeProgressBar() {
+    progressBar.css({ width: getWidthPercentage() + "%" });
+  }
+  // The scroll ratio equals the percentage to resize the bar
+  function getWidthPercentage() {
+    return (getCurrentScrollPosition() / getDistanceToScroll()) * 100;
+  }
+</script>
+
+  </body>
+</html>
