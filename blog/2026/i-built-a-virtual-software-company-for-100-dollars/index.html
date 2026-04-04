@@ -153,9 +153,11 @@
     <div id="markdown-content">
       <p>I’ve always wanted to build a software product under the name MTBox — a name I really resonate with. But I kept dropping projects for the same reason every time: I’d still have to sit in front of a computer, wait for the agent to do its job, check, prompt again. Boring. And the results were always unsatisfying, because I was always too ambitious and asked too much from a single agent. You know — like your bosses do in real life.</p>
 
-<p>So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?<figure></figure></p>
+<p>So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/dashboard-800.webp"></source>
@@ -167,7 +169,8 @@
 
   </picture>
 
-<p>&lt;/figure&gt;</p>
+</figure>
+
 <h2 id="the-setup-an-org-chart-made-of-shell-scripts">The Setup: An Org Chart Made of Shell Scripts</h2>
 
 <p>MTBox is not a product. It’s the orchestration infrastructure for an AI-powered software company. Five Claude Code agents — each with a defined role, a prompt file, and a run script — collaborate to build an actual Flutter app without me sitting in front of a terminal.</p>
@@ -201,9 +204,11 @@
 → In Progress → In Review → Awaiting Decision → Done
 </code></pre></div></div>
 
-<p>Only the PM moves issues between statuses. Everyone else reads the current state, does their job, posts a comment, and leaves the next move to PM. It’s like a relay race where the baton is an issue ticket.<figure></figure></p>
+<p>Only the PM moves issues between statuses. Everyone else reads the current state, does their job, posts a comment, and leaves the next move to PM. It’s like a relay race where the baton is an issue ticket.</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-board-800.webp"></source>
@@ -215,8 +220,9 @@
 
   </picture>
 
-<p>&lt;/figure&gt;
-Each agent identifies itself in comments with a prefix: <code class="language-plaintext highlighter-rouge">📋 [PM]</code>, <code class="language-plaintext highlighter-rouge">🎨 [Designer]</code>, <code class="language-plaintext highlighter-rouge">💻 [Programmer]</code>, <code class="language-plaintext highlighter-rouge">🔍 [QA]</code>, <code class="language-plaintext highlighter-rouge">🏢 [CTO]</code>. This makes the activity feed readable as a conversation — which it effectively is.</p>
+</figure>
+
+<p>Each agent identifies itself in comments with a prefix: <code class="language-plaintext highlighter-rouge">📋 [PM]</code>, <code class="language-plaintext highlighter-rouge">🎨 [Designer]</code>, <code class="language-plaintext highlighter-rouge">💻 [Programmer]</code>, <code class="language-plaintext highlighter-rouge">🔍 [QA]</code>, <code class="language-plaintext highlighter-rouge">🏢 [CTO]</code>. This makes the activity feed readable as a conversation — which it effectively is.</p>
 
 <h2 id="watching-a-feature-ship">Watching a Feature Ship</h2>
 
@@ -224,9 +230,11 @@ Each agent identifies itself in comments with a prefix: <code class="language-pl
 
 <p>PM picked it up, wrote acceptance criteria, and moved it to “In Design.”</p>
 
-<p>Designer opened the issue, built a mockup in Flutter, and posted it with detailed panel-by-panel specs:<figure></figure></p>
+<p>Designer opened the issue, built a mockup in Flutter, and posted it with detailed panel-by-panel specs:</p>
 
-<picture>
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments-800.webp"></source>
@@ -238,10 +246,13 @@ Each agent identifies itself in comments with a prefix: <code class="language-pl
 
   </picture>
 
-<p>&lt;/figure&gt;
-Then CTO reviewed the design and either approved or pushed back. In this case: approved, with notes on which acceptance criteria were satisfied. Programmer picked it up, implemented it, and opened a PR. QA ran 20 unit and widget tests — all passed.<figure></figure></p>
+</figure>
 
-<picture>
+<p>Then CTO reviewed the design and either approved or pushed back. In this case: approved, with notes on which acceptance criteria were satisfied. Programmer picked it up, implemented it, and opened a PR. QA ran 20 unit and widget tests — all passed.</p>
+
+<figure>
+
+  <picture>
     
     <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-480.webp"></source>
     <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/blog/mtbox-virtual-company/linear-issue-comments2-800.webp"></source>
@@ -253,8 +264,9 @@ Then CTO reviewed the design and either approved or pushed back. In this case: a
 
   </picture>
 
-<p>&lt;/figure&gt;
-The whole thing — from directive to green tests — happened while I wasn’t watching. That’s the part that still surprises me every time I check in.</p>
+</figure>
+
+<p>The whole thing — from directive to green tests — happened while I wasn’t watching. That’s the part that still surprises me every time I check in.</p>
 
 <h2 id="the-evolution-six-rounds-of-this-isnt-quite-right">The Evolution: Six Rounds of “This Isn’t Quite Right”</h2>
 
