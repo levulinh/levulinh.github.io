@@ -17,7 +17,7 @@ I've always wanted to build a software product under the name MTBox — a name I
 
 So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?
 
-{%-include figure.html path="assets/img/blog/mtbox-virtual-company/dashboard.png" alt="The MTBox agent dashboard — five agents running autonomously on a polling schedule" class="img-fluid rounded z-depth-1"-%}
+{% include figure.html path="assets/img/blog/mtbox-virtual-company/dashboard.png" alt="The MTBox agent dashboard — five agents running autonomously on a polling schedule" class="img-fluid rounded z-depth-1" %}
 
 ## The Setup: An Org Chart Made of Shell Scripts
 
@@ -48,7 +48,7 @@ Backlog → In Design → Awaiting Design Approval
 
 Only the PM moves issues between statuses. Everyone else reads the current state, does their job, posts a comment, and leaves the next move to PM. It's like a relay race where the baton is an issue ticket.
 
-{%-include figure.html path="assets/img/blog/mtbox-virtual-company/linear-board.png" alt="Linear issue board showing Campaign Tracker tasks across all workflow stages" class="img-fluid rounded z-depth-1"-%}
+{% include figure.html path="assets/img/blog/mtbox-virtual-company/linear-board.png" alt="Linear issue board showing Campaign Tracker tasks across all workflow stages" class="img-fluid rounded z-depth-1" %}
 
 Each agent identifies itself in comments with a prefix: `📋 [PM]`, `🎨 [Designer]`, `💻 [Programmer]`, `🔍 [QA]`, `🏢 [CTO]`. This makes the activity feed readable as a conversation — which it effectively is.
 
@@ -60,11 +60,11 @@ PM picked it up, wrote acceptance criteria, and moved it to "In Design."
 
 Designer opened the issue, built a mockup in Flutter, and posted it with detailed panel-by-panel specs:
 
-{%-include figure.html path="assets/img/blog/mtbox-virtual-company/linear-issue-comments.png" alt="Designer Bot posting a Flutter mockup with design notes for the Visual Delight Polish issue" class="img-fluid rounded z-depth-1"-%}
+{% include figure.html path="assets/img/blog/mtbox-virtual-company/linear-issue-comments.png" alt="Designer Bot posting a Flutter mockup with design notes for the Visual Delight Polish issue" class="img-fluid rounded z-depth-1" %}
 
 Then CTO reviewed the design and either approved or pushed back. In this case: approved, with notes on which acceptance criteria were satisfied. Programmer picked it up, implemented it, and opened a PR. QA ran 20 unit and widget tests — all passed.
 
-{%-include figure.html path="assets/img/blog/mtbox-virtual-company/linear-issue-comments2.png" alt="Programmer Bot reporting implementation complete, QA Bot reporting 20/20 tests passing" class="img-fluid rounded z-depth-1"-%}
+{% include figure.html path="assets/img/blog/mtbox-virtual-company/linear-issue-comments2.png" alt="Programmer Bot reporting implementation complete, QA Bot reporting 20/20 tests passing" class="img-fluid rounded z-depth-1" %}
 
 The whole thing — from directive to green tests — happened while I wasn't watching. That's the part that still surprises me every time I check in.
 
