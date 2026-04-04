@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-04T13:27:22+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://levulinh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://levulinh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-04T13:51:07+00:00</updated><id>https://levulinh.github.io/feed.xml</id><title type="html">MT_Box</title><subtitle>A space where I share my humble knowledge about coding and life.
 </subtitle><entry><title type="html">I Built a Virtual Software Company for $100/Month</title><link href="https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars/" rel="alternate" type="text/html" title="I Built a Virtual Software Company for $100/Month" /><published>2026-04-04T00:00:00+00:00</published><updated>2026-04-04T00:00:00+00:00</updated><id>https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars</id><content type="html" xml:base="https://levulinh.github.io/blog/2026/i-built-a-virtual-software-company-for-100-dollars/"><![CDATA[<p>I’ve always wanted to build a software product under the name MTBox — a name I really resonate with. But I kept dropping projects for the same reason every time: I’d still have to sit in front of a computer, wait for the agent to do its job, check, prompt again. Boring. And the results were always unsatisfying, because I was always too ambitious and asked too much from a single agent. You know — like your bosses do in real life.</p>
 
 <p>So I stopped trying to give one agent a 100-point todo list. Instead, I asked: what if I organized them like a company?<figure></figure></p>
@@ -99,21 +99,19 @@ Then CTO reviewed the design and either approved or pushed back. In this case: a
 <p>&lt;/figure&gt;
 The whole thing — from directive to green tests — happened while I wasn’t watching. That’s the part that still surprises me every time I check in.</p>
 
-<h2 id="the-evolution-what-i-built-and-then-changed">The Evolution: What I Built and Then Changed</h2>
+<h2 id="the-evolution-six-rounds-of-this-isnt-quite-right">The Evolution: Six Rounds of “This Isn’t Quite Right”</h2>
 
-<p>The first version was embarrassingly simple: five shell scripts, five prompt files, a <code class="language-plaintext highlighter-rouge">launchd</code> plist to run each every 15 minutes. That’s it. No dashboard, no status tracking, no coordination layer beyond Linear itself.</p>
+<p>The first version, built at midnight, was embarrassingly simple: four shell scripts, four prompt files, a <code class="language-plaintext highlighter-rouge">launchd</code> plist to wake each agent every 15 minutes. That was it. No dashboard. No CTO. No webhook. Just four processes polling Linear on a timer and posting comments.</p>
 
-<p><strong>Round 1 — Basic agents + polling.</strong> PM, Designer, Programmer, QA. Each runs on a cron-like schedule, checks Linear for work in their lane, does the work, posts a comment. Lock files prevent two instances of the same agent running simultaneously.</p>
+<p>It worked, sort of. But within a few hours I was watching logs with <code class="language-plaintext highlighter-rouge">tail -f</code> on four terminal windows simultaneously, squinting to figure out which agent was doing what. So I built a dashboard — a Node.js server with a brutalist-looking HTML frontend: five agent cards, IDLE/BUSY status badges, a countdown timer to each agent’s next run, and a live log stream panel. Now instead of four terminals, I had one ugly webpage that told me everything at a glance.</p>
 
-<p><strong>Round 2 — The dashboard.</strong> Watching logs with <code class="language-plaintext highlighter-rouge">tail -f</code> is fine for 10 minutes. For hours of autonomous operation, I needed something better. I built a Node.js server with a brutalist-aesthetic HTML dashboard: five agent cards, IDLE/BUSY status, countdown timer to next run, a live log stream. The dashboard became how I “check in” without micromanaging.</p>
+<p>That helped. But the next problem surfaced quickly: I was still the PM’s PM. Every time I had a new feature idea, I had to manually write a Linear issue for it. The agents could execute work; they couldn’t figure out what work needed doing. So I added a CTO agent — a fifth agent sitting between me and the PM. I write high-level directives (“make the app feel less boring”). CTO turns them into a phased roadmap and seeds tasks in the backlog. PM picks up from there. The chain of interpretation that happens in a real company — CEO vision → CTO strategy → PM execution — now happened without me in the middle of it.</p>
 
-<p><strong>Round 3 — The CTO agent.</strong> The original setup required me to manually seed tasks. The CTO abstraction gave me a layer between my high-level directions (“build a campaign tracker app”) and the PM’s day-to-day task management. I write directives; CTO translates them into phased roadmaps; PM executes. Now I genuinely only need to show up when something needs a decision.</p>
+<p>The next friction was speed. With two-hour polling intervals, there could be a three-hour gap between the Designer finishing a mockup and the Programmer noticing it. That’s fine overnight, miserable during active development. I added a Cloudflare quick tunnel and registered a Linear webhook: status changes now fire the right agent immediately, with polling as a silent backup.</p>
 
-<p><strong>Round 4 — Linear webhooks.</strong> Polling every two hours is fine for overnight runs, but during active development it creates 30-120 minute lags between one agent finishing and the next picking up. Adding a Cloudflare quick tunnel + Linear webhook integration meant that when an issue changes status, the right agent fires immediately. The polling schedule stays as a safety net; the webhooks handle real-time handoffs.</p>
+<p>At some point I looked at my token usage and winced. PM and QA were running on Sonnet — the same model as the Programmer who was writing real Dart code. That’s like putting a senior engineer on Jira ticket grooming duty. Switching PM and QA to Haiku cut costs noticeably without any visible drop in quality. I also stretched the polling intervals from 15 minutes to 2 hours, since the agents were mostly running idle checks anyway.</p>
 
-<p><strong>Round 5 — Cost optimization.</strong> Once this was actually running, I noticed that PM and QA don’t need Sonnet-level intelligence for their jobs — reading Linear, moving issues, running tests. Switching them to Haiku cut token usage significantly. Extending polling intervals from 15 minutes to 2 hours on all agents was the other big lever. The agents were mostly running idle checks anyway.</p>
-
-<p><strong>Round 6 — Pause/resume.</strong> Sometimes I want to push code changes or adjust prompts without the agents firing mid-edit. A PAUSE button in the dashboard with an auto-resume timer was the last quality-of-life feature. Small thing, but it made the system feel more like a tool I control rather than a process I’m watching nervously.</p>
+<p>The last piece was the PAUSE button. Sometimes I want to edit a prompt or push changes to the orchestration repo without agents firing mid-edit. A pause toggle with an auto-resume timer turned the system from something I watched nervously into something I actually felt in control of.</p>
 
 <h2 id="what-actually-got-built">What Actually Got Built</h2>
 
@@ -145,13 +143,27 @@ The whole thing — from directive to green tests — happened while I wasn’t 
 
 <p><strong>Sometimes an agent goes rogue in a funny way.</strong> QA once tried to start an Android emulator, concluded it wasn’t available, decided to use a physical device instead, then reported the physical device wasn’t connected, then marked the tests as “inconclusive” and moved on. That was three iterations of prompt updates before it landed on “use <code class="language-plaintext highlighter-rouge">flutter test</code> for widget tests, don’t launch an emulator unless the issue explicitly requires device testing.”</p>
 
+<h2 id="what-this-is-not">What This Is Not</h2>
+
+<p>I want to be honest about the limits here, because it’s easy to over-read what’s actually happening.</p>
+
+<p>These agents are genuinely useful, but they are also genuinely naive. They follow prompts, not principles. They don’t understand why something matters — they understand what they’ve been instructed to do. When the task matches the prompt, they’re great. When reality drifts from what the prompt anticipated, they either hallucinate their way forward or get stuck in a loop and time out.</p>
+
+<p>More concretely: nothing in this system is handling the problems that actually make software hard. Security isn’t considered. The Programmer writes code that compiles and passes widget tests, but nobody has audited the data persistence layer, thought carefully about authentication, or reviewed for injection risks. Scaling isn’t on anyone’s radar — the QA agent runs <code class="language-plaintext highlighter-rouge">flutter test</code>, not load tests. There’s no incident response. No observability beyond “did the build pass.” The agents write code the way a new grad might: functionally correct, structurally reasonable, not battle-tested.</p>
+
+<p>For a personal side project, that’s fine. For anything with real users or real data, you’d need a human engineer reviewing every PR with genuine critical thinking — not just a QA agent running the test suite. The agents can move fast precisely because they’re not asking the hard questions. A human has to ask those.</p>
+
+<p>This also doesn’t scale in the org-chart sense. Five agents coordinating through Linear comments works because the product is small and the team is small. Add more agents, more products, more cross-cutting concerns, and the coordination overhead would start to eat the output. There’s no real escalation path when something goes genuinely wrong. When QA fails a PR, the Programmer fixes it — but nobody asks whether the acceptance criteria themselves were correct. The system is good at executing decisions, not at questioning them.</p>
+
+<p>I think of it as a force multiplier for a solo developer, not a replacement for a team. It handles the mechanical parts of software development — the tickets, the boilerplate, the test runs, the PR descriptions — so I can focus on the parts that actually require judgment.</p>
+
 <h2 id="would-i-do-it-again">Would I Do It Again?</h2>
 
 <p>Yes, with one change: start with a simpler product scope. I gave the company “Campaign Tracker” as a concept, but a Flutter app with streaks, animations, and notifications is actually a moderately complex project. The agents handled it, but a simpler first product would have let me debug the orchestration layer faster.</p>
 
 <p>The thing that makes this work isn’t Claude being magic. It’s the same thing that makes human teams work: clear roles, a shared task system, defined handoff points, and someone (me, apparently) who shows up periodically to make judgment calls and unblock things.</p>
 
-<p>A $100 subscription. Five prompt files. A few hundred lines of shell script and Node.js. And now I have a company.</p>
+<p>A $100 subscription. Five prompt files. A few hundred lines of shell script and Node.js. And now I have a company — of sorts.</p>
 
 <hr />
 
