@@ -8,13 +8,13 @@ body {
   font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.7;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1.3;
 }
 
@@ -181,7 +181,6 @@ blockquote {
   }
 }
 
-
 // Navbar customization
 
 .navbar {
@@ -190,7 +189,7 @@ blockquote {
   background-color: var(--global-bg-color);
   font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 0.875rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 .navbar .dropdown-menu {
@@ -227,11 +226,40 @@ blockquote {
   }
 
   .navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     color: var(--global-text-color);
     font-family: "JetBrains Mono", monospace;
     font-size: 0.95rem;
     font-weight: 500;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
+  }
+
+  .navbar-brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: $signal-blue;
+    width: 2.75rem;
+    height: 2.25rem;
+    max-width: 2.75rem;
+    flex: 0 0 2.75rem;
+    padding: 0.22rem;
+    background: #{$cool-ink};
+    border: 1px solid rgba($signal-blue, 0.35);
+    border-radius: 6px;
+    box-shadow: 0 0.35rem 1rem rgba($cool-ink, 0.14);
+  }
+
+  .navbar-brand-mark-svg {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .navbar-brand-wordmark {
+    line-height: 1;
   }
 
   .navbar-nav .nav-item .nav-link {
@@ -356,7 +384,7 @@ footer.fixed-bottom {
   background-color: var(--global-footer-bg-color);
   font-size: 0.75rem;
   font-family: "JetBrains Mono", monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
 
   .container {
     color: var(--global-footer-text-color);
@@ -380,7 +408,7 @@ footer.sticky-bottom {
   padding-bottom: 40px;
   font-size: 0.8rem;
   font-family: "JetBrains Mono", monospace;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   color: var(--global-text-color-light);
 }
 
@@ -401,6 +429,51 @@ footer.sticky-bottom {
         color: var(--global-card-bg-color) !important;
         background-color: var(--global-theme-color) !important;
       }
+    }
+  }
+
+  .cv-time-row {
+    align-items: flex-start;
+  }
+
+  .cv-date-col {
+    flex: 0 0 18rem;
+    max-width: 18rem;
+    padding: 0.35rem 1rem 0.5rem 0;
+    text-align: left;
+  }
+
+  .cv-date-badge {
+    display: inline-block;
+    max-width: 100%;
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: left;
+    line-height: 1.25;
+  }
+
+  .cv-entry-col {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .cv-entry-col .title,
+  .cv-entry-col h6 {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 767px) {
+  .cv {
+    .cv-date-col,
+    .cv-entry-col {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    .cv-date-col {
+      padding-right: 0;
     }
   }
 }
@@ -425,7 +498,7 @@ footer.sticky-bottom {
     color: var(--global-text-color);
     font-size: 1.75rem;
     font-weight: 600;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
     &::before {
       content: "// ";
       color: var(--global-theme-color);
@@ -452,7 +525,7 @@ footer.sticky-bottom {
       color: var(--global-text-color-light);
       font-size: 0.8rem;
       font-family: "JetBrains Mono", monospace;
-      letter-spacing: 0.03em;
+      letter-spacing: 0;
     }
   }
 }
@@ -478,7 +551,7 @@ footer.sticky-bottom {
       color: var(--global-text-color-light);
       font-size: 0.78rem;
       font-family: "JetBrains Mono", monospace;
-      letter-spacing: 0.02em;
+      letter-spacing: 0;
       margin-bottom: 0;
     }
 
@@ -486,7 +559,7 @@ footer.sticky-bottom {
       color: var(--global-text-color-light);
       font-size: 0.78rem;
       font-family: "JetBrains Mono", monospace;
-      letter-spacing: 0.02em;
+      letter-spacing: 0;
       padding-top: 0.25rem;
       padding-bottom: 0;
     }
@@ -809,7 +882,7 @@ html.transition *:after {
     color: var(--global-text-color-light);
     font-size: 0.78rem;
     font-family: "JetBrains Mono", monospace;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     margin-bottom: 0;
   }
 
@@ -817,7 +890,7 @@ html.transition *:after {
     color: var(--global-text-color-light);
     font-size: 0.78rem;
     font-family: "JetBrains Mono", monospace;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     padding-top: 0.25rem;
     padding-bottom: 1rem;
 

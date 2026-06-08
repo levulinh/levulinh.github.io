@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: MT_Box # the website title (if blank, full name will be used instead)
+title: MTBox # the website title (if blank, full name will be used instead)
 first_name: Andrew
 middle_name: V.
 last_name: Le
@@ -14,7 +14,7 @@ footer_text: >
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: fav.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: brand/mtbox-mark-blue-transparent.svg # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://levulinh.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/
@@ -63,7 +63,7 @@ max_width: 800px
 # Display links to the page with a preview object on social media.
 serve_og_meta: false # Include Open Graph meta tags in the HTML head
 serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://levulinh.github.io/assets/img/brand/mtbox-logo-linkedin-blue.png # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -120,9 +120,9 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: MT_B[L]OX # blog_name will be displayed in your blog page
+blog_name: MTBox Logs # blog_name will be displayed in your blog page
 blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: No.Cat.Inside
+blog_description: Notes on agentic AI, engineering, and the messy edge between ideas and shipped systems.
 permalink: /blog/:year/:title/
 
 # Pagination

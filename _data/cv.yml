@@ -2,62 +2,113 @@
   type: map
   contents:
     - name: Full Name
-      value: Le Vu Linh (Andrew Le)
-    - name: Date of Birth
-      value: 04th November 1996
+      value: Vu-Linh Le (Drew)
+    - name: Location
+      value: Seoul, South Korea
+    - name: Email
+      value: levulinhkr@gmail.com
+    - name: Website
+      value: mtbox-ai.com
+    - name: GitHub
+      value: github.com/levulinh
     - name: Languages
-      value: English, Vietnamese, Korean
+      value: English (TOEIC 935/990), Korean (TOPIK 3), Vietnamese (native)
+
+- title: Professional Summary
+  type: list
+  contents:
+    - AI/ML Engineer with 6 years across industry and KAIST research, shipping production agentic AI systems.
+    - Currently leading AI engineering at Elice Group, where I designed and shipped AI Helpy Chat, a production multi-agent system combining web search, multimodal reasoning, quiz generation, and interactive presentation generation.
+    - Previously deployed deep learning models via ONNX Runtime at Asleep Inc, reducing inference cost by 30%, and published three peer-reviewed papers with Seoul National University Bundang Hospital and KAIST.
+
+- title: Work Experience
+  type: time_table
+  contents:
+    - title: AI Product Squad Leader
+      institution: Elice Group, Seoul, South Korea
+      year: 2024 - Present
+      description:
+        - Designed and shipped AI Helpy Chat, a production multi-agent system supporting web search, image understanding, multimodal reasoning, AI quiz generation, and interactive presentation generation.
+        - Built Claude-powered multi-agent orchestration bots that autonomously plan, execute, and review complex engineering tasks across the engineering organization.
+        - Fine-tuned LLMs from 0.6B to 32B parameters on A100/H100 GPUs for Korean language and educational contexts.
+        - Shipped a government-approved RAG chatbot for Korea's AI Digital Textbook programme.
+        - Built a VLM-based OCR model under 1B parameters for complex table parsing, outperforming larger VLMs and closing a commercial deal with Hyundai.
+        - Mentored junior engineers on multi-agent design patterns, eval frameworks, and production AI deployment.
+    - title: AI Research Scientist
+      institution: Asleep Inc, Seoul, South Korea
+      year: 2022 - 2024
+      description:
+        - Led ViT-based AHI estimation reaching 94% accuracy; deployed models via ONNX Runtime, cutting inference cost by 30%.
+        - Designed a single-body multi-head architecture combining multiple sleep-analysis tasks in one model, cutting inference time by about 50%.
+        - Developed sound-based deep learning models for sleep disorder detection, including apnea, snoring, and sleep staging.
+        - Co-authored two peer-reviewed papers with Seoul National University Bundang Hospital in JMIR 2023 and JAMA Otolaryngology 2024.
+
+- title: Personal Projects
+  type: time_table
+  contents:
+    - title: BlogForge
+      institution: Multi-agent CLI for automated Jekyll blog publishing
+      year: github.com/levulinh/blogforge
+      description:
+        - Orchestrates researcher, writer, and critic agents to research, draft, critique, revise, and publish blog posts.
+        - "Stack: OpenAI Agents SDK, OpenRouter, Tavily, Python, Jekyll."
+    - title: MTBox
+      institution: Autonomous AI software company
+      year: github.com/levulinh/mtbox
+      description:
+        - Five specialized Claude Code agents collaborate via Linear and GitHub to plan, design, implement, and test software on scheduled intervals.
+        - "Stack: Claude Code, Linear MCP, Playwright, Flutter, TypeScript, launchd automation."
+    - title: Voca Flutter
+      institution: Language learning app
+      year: github.com/levulinh/voca-flutter
+      description:
+        - Turns real-world articles into structured vocabulary learning material to accelerate Korean learning.
+        - "Stack: Flutter, Dart, LLM integration."
+    - title: Clozy
+      institution: AI journaling iOS app
+      year: App Store
+      description:
+        - Helps users reflect through guided prompts and LLM-generated insights.
+        - "Stack: iOS, LLM integration."
 
 - title: Education
   type: time_table
   contents:
-    - title: Bachelor of Automation and Control Engineering
-      institution: Hanoi University of Science and Technology, Vietnam
-      year: 2014 - 2019
-      description:
-        - title: CPA.
-          contents:
-            - 3.3 / 4.0
-    - title: Master of Science
-      institution: Korean Advanced Institute of Science and Technology, South Korea
+    - title: M.S. Electrical Engineering
+      institution: KAIST, Daejeon, South Korea
       year: 2019 - 2022
       description:
-        - Master's degree at School of Electrical Enginerring.
-        - title: CPA.
-          contents:
-            - 3.8/4.3
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: AI Researcher
-      institution: ASLEEP Inc.
-      year: Mar 2022 - Present
+        - GPA 3.8 / 4.3.
+        - Graph neural networks for computer vision; IEEE ICTC 2021 first-author publication.
+    - title: B.S. Automation & Control Engineering
+      institution: Hanoi University of Science and Technology, Hanoi, Vietnam
+      year: 2014 - 2019
       description:
-        - title: "Key member of AI Research team, in charge of:"
-          contents:
-            - Initiating and developing breathing sound-based neural network, including single task, and multi-tasked models.
-            - Writing journal papers with Medical Professors, published two journal papers of IF > 7.0.
-            - Collaborating closely with back-end team to serve pyTorch models with ONNX Runtime, saved additionally 30% of inference cost.
-            - Developing AI side SDK that serves AI models on mobile devices.
+        - GPA 3.2 / 4.0.
+        - Graduated from a top engineering institution in Vietnam.
 
-- title: Professional Skills
-  type: nested_list
-  contents:
-    - title: Pytorch
-      items:
-        - Proficient
-    - title: MLFlow
-      items:
-        - Proficient
-    - title: Onnx/OnnxRuntime.
-      items:
-        - Proficient
-    - title: English
-      items:
-        - Proficient
-
-- title: Other Interests
+- title: Certifications
   type: list
   contents:
-    - "<u>Hobbies:</u> Photography, Boxing, Gym."
+    - NVIDIA Deep Learning Institute - Rapid Application Development with Large Language Models (LLMs), Certified Instructor, Jul 2024.
+    - NVIDIA Deep Learning Institute - DLI Platform Course for Instructors, Jul 2024.
+
+- title: Publications
+  type: list
+  contents:
+    - 'Le VL et al. "Real-Time Detection of Sleep Apnea Based on Breathing Sounds..." JMIR, 2023. IF 7.4. First author. doi:10.2196/44818.'
+    - 'Han SC, Kim D, Le VL et al. "In-Home Smartphone-Based Prediction of OSA..." JAMA Otolaryngology, 2024. doi:10.1001/jamaoto.2023.3490.'
+    - 'Le VL, Youn CH. "Dynamic Graph Neural Network for Super-Pixel Image Classification." IEEE ICTC, 2021.'
+
+- title: Skills
+  type: nested_list
+  contents:
+    - title: Frameworks
+      items:
+        - PyTorch, ONNX, VLLM, SGLang, Claude API, LangChain, OpenAI Agents SDK, MCP.
+    - title: Techniques
+      items:
+        - LLM fine-tuning, inference optimization, RAG, VLM, OCR, agentic AI orchestration, AI evaluation.
+    - title: Infrastructure
+      items:
+        - Docker, CI/CD, AWS S3, Linux.
