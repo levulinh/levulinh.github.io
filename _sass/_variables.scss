@@ -4,14 +4,23 @@
  ******************************************************************************/
 
 
-// Colors — tech/minimalist palette
+// MTBox Brand Colors
+$signal-blue:         #5B7CFF !default;  // Primary accent — blueprint heritage
+$signal-blue-dark:    #3a5ce0 !default;  // Hover/active state
+$signal-blue-light:   #8ba3ff !default;  // Lighter tint for dark mode
+$warm-paper:          #F4F1EA !default;  // Light background
+$cool-ink:            #14141A !default;  // Dark background
+$ink-surface:         #1e1e26 !default;  // Slightly lighter dark surface
+$ink-card:            #22222c !default;  // Card bg in dark mode
+
+// Functional colors (kept for syntax highlighting / badges)
 $red-color:           #f85149 !default;
 $red-color-dark:      #da3633 !default;
 $orange-color:        #e3b341 !default;
-$blue-color:          #0969da !default;
-$blue-color-dark:     #0550ae !default;
-$cyan-color:          #58a6ff !default;
-$light-cyan-color:    lighten($cyan-color, 20%);
+$blue-color:          $signal-blue !default;
+$blue-color-dark:     $signal-blue-dark !default;
+$cyan-color:          $signal-blue-light !default;
+$light-cyan-color:    lighten($signal-blue-light, 15%);
 $green-color:         #3fb950 !default;
 $green-color-lime:    #7ee787 !default;
 $green-color-dark:    #238636 !default;
@@ -23,17 +32,16 @@ $pink-color:          #ff7b72 !default;
 $pink-color-light:    #ffdcd7 !default;
 $yellow-color:        #e3b341 !default;
 
-// Grays — GitHub dark scale
-$grey-color:          #8b949e !default;
-$grey-color-light:    #c9d1d9;
-$grey-color-dark:     #0d1117;
-$grey-900:            #161b22;
+// Neutrals
+$grey-color:          #8b8fa8 !default;
+$grey-color-light:    #c4c8d8;
+$grey-color-dark:     $cool-ink;
+$grey-900:            $ink-surface;
 
-$white-color: #f0f6fc !default;
-$black-color: #1f2328 !default;
+$white-color: $warm-paper !default;
+$black-color: $cool-ink !default;
 
 
 // Theme colors
-
-$code-bg-color-light:     #f6f8fa !default;
-$code-bg-color-dark:      #161b22 !default;
+$code-bg-color-light:     #eeeae0 !default;
+$code-bg-color-dark:      $ink-surface !default;

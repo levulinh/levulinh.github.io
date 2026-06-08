@@ -1,21 +1,22 @@
 /*******************************************************************************
- * Themes — minimalistic technology palette
+ * Themes — MTBox brand palette
+ * Accent: Signal Blue #5B7CFF | Light bg: Warm Paper #F4F1EA | Dark bg: Cool Ink #14141A
  ******************************************************************************/
 
 :root {
-  --global-bg-color: #ffffff;
+  --global-bg-color: #{$warm-paper};
   --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
+  --global-text-color: #{$cool-ink};
   --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$blue-color};
-  --global-hover-color: #{$blue-color-dark};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #24292f;
-  --global-footer-text-color: #8b949e;
+  --global-theme-color: #{$signal-blue};
+  --global-hover-color: #{$signal-blue-dark};
+  --global-hover-text-color: #{$warm-paper};
+  --global-footer-bg-color: #{$cool-ink};
+  --global-footer-text-color: #{$grey-color};
   --global-footer-link-color: #{$grey-color-light};
   --global-distill-app-color: #{$grey-color};
-  --global-divider-color: #d0d7de;
-  --global-card-bg-color: #f6f8fa;
+  --global-divider-color: #d6d2c8;
+  --global-card-bg-color: #ece8df;
 
   .fa-sun {
     display: none;
@@ -35,19 +36,19 @@
 }
 
 html[data-theme='dark'] {
-  --global-bg-color: #0d1117;
+  --global-bg-color: #{$cool-ink};
   --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #e6edf3;
+  --global-text-color: #{$warm-paper};
   --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #0d1117;
-  --global-footer-bg-color: #161b22;
-  --global-footer-text-color: #8b949e;
+  --global-theme-color: #{$signal-blue};
+  --global-hover-color: #{$signal-blue};
+  --global-hover-text-color: #{$warm-paper};
+  --global-footer-bg-color: #{$ink-surface};
+  --global-footer-text-color: #{$grey-color};
   --global-footer-link-color: #{$grey-color-light};
   --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #30363d;
-  --global-card-bg-color: #161b22;
+  --global-divider-color: #2c2c38;
+  --global-card-bg-color: #{$ink-card};
 
   .fa-sun {
     padding-left: 10px;
